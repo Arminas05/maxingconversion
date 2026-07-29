@@ -17,13 +17,19 @@ Two parts: **deploy it** (once, ~5 minutes), then **configure it** (one file).
    | Framework preset | None |
    | Build command | *(leave empty)* |
    | Build output directory | `public` |
-   | Production branch | `main` |
+   | Production branch | `claude/github-cloudflare-setup-srwghd` |
+
+   That branch is currently the repo's default, because it's the only one.
+   If you'd rather deploy from `main`, create it first
+   (`git checkout -b main && git push -u origin main`), set it as the default
+   in **GitHub → Settings → Branches**, and pick it here instead.
 
 4. **Save and Deploy.** You get a URL like
    `maxingconversion.pages.dev` within about a minute.
 
-Every push to `main` redeploys automatically. Pushes to other branches get
-their own preview URL, so you can look at a change before it's live.
+Every push to the production branch redeploys automatically. Pushes to other
+branches get their own preview URL, so you can look at a change before it's
+live.
 
 ### Attach your domain
 
