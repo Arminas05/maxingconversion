@@ -5,4 +5,4 @@ Disallow: /terms-of-service/
 Disallow: /earnings-disclaimer/
 Disallow: /cookie-policy/
 
-Sitemap: https://REPLACE-WITH-YOUR-DOMAIN.com/sitemap.xml
+Sitemap: https://maxingconversion.com/sitemap.xml

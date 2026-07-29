@@ -33,12 +33,24 @@ the repo default, switch that under **GitHub → Settings → Branches**.
 
 ### Attach your domain
 
-The Worker → **Settings** → **Domains & Routes** → **Add** → **Custom domain**.
-If the domain's nameservers are already on Cloudflare, this is two clicks and
-the SSL certificate is issued for you.
+The site is wired for **`maxingconversion.com`** already — `wrangler.toml`
+declares it as a Custom Domain (plus `www`), and every canonical tag,
+`robots.txt` and `sitemap.xml` point at it. There is one manual step first,
+at your domain registrar, that can't be done from this repo:
 
-Then find-and-replace `REPLACE-WITH-YOUR-DOMAIN.com` across the repo —
-it appears in the canonical tags, `robots.txt` and `sitemap.xml`.
+1. **Add `maxingconversion.com` as a zone on this Cloudflare account** (or
+   confirm it already is one) — Cloudflare dashboard → **Add a Site** — and
+   point the domain's nameservers at the two Cloudflare ones it gives you.
+   Custom Domains only attach to zones Cloudflare already controls.
+2. Once that zone is active, the **next push redeploys the Worker and
+   creates the Custom Domain automatically** — no dashboard click needed,
+   because it's declared in `wrangler.toml`. SSL is issued for you.
+3. If you'd rather do it by hand instead: Worker → **Settings** →
+   **Domains & Routes** → **Add** → **Custom domain**.
+
+Using a different domain? Edit the two `pattern` values in `wrangler.toml`,
+then find-and-replace `maxingconversion.com` across the repo (canonical
+tags, `robots.txt`, `sitemap.xml`).
 
 ---
 

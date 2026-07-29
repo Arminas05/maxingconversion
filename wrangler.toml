@@ -18,3 +18,18 @@ not_found_handling = "404-page"
 # Requests to /sales resolve to /sales/index.html and get a trailing slash,
 # which is what every internal link and the _redirects rules assume.
 html_handling = "auto-trailing-slash"
+
+# Custom domain — makes the site answer at maxingconversion.com instead of
+# the default *.workers.dev URL. Requires maxingconversion.com to already be
+# an active zone on this Cloudflare account (nameservers pointed at
+# Cloudflare) BEFORE the next deploy — that step has to happen at your
+# domain registrar and can't be scripted from here. Once it is, the next
+# `wrangler deploy` creates the Custom Domain automatically; no dashboard
+# click needed. See SETUP.md.
+[[routes]]
+pattern = "maxingconversion.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.maxingconversion.com"
+custom_domain = true
