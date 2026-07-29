@@ -6,6 +6,13 @@
 name = "maxingconversion"
 compatibility_date = "2026-07-29"
 
+# Adding [[routes]] below silently disables the workers.dev fallback URL
+# unless this is set explicitly. Keep it true even after the custom domain
+# is working — it's the only URL that stays reachable if a Custom Domain
+# ever fails to attach (as it did while the old Squarespace DNS records
+# were still in place), so losing it means losing the site entirely.
+workers_dev = true
+
 # Branch pushes get their own preview URL, like Pages preview deployments.
 preview_urls = true
 
