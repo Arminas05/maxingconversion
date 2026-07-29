@@ -1,4 +1,4 @@
-# Cloudflare Pages headers — https://developers.cloudflare.com/pages/configuration/headers/
+# Headers for Cloudflare Workers static assets — https://developers.cloudflare.com/workers/static-assets/headers/
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff

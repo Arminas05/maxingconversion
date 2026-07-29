@@ -1,4 +1,4 @@
-# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# Redirects for Cloudflare Workers static assets — https://developers.cloudflare.com/workers/static-assets/redirects/
 # The site's entry point. Change this line if you'd rather land cold traffic
 # on the long-form sales page: /  /sales/  302
 /                 /strategy-call/         302
