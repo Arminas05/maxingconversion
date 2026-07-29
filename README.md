@@ -1,7 +1,8 @@
 # maxingconversion
 
 Static funnel site for the 7-day done-for-you funnel build offer.
-Hosted on **Cloudflare Pages** — no build step, no framework, no dependencies.
+Deployed to **Cloudflare Workers** as an assets-only static site — no build
+step, no framework, no dependencies, no server code.
 
 **→ [SETUP.md](SETUP.md) — deploy it and fill in the config.**
 
@@ -30,7 +31,7 @@ public/
   assets/theme.css    ← all shared design tokens and components
   assets/funnel.js    ← qualifier modal, exit intent, FAQ, sticky CTA, video slots
   assets/legal.js     ← stamps brand/email/jurisdiction into the legal pages
-  _redirects          ← Cloudflare Pages routing
+  _redirects          ← routing (natively supported by Workers assets)
   _headers            ← security + cache headers
 ```
 
@@ -58,8 +59,9 @@ cd public && python3 -m http.server 8787
 # http://127.0.0.1:8787/sales/
 ```
 
-Redirects in `_redirects` are a Cloudflare feature and won't apply locally —
-open the real paths directly.
+Redirects in `_redirects` are applied by Cloudflare, not by `http.server`, so
+they won't work locally — open the real paths directly. To preview them, run
+`npx wrangler dev` instead.
 
 ## Checks
 

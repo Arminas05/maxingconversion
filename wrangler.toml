@@ -1,6 +1,20 @@
-# Cloudflare Pages project config.
-# With Git integration, Cloudflare reads this file and needs no dashboard
-# build settings: no build command, static output from ./public
+# Cloudflare Workers static-assets config.
+#
+# The connected build runs `npx wrangler deploy`, which deploys this whole
+# site as an assets-only Worker — no server code, no entry point, no build
+# step. `_headers` and `_redirects` inside public/ are supported natively.
 name = "maxingconversion"
-pages_build_output_dir = "public"
 compatibility_date = "2026-07-29"
+
+# Branch pushes get their own preview URL, like Pages preview deployments.
+preview_urls = true
+
+[assets]
+directory = "./public"
+
+# Unmatched paths serve public/404.html with a 404 status.
+not_found_handling = "404-page"
+
+# Requests to /sales resolve to /sales/index.html and get a trailing slash,
+# which is what every internal link and the _redirects rules assume.
+html_handling = "auto-trailing-slash"

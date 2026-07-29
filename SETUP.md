@@ -4,39 +4,38 @@ Two parts: **deploy it** (once, ~5 minutes), then **configure it** (one file).
 
 ---
 
-## Part 1 — Deploy to Cloudflare Pages
+## Part 1 — Deploy to Cloudflare Workers
 
-1. Go to the [Cloudflare dashboard](https://dash.cloudflare.com) →
-   **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Authorise GitHub and pick **`Arminas05/maxingconversion`**.
-3. Build settings — Cloudflare reads `wrangler.toml` and fills these in.
-   If it asks, use:
+The repo is already connected to the **`maxingconversion` Worker** on your
+account, and the build runs `npx wrangler deploy`. Nothing to set up in the
+dashboard — just push, or hit **Retry deployment** on the last build.
 
-   | Field | Value |
-   |---|---|
-   | Framework preset | None |
-   | Build command | *(leave empty)* |
-   | Build output directory | `public` |
-   | Production branch | `main` |
+The site deploys as an **assets-only Worker**: no server code, no build step,
+no entry point. `wrangler.toml` points at `./public` and Cloudflare uploads it.
 
-   `main` exists and holds the same commits as the working branch. If GitHub
-   still shows `claude/github-cloudflare-setup-srwghd` as the default repo
-   branch, switch it under **GitHub → Settings → Branches → Default branch**
-   — Cloudflare pre-selects the default, but you can pick `main` in the
-   dropdown either way.
+> **Note on Pages vs Workers.** This project is a Worker, not a Pages project.
+> Static-asset Workers are the current recommended path and support `_headers`
+> and `_redirects` natively, exactly like Pages did. Don't add
+> `pages_build_output_dir` to `wrangler.toml` — that's Pages-only config and
+> `wrangler deploy` fails on it.
 
-4. **Save and Deploy.** You get a URL like
-   `maxingconversion.pages.dev` within about a minute.
+You get a URL like `maxingconversion.<your-subdomain>.workers.dev`. Every push
+to the production branch redeploys; other branches get their own preview URL
+(`preview_urls = true`).
 
-Every push to the production branch redeploys automatically. Pushes to other
-branches get their own preview URL, so you can look at a change before it's
-live.
+### Which branch deploys
+
+The Worker's build is bound to one branch. `main` and
+`claude/github-cloudflare-setup-srwghd` currently hold identical commits, so
+either works — but set it to `main` under **the Worker → Settings → Build →
+Branch control** so it doesn't drift. If GitHub still shows the long branch as
+the repo default, switch that under **GitHub → Settings → Branches**.
 
 ### Attach your domain
 
-Pages → your project → **Custom domains** → **Set up a domain**. If the
-domain's nameservers are already on Cloudflare, this is two clicks and the
-SSL certificate is issued for you.
+The Worker → **Settings** → **Domains & Routes** → **Add** → **Custom domain**.
+If the domain's nameservers are already on Cloudflare, this is two clicks and
+the SSL certificate is issued for you.
 
 Then find-and-replace `REPLACE-WITH-YOUR-DOMAIN.com` across the repo —
 it appears in the canonical tags, `robots.txt` and `sitemap.xml`.
