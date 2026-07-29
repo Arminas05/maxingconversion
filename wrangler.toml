@@ -1,0 +1,6 @@
+# Cloudflare Pages project config.
+# With Git integration, Cloudflare reads this file and needs no dashboard
+# build settings: no build command, static output from ./public
+name = "maxingconversion"
+pages_build_output_dir = "public"
+compatibility_date = "2026-07-29"

@@ -1,0 +1,39 @@
+name: Site checks
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check JS syntax
+        run: |
+          for f in public/assets/*.js; do
+            node --check "$f"
+            echo "ok: $f"
+          done
+
+      - name: Check for broken internal links
+        run: |
+          fail=0
+          # every href="/..." in the site must resolve to a real file
+          while read -r link; do
+            path="public${link}"
+            if [ -d "$path" ]; then path="${path%/}/index.html"; fi
+            if [ ! -f "$path" ]; then
+              echo "::error::broken internal link: $link"
+              fail=1
+            fi
+          done < <(grep -rhoE 'href="/[^"#?]*"' public --include='*.html' \
+                     | sed -E 's/href="([^"]*)"/\1/' | sort -u)
+          exit $fail
+
+      - name: Setup checklist (informational)
+        run: |
+          ./scripts/check-placeholders.sh | tee -a "$GITHUB_STEP_SUMMARY"

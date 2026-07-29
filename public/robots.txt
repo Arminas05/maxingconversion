@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /privacy-policy/
+Disallow: /terms-of-service/
+Disallow: /earnings-disclaimer/
+Disallow: /cookie-policy/
+
+Sitemap: https://REPLACE-WITH-YOUR-DOMAIN.com/sitemap.xml

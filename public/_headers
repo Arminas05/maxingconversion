@@ -1,0 +1,14 @@
+# Cloudflare Pages headers — https://developers.cloudflare.com/pages/configuration/headers/
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/assets/theme.css
+  Cache-Control: public, max-age=3600
+
+# config.js must never be cached hard — it is the file you edit to go live.
+/assets/config.js
+  Cache-Control: public, max-age=60, must-revalidate

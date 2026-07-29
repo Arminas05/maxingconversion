@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Entire Sales Funnel, Built in 7 Days — And I Take a Cut of What It Earns</title>
+<meta name="description" content="Sales page, email flow, ad scripts and SMS — built for you end to end in 7 days, by someone whose fee is tied to what it earns. Book a free 30-minute strategy call.">
+<link rel="canonical" href="https://REPLACE-WITH-YOUR-DOMAIN.com/sales/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your Entire Sales Funnel, Built in 7 Days">
+<meta property="og:description" content="Done for you, end to end — and my fee is tied to what it earns. Book a free 30-minute strategy call.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Long-form cold-traffic sales page. Same offer and same voice as
+     /strategy-call/, more depth and more objection handling.
+
+     Config (booking link, form, VSL) lives in /assets/config.js.
+     NOTE: this page deliberately contains NO price. See SETUP.md —
+     don't add one until you've set a real number you'll honour.
+     ═══════════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/theme.css">
+</head>
+<body>
+
+<section class="hero sales-hero">
+  <div class="wrap">
+    <span class="preheadline">For info product sellers who already have an audience</span>
+
+    <h1>You don't have a traffic problem. <span class="light">You have a funnel that leaks — and every launch you run pays for it.</span></h1>
+
+    <p class="lede">I build the whole thing for you in 7 days — sales page, email flow, ad scripts, SMS — and I take a percentage of what it earns, so my upside only shows up if yours does.</p>
+
+    <div class="hero-strip">
+      <span><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 3.5" stroke="#12996B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Done-for-you build</span>
+      <span><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 3.5" stroke="#12996B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 7-day turnaround</span>
+      <span><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 7.5l3.5 3.5L13 3.5" stroke="#12996B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> My fee is tied to your results</span>
+    </div>
+
+    <!-- VSL SLOT — stays hidden until you set vslEmbedUrl in /assets/config.js -->
+    <div class="vid-frame" id="vsl-frame" hidden>
+      <div class="vid-inner">
+        <div class="vid-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="rgba(255,255,255,0.9)"/></svg>
+        </div>
+        <div class="vid-note">How the 7-day build works</div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="openModal()">Book My Free Strategy Call</button>
+    <p class="cta-sub">Free. 30 minutes. No card, no obligation, no pitch deck.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ PROBLEM ═══════════ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Read this part first</span>
+    <h2 class="sec-h">If this isn't you, close the tab — I'd rather you did.</h2>
+    <div class="body-copy">
+      <p>You already have an audience. A list, a following, a channel — something that took real time to build. You already have an info product that's live, or close to it.</p>
+      <p>And every time you launch, the number that comes back is <em>lower than your audience size says it should be.</em></p>
+      <p>Not zero. That would at least be diagnostic. It's the worse version: enough sales to prove people want it, not enough to justify the size of the list you're sending it to.</p>
+    </div>
+
+    <ul class="fear-list" style="margin-top:26px;">
+      <li>
+        <span class="ico"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="#D8453C" stroke-width="1.5"/><path d="M7 7l6 6M13 7l-6 6" stroke="#D8453C" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span>You can't tell whether it's the offer, the page, the emails, or the traffic — so every fix is a guess, and every guess costs you a launch.</span>
+      </li>
+      <li>
+        <span class="ico"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="#D8453C" stroke-width="1.5"/><path d="M7 7l6 6M13 7l-6 6" stroke="#D8453C" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span>You've watched someone hand an agency five figures and get a template back with their logo on it.</span>
+      </li>
+      <li>
+        <span class="ico"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="#D8453C" stroke-width="1.5"/><path d="M7 7l6 6M13 7l-6 6" stroke="#D8453C" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span>Every "funnel expert" promises 10x and shows you screenshots you have no way to verify.</span>
+      </li>
+      <li>
+        <span class="ico"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="#D8453C" stroke-width="1.5"/><path d="M7 7l6 6M13 7l-6 6" stroke="#D8453C" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span>So you keep doing it yourself — slowly, in the gaps between everything else, and at the cost of every launch you don't run while you're doing it.</span>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>The real fear isn't "will a funnel work."</strong> It's "will I hand someone thousands of dollars and get nothing back." That's the honest objection, and everything below is written to answer it rather than talk around it.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ MECHANISM ═══════════ -->
+<section class="mech bg-tint">
+  <div class="wrap">
+    <span class="eyebrow">What I actually do</span>
+    <h2 class="sec-h">I build the whole funnel in 7 days. You're involved on day one only.</h2>
+    <p class="sec-sub">Not advice. Not a course. Not a Notion template. The assets themselves, written and wired together.</p>
+
+    <div class="mech-step">
+      <div class="mech-num">1</div>
+      <div>
+        <div class="mech-day">Day 1</div>
+        <h3>One call, everything I need</h3>
+        <p>Your offer, your audience, your voice, your numbers. This is the only part that requires your time.</p>
+      </div>
+    </div>
+    <div class="mech-step">
+      <div class="mech-num">2</div>
+      <div>
+        <div class="mech-day">Days 2–5</div>
+        <h3>I build the whole thing</h3>
+        <p>Sales page, email sequence, ad scripts, SMS follow-ups. Written, structured, and wired together — not a template you fill in yourself.</p>
+      </div>
+    </div>
+    <div class="mech-step">
+      <div class="mech-num">3</div>
+      <div>
+        <div class="mech-day">Days 6–7</div>
+        <h3>Review, revise, go live</h3>
+        <p>You review it, I adjust what doesn't sound like you, and it ships. Then I keep optimising it as data comes in.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="background:#fff;">
+      <p><strong>"Seven days is a hook, right?"</strong> Fair. Here's the unglamorous answer: 7 days is possible because I'm not starting from a blank page. I work from a fixed build structure across sales page, emails, ads and SMS, and I only take on a small number of builds at once. That's the entire trick. It's also what we'll walk through on the call, so you can judge the structure before you commit to anything.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ SKEPTICISM — handled honestly ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="founder">
+      <span class="founder-flag">Straight with you</span>
+      <p><strong>I'm early in taking on client work, and I don't have a wall of case studies to show you.</strong> I could fake screenshots like half this industry does. I'd rather tell you the truth and let you decide with your eyes open.</p>
+      <p>Here's what I do have: a real, structured process for building funnels end to end, and a fee structure that puts my own money behind it. I take a percentage of what your funnel earns. If it flops, that side of my income flops with it.</p>
+      <p>If you're wondering why you haven't seen that structure before — most agencies want a flat cheque up front and no further stake in the outcome. That's the industry default. It isn't evidence it's the better deal for you.</p>
+      <p>So don't trust me on claims. I haven't made any. Trust the structure, and judge the plan I give you on the call. If it isn't sharp, don't hire me.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROOF SLOT ═══════════ -->
+<section class="tight">
+  <div class="wrap">
+    <div class="proof-slot">
+      <span class="tag">Placeholder — do not publish as-is</span>
+      <p>This is where the first real client result goes, in this format:<br>
+      <em>"[First name] used to [what wasn't working]. I built them [what], and they got [specific result]."</em><br>
+      Leave this block deleted until you have a story you can stand behind. A page with an honest gap converts better than a page with a result you can't defend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FUTURE PACE + FIRST CTA ═══════════ -->
+<section class="bg-tint">
+  <div class="wrap">
+    <div class="derisk-box">
+      <span class="eyebrow">Picture the next launch</span>
+      <h2>Same list. Same offer. A funnel that doesn't leak.</h2>
+      <p>You send the same email to the same people you already have — except this time the page holds them, the sequence follows up for eight days instead of one, and the people who didn't buy get a reason to come back instead of silence.</p>
+      <p><strong>Nothing about your audience changed. Only what happens after they click.</strong> That's the entire job.</p>
+    </div>
+    <div class="cta-block" style="margin-top:34px;">
+      <button class="btn" onclick="openModal()">Book My Free Strategy Call</button>
+      <p class="cta-sub">You leave with the funnel plan whether you hire me or not.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ WHAT'S INCLUDED ═══════════ -->
+<section class="deliver">
+  <div class="wrap">
+    <h2 class="sec-h center">What gets built</h2>
+    <p class="sec-sub center">Everything below is delivered inside the 7 days.</p>
+    <div class="deliver-grid">
+      <div class="deliver-item">
+        <span class="dcheck"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>A full sales page</strong> — written and built, structured to convert cold and warm traffic.</p>
+      </div>
+      <div class="deliver-item">
+        <span class="dcheck"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>The complete email flow</strong> — welcome, nurture, launch, cart-recovery, re-engagement.</p>
+      </div>
+      <div class="deliver-item">
+        <span class="dcheck"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>Video ad scripts</strong> — hooks and full scripts you can hand straight to an editor.</p>
+      </div>
+      <div class="deliver-item">
+        <span class="dcheck"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>SMS follow-up sequences</strong> — the channel most sellers leave completely unused.</p>
+      </div>
+      <div class="deliver-item">
+        <span class="dcheck"><svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><strong>Ongoing optimisation</strong> — I keep tuning it after launch, because my cut depends on it.</p>
+      </div>
+    </div>
+
+    <h2 class="sec-h center" style="margin-top:56px;">What you get, without what you hate</h2>
+    <div class="wh-wrap">
+      <div class="wh-col hate">
+        <h3>You never touch</h3>
+        <ul>
+          <li>Writing a single line of copy</li>
+          <li>Learning funnel software</li>
+          <li>Briefing and chasing freelancers</li>
+          <li>Guessing what converts</li>
+          <li>A three-month agency onboarding</li>
+        </ul>
+      </div>
+      <div class="wh-col want">
+        <h3>You get</h3>
+        <ul>
+          <li>The whole funnel, built for you</li>
+          <li>Live in 7 days</li>
+          <li>One point of contact — me</li>
+          <li>A structure with a real method behind it</li>
+          <li>Someone whose pay depends on it working</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ HOW THE FEE WORKS (no price on the page — by design) ═══════════ -->
+<section class="bg-tint">
+  <div class="wrap">
+    <h2 class="sec-h center">How I get paid</h2>
+    <p class="sec-sub center">Two parts, and I'll tell you both numbers on the call.</p>
+
+    <div class="inc-box">
+      <h3>A setup fee, plus a percentage of what the funnel earns.</h3>
+      <div class="body-copy">
+        <p><strong>The setup fee</strong> covers the build itself — the seven days of work. Because I'm early and I'm taking a stake in the outcome, it sits well below what an agency charges for the same scope.</p>
+        <p><strong>The percentage</strong> is the part that matters. If the funnel underperforms, that side of my income underperforms with it. I have no way to build you something weak and still get paid well.</p>
+      </div>
+      <div class="price-note">
+        <p><strong>Why there's no number on this page:</strong> the setup fee depends on the scope of your funnel, and the percentage depends on your margins. Quoting a figure here that I'd have to walk back on the call would be the first dishonest thing on this page.</p>
+        <p>You'll get both numbers, in plain terms, on the call — before you're asked to decide anything. <strong>There is no charge for the call itself and no obligation attached to it.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ GUARANTEE ═══════════ -->
+<section>
+  <div class="wrap">
+    <div class="derisk-box">
+      <span class="eyebrow">The guarantee</span>
+      <h2>You leave with the plan either way.</h2>
+      <p>Most guarantees are about money back. There's no purchase here, so here's mine instead: <strong>if you show up with your numbers and I don't give you a clear, usable funnel plan by the end of the call, I've wasted your time and I know it.</strong></p>
+      <p>The plan is yours regardless. Build it yourself, hand it to someone else, or bin it — no strings.</p>
+      <p>All I ask is that you show up prepared: rough numbers, current funnel links, and a decision-maker on the call if one's needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SCARCITY — real constraint only ═══════════ -->
+<section class="tight bg-tint">
+  <div class="wrap">
+    <div class="body-copy" style="max-width:620px;margin:0 auto;text-align:center;">
+      <p><strong>I work with a small number of clients at a time.</strong> Not to manufacture urgency — because profit-tied optimisation means I stay involved after launch, and that doesn't scale the way flat-fee work does. When the slots are full, the calendar closes until one opens.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ COST OF INACTION ═══════════ -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-h center">And if you do nothing?</h2>
+    <div class="body-copy" style="max-width:620px;margin:0 auto;">
+      <p>Realistically, the same thing that happened last quarter. You run the next launch on the funnel you already know is leaking, get a number that's a bit disappointing, and tell yourself you'll fix the emails before the one after that.</p>
+      <p>That's not a scare tactic — it's just the default path, and the default path is quiet. The list you spent years building keeps converting at a fraction of what it could, and nothing about that failure ever shows up as an invoice you'd notice.</p>
+      <p><strong>The call is free and takes 30 minutes.</strong> Worst case, you get a second opinion on your funnel from someone who does this full-time, and you walk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="faq bg-tint">
+  <div class="wrap">
+    <h2>Before you book</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>You have no case studies. Why would I trust you?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">You shouldn't trust me on claims — I haven't made any. Trust the structure instead: my fee is partly tied to what your funnel earns, the setup cost is a fraction of agency rates precisely because I'm early, and the call costs you nothing. Judge the plan I give you on the call. If it's not sharp, don't hire me.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What does it cost?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">A setup fee plus a percentage of what the funnel earns. The setup fee depends on scope and the percentage depends on your margins, so I give you both numbers on the call rather than posting a figure here I'd have to revise. The call itself is free and there's no obligation to proceed.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Is the call actually free, or is this a disguised pitch?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Free, and no card required. I'll be upfront: if there's a fit, I will tell you what working together looks like — that's the point of a strategy call. But you leave with the funnel plan either way, and there's no follow-up pressure if you say no.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Can you really build a whole funnel in 7 days?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Yes — because I work from a fixed structure rather than starting from a blank page each time, and because I only take on a small number of builds at once. The 7 days assumes you show up for the day-one call and turn around your review inside 48 hours. If you go quiet, the clock pauses.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Who owns the work?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">You do. The pages, emails, scripts and sequences are yours, on your platforms, under your accounts. The specifics — ownership, term, and how the profit share is calculated and ends — are set out in a signed services agreement before any work starts. Nothing on this page is that agreement.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What do I actually need before we start?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">An info product that exists (or is close), and some audience — email list, social following, or existing traffic. If you're pre-product with no audience, a funnel isn't your bottleneck yet and I'll tell you that rather than take your money.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>Why do you need my phone number?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">A reminder text before the call, and nothing else. No-shows waste both our time. Your number isn't sold, shared, or added to any list — see the <a href="/privacy-policy/">privacy policy</a>.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="final">
+  <div class="wrap">
+    <h2>Find out exactly what your funnel is missing.</h2>
+    <p class="lede">30 minutes. Free. You leave with the plan whether you hire me or not.</p>
+    <button class="btn" onclick="openModal()">Book My Free Strategy Call</button>
+    <p class="cta-sub">Takes about 60 seconds to book.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer">Results are not guaranteed. Any outcomes discussed depend on your offer, audience, traffic, and market — nothing on this page should be read as a promise of specific earnings. See our <a href="/earnings-disclaimer/" style="color:var(--ink-mute);">Earnings Disclaimer</a>.</p>
+    <p>&copy; <span class="year"></span> <span class="brand-name"></span> — All rights reserved.</p>
+    <p class="legal-nav">
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms-of-service/">Terms of Service</a>
+      <a href="/earnings-disclaimer/">Earnings Disclaimer</a>
+      <a href="/cookie-policy/">Cookie Policy</a>
+    </p>
+  </div>
+</footer>
+
+<script src="/assets/config.js"></script>
+<script src="/assets/funnel.js"></script>
+
+</body>
+</html>

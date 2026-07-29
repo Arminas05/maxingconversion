@@ -1,0 +1,13 @@
+# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# The site's entry point. Change this line if you'd rather land cold traffic
+# on the long-form sales page: /  /sales/  302
+/                 /strategy-call/         302
+/index.html       /strategy-call/         302
+
+# Friendly short links
+/call             /strategy-call/         301
+/book             /strategy-call/         301
+/privacy          /privacy-policy/        301
+/terms            /terms-of-service/      301
+/disclaimer       /earnings-disclaimer/   301
+/cookies          /cookie-policy/         301
