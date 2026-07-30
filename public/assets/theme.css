@@ -533,14 +533,21 @@
   .wb-handoff{text-align:center;}
   .wb-handoff p{font-size:21px;max-width:600px;margin-left:auto;margin-right:auto;}
 
-  /* ---------- MOTION: scroll-reveal + easing (light, real CSS, no video) ---------- */
+  /* ---------- MOTION: scroll-reveal + easing (light, real CSS, no video) ----------
+     Content is VISIBLE BY DEFAULT. The hidden starting state is only applied
+     once JS has confirmed it can also remove it (html.js-reveal). Getting this
+     backwards — hiding in plain CSS and relying on JS to un-hide — renders the
+     whole middle of the page blank if the observer never fires. Do not
+     reintroduce `opacity:0` on a bare `.reveal`.                              */
   .reveal{
-    opacity:0;transform:translateY(18px);
     transition:opacity .7s cubic-bezier(0.16,1,0.3,1),transform .7s cubic-bezier(0.16,1,0.3,1);
   }
-  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  html.js-reveal .reveal:not(.is-visible){
+    opacity:0;transform:translateY(18px);
+  }
   @media(prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
+    html.js-reveal .reveal:not(.is-visible){opacity:1;transform:none;}
+    .reveal{transition:none;}
   }
 
   /* ---------- MOTION: soft ambient glow behind the identity headline ---------- */

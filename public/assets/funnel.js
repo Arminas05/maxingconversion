@@ -409,14 +409,27 @@ function init(){
   wireScrollReveal();
 }
 
-/* ---------- MOTION: reveal-on-scroll for elements marked .reveal ---------- */
+/* ---------- MOTION: reveal-on-scroll for elements marked .reveal ----------
+   Safety model: the hidden starting state lives behind html.js-reveal, which
+   is only added here. If this function never runs, or IntersectionObserver
+   is missing, every .reveal element simply stays visible — the page must
+   never depend on JS to render its own content.                            */
 function wireScrollReveal(){
   var els = document.querySelectorAll('.reveal');
   if(!els.length) return;
-  if(!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('is-visible'); });
-    return;
+  if(!('IntersectionObserver' in window)) return;   // leave everything visible
+
+  var root = document.documentElement;
+  root.classList.add('js-reveal');
+
+  function revealAll(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.classList.add('is-visible');
+    });
   }
+
+  // A tall element can never reach a high intersection ratio on a short
+  // viewport, so trigger on any sliver of it entering the view.
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
@@ -424,8 +437,14 @@ function wireScrollReveal(){
         io.unobserve(entry.target);
       }
     });
-  }, {threshold: 0.15, rootMargin: '0px 0px -8% 0px'});
+  }, {threshold: 0.01, rootMargin: '0px 0px -5% 0px'});
   els.forEach(function(el){ io.observe(el); });
+
+  // Backstop: if the observer somehow never marks anything visible, show
+  // everything rather than leaving the page blank.
+  setTimeout(function(){
+    if(!document.querySelector('.reveal.is-visible')) revealAll();
+  }, 2500);
 }
 
 window.Funnel = { observeHeroBtn: observeHeroBtn };
