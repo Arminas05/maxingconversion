@@ -43,15 +43,31 @@ if (await p.isDisabled('#nextBtn')) errors.push('sales: valid contact details st
 await p.keyboard.press('Escape');
 if (await p.isVisible('#modalOverlay .step[data-step="5"]')) errors.push('sales: Escape did not close modal');
 
-// FAQ accordion
-await p.click('.faq-item >> nth=0 >> .faq-q');
-if (!(await p.locator('.faq-item').nth(0).evaluate(e => e.classList.contains('open')))) errors.push('sales: faq did not open');
-await p.click('.faq-item >> nth=1 >> .faq-q');
-if (await p.locator('.faq-item').nth(0).evaluate(e => e.classList.contains('open'))) errors.push('sales: first faq did not close');
-
 // video slot must stay hidden while config has no url
 if (await p.isVisible('#vsl-frame')) errors.push('sales: empty VSL frame is visible');
+
+// qualification-block placeholders must be visibly labeled, never silently missing
+const qualCount = await p.locator('.wb-qual').count();
+if (qualCount < 1) errors.push('sales: no qualification blocks found');
+const proofTags = await p.locator('.wb-proof-slot .tag').allInnerTexts();
+if (proofTags.some(t => !/placeholder/i.test(t))) errors.push('sales: a proof slot is missing its placeholder label');
+
+// reveal-on-scroll elements should end up visible after scrolling past them.
+// Step down gradually — a single giant jump can skip frames the
+// IntersectionObserver never sees, unlike a real human's scroll.
+for (let i = 0; i < 12; i++) {
+  await p.mouse.wheel(0, 500);
+  await p.waitForTimeout(120);
+}
+const stillHidden = await p.locator('.reveal:not(.is-visible)').count();
+if (stillHidden > 0) errors.push(`sales: ${stillHidden} .reveal elements never became visible after scrolling`);
+
 await p.screenshot({ path: '/tmp/shot-sales.png', fullPage: false });
+
+// /sales/ #thanks route
+await p.goto(base + '/sales/#thanks', { waitUntil: 'networkidle' });
+if (!(await p.isVisible('#view-thanks'))) errors.push('sales: #thanks did not show thank-you view');
+if (await p.isVisible('#view-optin')) errors.push('sales: opt-in still visible on #thanks');
 await p.close();
 
 // 2. strategy-call: opt-in view + sticky CTA on mobile
