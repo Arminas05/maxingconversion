@@ -7,3 +7,7 @@ node_modules/
 # local-only: playwright install for scripts/smoke-test.mjs (npm i playwright)
 package.json
 package-lock.json
+
+# built zip of the $47 product — rebuild from deliverables/toolkit-v1/ source,
+# don't track the binary itself
+deliverables/*.zip
