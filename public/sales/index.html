@@ -15,8 +15,7 @@
 <!-- ═══════════════════════════════════════════════════════════════
      High-ticket application-page architecture (wb-authority-funnel,
      Mode A). Deliberately typography-first — no icon grids, no
-     feature cards, no price on the page. See SETUP.md before editing
-     the qualification-block placeholders below.
+     feature cards, no price on the page.
 
      Config (booking link, form, VSL) lives in /assets/config.js.
      ═══════════════════════════════════════════════════════════════ -->
@@ -25,6 +24,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/theme.css">
+
+<!-- Set the reveal-animation flag BEFORE first paint. Doing this from
+     funnel.js at the end of <body> let the page paint first, so content
+     flashed in and then jumped as it re-hid. The timeout un-sets it if
+     funnel.js never loads, so a script failure can't leave the page blank. -->
+<script>
+(function(){
+  var d = document.documentElement;
+  d.className += (d.className ? ' ' : '') + 'js-reveal';
+  setTimeout(function(){
+    if(!window.Funnel) d.className = d.className.replace(/\bjs-reveal\b/, '');
+  }, 2500);
+})();
+</script>
 </head>
 <body>
 
@@ -83,19 +96,13 @@
   </section>
 
   <!-- ═══════════ QUALIFICATION BLOCKS — largest avatar first ═══════════
-       Each "wb-proof-slot" is an intentional, visible placeholder. Per
-       the wb-authority-funnel skill's honesty gate, a qualification
-       block needs a REAL named client result before it can carry one —
-       there isn't one yet. Fill these in as real results come in;
-       do not replace them with invented names or numbers. ═══════════ -->
+       These run on self-diagnosis only. When a real, named client result
+       exists, add it inside the matching block — real names and real
+       numbers only, never invented ones. ═══════════ -->
 
   <section class="wb-qual reveal">
     <div class="wb-page">
       <h3>Do you already have an audience and a product live — but every launch converts nowhere near what your list size says it should?</h3>
-      <div class="wb-proof-slot">
-        <span class="tag">Placeholder — do not publish without a real result</span>
-        <p>This is where a real client's before → after numbers go, once the first one exists: the launch they ran before, what changed, and what it did instead.</p>
-      </div>
       <div class="wb-diagnosis">
         <p>In almost every case like this, the product was never the problem. The page and the follow-up were. A one-off launch email and a generic landing page can't do what a full sequence and a page actually built to convert can.</p>
       </div>
@@ -106,10 +113,6 @@
   <section class="wb-qual band reveal">
     <div class="wb-page">
       <h3>Do you have a product ready — or almost ready — to launch, with no real funnel behind it yet? No sequence, no ad angle, just a launch date?</h3>
-      <div class="wb-proof-slot">
-        <span class="tag">Placeholder — do not publish without a real result</span>
-        <p>This is where a real client's timeline goes: how close to launch they were, what got built, and what shipped in time.</p>
-      </div>
       <div class="wb-diagnosis">
         <p>Usually all that's missing is the structure — the page, the emails, the ad angle — built in the weeks before launch instead of scrambled together the week of.</p>
       </div>
@@ -120,10 +123,6 @@
   <section class="wb-qual reveal">
     <div class="wb-page">
       <h3>Do you have the audience and the idea, but the whole thing is still stuck in your head because you don't know what to build first?</h3>
-      <div class="wb-proof-slot">
-        <span class="tag">Placeholder — do not publish without a real result</span>
-        <p>This is where a real client's starting point goes: what existed before we spoke, and what existed 7 days later.</p>
-      </div>
       <div class="wb-diagnosis">
         <p>Usually the idea is further along than it feels. What's missing isn't more thinking — it's someone to turn it into the actual assets: the page, the sequence, the ads.</p>
       </div>
@@ -220,10 +219,6 @@
 
   <!-- Real client proof goes here once it exists — see the skill's
        honesty gate. Left empty deliberately. -->
-  <div class="wb-proof-slot" style="margin:56px auto;max-width:640px;">
-    <span class="tag">Placeholder — do not publish without a real result</span>
-    <p>Once real client results exist, this is the highest-leverage spot on the page: the last thing someone sees before their call. Left empty until there's something true to put here.</p>
-  </div>
 
   <hr class="divider">
 
