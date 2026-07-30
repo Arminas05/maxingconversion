@@ -1,7 +1,8 @@
 # Redirects for Cloudflare Workers static assets — https://developers.cloudflare.com/workers/static-assets/redirects/
-# The site's entry point. /sales/ is the single page that books calls.
-/                       /sales/                 302
-/index.html             /sales/                 302
+# The site's entry point. Temporarily /toolkit/ (the $47 offer) while that's
+# the primary push — swap back to /sales/ when /sales/ should be the front door again.
+/                       /toolkit/               302
+/index.html             /toolkit/               302
 
 # /strategy-call/ was the original booking page. It and /sales/ ended up doing
 # the same job, so it now redirects rather than splitting traffic between two
