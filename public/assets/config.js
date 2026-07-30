@@ -48,5 +48,25 @@ window.SITE_CONFIG = {
   ],
 
   /* ── 6. Behaviour toggles ─────────────────────────────────────────── */
-  exitIntentEnabled: true
+  exitIntentEnabled: true,
+
+  /* ── 7. The $47 toolkit at /toolkit/ ───────────────────────────────
+     TWO switches, and BOTH must be set before the page can take money.
+     This is deliberate: until the product actually exists as files you
+     can deliver, a working checkout would be selling something you
+     can't ship. While either is unset the page shows an inert button
+     and a "not open yet" note, and sets itself to noindex.            */
+
+  // false until the skill files are packaged and you could deliver them today.
+  productLive: false,
+
+  // Stripe Payment Link for the $47 toolkit (dashboard → Payment Links).
+  // Looks like: https://buy.stripe.com/xxxxxxxxxxxx
+  stripePaymentUrl: '',
+
+  productPrice: '$47',
+
+  /* Where buyers land after paying. Set this as the Payment Link's
+     confirmation-page URL in Stripe too, or they see Stripe's default. */
+  productThanksUrl: 'https://maxingconversion.com/toolkit/#thanks'
 };

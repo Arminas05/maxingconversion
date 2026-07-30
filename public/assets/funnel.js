@@ -407,6 +407,57 @@ function init(){
   wireExitIntent();
   observeHeroBtn();
   wireScrollReveal();
+  wireProductButtons();
+}
+
+/* ---------- Paid product buttons (/toolkit/) ----------
+   Two independent switches must BOTH be set in config.js before this page
+   can take money: productLive (the files exist and can be delivered) and
+   stripePaymentUrl (somewhere to send the payment). If either is missing
+   the buttons are made inert, a plain-language notice explains why, and
+   the page is forced to noindex so an ad or a search result can't drop
+   someone onto a checkout that doesn't work.                            */
+function wireProductButtons(){
+  var buttons = document.querySelectorAll('[data-buy]');
+  if(!buttons.length) return;
+
+  var url = CFG.stripePaymentUrl || '';
+  var ready = CFG.productLive === true && url !== '';
+
+  // Keep the displayed price in sync with config so it can't drift
+  // between the four offer blocks.
+  if(CFG.productPrice){
+    document.querySelectorAll('[data-price]').forEach(function(el){
+      el.textContent = CFG.productPrice;
+    });
+  }
+
+  if(ready){
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){ window.location.href = url; });
+    });
+    return;
+  }
+
+  var why = CFG.productLive !== true
+    ? 'This product isn’t finished yet, so it isn’t on sale.'
+    : 'Checkout isn’t connected yet, so this can’t take payment.';
+
+  buttons.forEach(function(btn){
+    btn.classList.add('is-inert');
+    btn.setAttribute('aria-disabled', 'true');
+    btn.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+  document.querySelectorAll('[data-inert-note]').forEach(function(note){
+    note.textContent = why + ' Nothing here can be bought yet.';
+    note.hidden = false;
+  });
+
+  // Don't let search engines or ad crawlers index a page that can't sell.
+  var meta = document.createElement('meta');
+  meta.name = 'robots';
+  meta.content = 'noindex, nofollow';
+  document.head.appendChild(meta);
 }
 
 /* ---------- MOTION: reveal-on-scroll for elements marked .reveal ----------
@@ -437,7 +488,11 @@ function wireScrollReveal(){
         io.unobserve(entry.target);
       }
     });
-  }, {threshold: 0.01, rootMargin: '0px 0px -5% 0px'});
+  // Positive bottom margin reveals a section ~250px BEFORE it scrolls into
+  // view. On a long sales page that matters: it makes the motion read as a
+  // gentle settle rather than a pop, and a fast scroller never outruns it
+  // into blank space.
+  }, {threshold: 0, rootMargin: '0px 0px 250px 0px'});
   els.forEach(function(el){ io.observe(el); });
 
   // Backstop: if the observer somehow never marks anything visible, show

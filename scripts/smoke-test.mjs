@@ -116,6 +116,41 @@ const overflow = await p.evaluate(() => {
 if (overflow > 1) errors.push(`mobile: page overflows horizontally by ${overflow}px`);
 await p.close();
 
+// ── 2b. /toolkit/ — the paid page must not be able to take money until
+// BOTH config switches are set. This is the check that matters most on
+// that page: a live checkout for an undeliverable product is the failure
+// mode worth failing the build over.
+{
+  const tp = await page('/toolkit/');
+  await tp.waitForTimeout(400);
+  const buys = await tp.locator('[data-buy]').count();
+  if (buys === 0) errors.push('toolkit: no buy buttons found');
+  const inert = await tp.locator('[data-buy].is-inert').count();
+  if (inert !== buys) errors.push(`toolkit: ${buys - inert} of ${buys} buy buttons are live while the product is not`);
+  const noteShown = await tp.locator('[data-inert-note]').first().isVisible();
+  if (!noteShown) errors.push('toolkit: buttons are inert but nothing explains why');
+  const robots = await tp.locator('meta[name="robots"]').count();
+  if (robots === 0) errors.push('toolkit: page is unsellable but not noindexed');
+  // forced click must not navigate anywhere
+  const url0 = tp.url();
+  await tp.locator('[data-buy]').first().click({ force: true });
+  await tp.waitForTimeout(400);
+  if (tp.url() !== url0) errors.push('toolkit: an inert buy button still navigated');
+  // every displayed price must match config, not drift between blocks
+  const prices = new Set(await tp.locator('[data-price]').allInnerTexts());
+  if (prices.size > 1) errors.push(`toolkit: price differs between offer blocks: ${[...prices].join(' / ')}`);
+  await tp.close();
+
+  // and it must render with JS off, same guarantee as /sales/
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });
+  const np2 = await ctx.newPage();
+  await np2.goto(base + '/toolkit/', { waitUntil: 'load' });
+  const hiddenNoJs = await np2.$$eval('.reveal', els =>
+    els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
+  if (hiddenNoJs > 0) errors.push(`toolkit/nojs: ${hiddenNoJs} .reveal elements invisible with JS disabled`);
+  await ctx.close();
+}
+
 // ── 3. legal pages fill their tokens ──────────────────────────────────────
 for (const path of ['/privacy-policy/', '/terms-of-service/', '/earnings-disclaimer/', '/cookie-policy/']) {
   const lp = await page(path);

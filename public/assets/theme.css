@@ -566,3 +566,162 @@
 
   /* buttons get a touch more weight in the easing on press */
   .btn{transition:background .15s ease,transform .18s cubic-bezier(0.34,1.56,0.64,1);}
+
+  /* ═══════════════════════════════════════════════════════════════
+     COLD-TRAFFIC LONG-FORM OFFER PAGE (/toolkit/)
+     Long-form direct response: repeated offer blocks at three scroll
+     depths, enemy/fix contrast lists, failure-formula steps.
+     ═══════════════════════════════════════════════════════════════ */
+
+  .cf-page{max-width:720px;margin:0 auto;padding:0 22px;}
+  .cf-page p{font-size:18px;line-height:1.68;color:var(--ink-soft);margin-bottom:18px;}
+  .cf-page p:last-child{margin-bottom:0;}
+  .cf-page strong{color:var(--ink);font-weight:700;}
+  .cf-sec{padding:60px 0;}
+  .cf-sec.tight{padding:40px 0;}
+  .cf-sec.band{background:var(--paper-tint);}
+
+  .cf-hero{padding:52px 0 36px;text-align:center;}
+  .cf-hero h1{
+    font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.02em;
+    font-size:33px;line-height:1.16;margin:0 auto 20px;max-width:660px;
+  }
+  @media(min-width:700px){.cf-hero h1{font-size:46px;}}
+  .cf-hero .because{
+    font-size:19px;color:var(--ink-soft);max-width:580px;margin:0 auto 30px;line-height:1.6;
+  }
+
+  .cf-h2{
+    font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.015em;
+    font-size:27px;line-height:1.26;margin:0 0 22px;
+  }
+  @media(min-width:700px){.cf-h2{font-size:33px;}}
+  .cf-h2.center{text-align:center;}
+  .cf-h3{font-size:19px;font-weight:700;margin:26px 0 10px;color:var(--ink);}
+
+  /* ---------- offer block (repeats at 3 depths) ---------- */
+  .cf-offer{
+    max-width:560px;margin:0 auto;background:#fff;border:1.5px solid var(--line);
+    border-radius:18px;padding:34px 28px;text-align:center;
+    box-shadow:0 18px 50px -30px rgba(20,28,48,0.35);
+  }
+  .cf-offer .name{
+    font-size:12px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:14px;
+  }
+  .cf-offer h3{
+    font-family:'Fraunces',serif;font-size:23px;font-weight:600;
+    line-height:1.32;margin-bottom:18px;
+  }
+  .cf-price{
+    font-family:'Fraunces',serif;font-size:46px;font-weight:700;
+    color:var(--ink);line-height:1;margin-bottom:8px;
+  }
+  .cf-price-note{font-size:15px;color:var(--ink-mute);margin-bottom:22px;}
+  .cf-offer .btn{width:100%;min-width:0;}
+  .cf-guarantee-line{
+    font-size:13.5px;color:var(--ink-mute);margin-top:12px;line-height:1.5;
+  }
+  .cf-inert-note{
+    background:var(--paper-tint);border-radius:10px;padding:14px 16px;
+    font-size:14.5px;color:var(--ink-mute);margin-top:14px;line-height:1.55;
+  }
+  .btn.is-inert{
+    background:#C4C9D1;box-shadow:none;cursor:not-allowed;
+  }
+  .btn.is-inert:hover{background:#C4C9D1;}
+
+  /* ---------- what's included ---------- */
+  .cf-inc{max-width:580px;margin:0 auto;}
+  .cf-inc-item{
+    display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .cf-inc-item:last-child{border-bottom:none;}
+  .cf-inc-item .n{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);
+    color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;
+    justify-content:center;margin-top:2px;font-family:'Fraunces',serif;
+  }
+  .cf-inc-item h4{font-size:17px;font-weight:700;margin-bottom:4px;color:var(--ink);}
+  .cf-inc-item p{font-size:16px;margin:0;}
+
+  /* ---------- who it works for ---------- */
+  .cf-grid{
+    display:grid;gap:12px;max-width:620px;margin:0 auto;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:620px){.cf-grid{grid-template-columns:1fr 1fr;}}
+  .cf-grid div{
+    background:var(--paper-tint);border-radius:11px;padding:16px 18px;
+    font-size:16px;color:var(--ink-soft);line-height:1.5;
+  }
+  .cf-grid div strong{display:block;color:var(--ink);margin-bottom:3px;}
+  .cf-grid div.wild{background:var(--accent-tint);}
+  .cf-grid div.wild strong{color:var(--accent-dark);}
+
+  /* ---------- enemy vs fix ---------- */
+  .cf-vs{max-width:600px;margin:0 auto;}
+  .cf-vs ul{list-style:none;margin:0 0 26px;}
+  .cf-vs li{
+    padding:11px 0 11px 30px;position:relative;font-size:16.5px;
+    color:var(--ink-soft);line-height:1.55;
+  }
+  .cf-vs .bad li::before{
+    content:'×';position:absolute;left:6px;top:9px;color:var(--danger);
+    font-size:19px;font-weight:700;line-height:1.2;
+  }
+  .cf-vs .good li::before{
+    content:'✓';position:absolute;left:4px;top:11px;color:var(--success);
+    font-size:15px;font-weight:700;line-height:1.2;
+  }
+
+  /* ---------- failure formula steps ---------- */
+  .cf-steps{max-width:600px;margin:0 auto;counter-reset:cfstep;}
+  .cf-steps li{
+    list-style:none;position:relative;padding:14px 0 14px 44px;
+    border-bottom:1px solid var(--line-soft);font-size:16.5px;
+    color:var(--ink-soft);line-height:1.6;
+  }
+  .cf-steps li:last-child{border-bottom:none;}
+  .cf-steps li::before{
+    counter-increment:cfstep;content:counter(cfstep);
+    position:absolute;left:0;top:14px;width:28px;height:28px;border-radius:50%;
+    background:var(--paper-tint);color:var(--ink-mute);font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cf-steps .cost{display:block;font-size:14px;color:var(--ink-mute);margin-top:3px;}
+
+  /* ---------- honest disclaimer block ---------- */
+  .cf-disclaimer{
+    max-width:620px;margin:0 auto;border:1.5px solid var(--line);
+    border-radius:14px;padding:26px 26px;background:#fff;
+  }
+  .cf-disclaimer .lbl{
+    font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--warn);margin-bottom:12px;display:block;
+  }
+  .cf-disclaimer p{font-size:16px;line-height:1.62;}
+
+  /* ---------- guarantee ---------- */
+  .cf-guarantee{
+    max-width:600px;margin:0 auto;background:var(--success-tint);
+    border-radius:16px;padding:32px 28px;text-align:center;
+  }
+  .cf-guarantee h3{
+    font-family:'Fraunces',serif;font-size:24px;font-weight:600;
+    margin-bottom:14px;line-height:1.3;
+  }
+  .cf-guarantee p{font-size:17px;color:#0C7351;}
+  .cf-guarantee p strong{color:#0A5C41;}
+
+  /* ---------- P.S. ---------- */
+  .cf-ps{
+    max-width:600px;margin:34px auto 0;font-size:17px;color:var(--ink-soft);
+    line-height:1.65;border-top:1px solid var(--line-soft);padding-top:24px;
+  }
+  .cf-ps strong{color:var(--ink);}
+
+  /* ---------- sticky price bar (mobile) ---------- */
+  .cf-sticky .price{
+    font-weight:700;color:var(--ink);font-size:15px;margin-bottom:6px;display:block;
+  }
