@@ -18,7 +18,7 @@ window.SITE_CONFIG = {
      In your scheduler, set the post-booking redirect to:
         https://yourdomain.com/strategy-call/#thanks
      That is what shows the thank-you page.                             */
-  calendarUrl: 'https://calendly.com/YOUR-USERNAME/strategy-call',
+  calendarUrl: 'https://calendly.com/hello-maxingconversion/30min',
 
   /* Where the "Reschedule" button on the thank-you page points.
      Leave blank to hide the button.                                    */
