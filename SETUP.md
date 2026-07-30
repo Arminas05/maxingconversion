@@ -23,13 +23,21 @@ You get a URL like `maxingconversion.<your-subdomain>.workers.dev`. Every push
 to the production branch redeploys; other branches get their own preview URL
 (`preview_urls = true`).
 
-### Which branch deploys
+### Which branch deploys — check this before trusting the word "preview"
 
-The Worker's build is bound to one branch. `main` and
-`claude/github-cloudflare-setup-srwghd` currently hold identical commits, so
-either works — but set it to `main` under **the Worker → Settings → Build →
-Branch control** so it doesn't drift. If GitHub still shows the long branch as
-the repo default, switch that under **GitHub → Settings → Branches**.
+The Worker's build is bound to **one** branch, and whatever that branch is,
+pushing to it goes **straight to the live domain**. There is no staging step.
+
+Set it to `main` under **the Worker → Settings → Build → Branch control**, so
+that feature branches are genuinely preview-only and `main` is the thing that
+ships. If GitHub still shows a long `claude/...` branch as the repo default,
+switch that too under **GitHub → Settings → Branches**.
+
+This bit off by default: the Worker was originally connected when the repo's
+only branch was the working branch, so production tracked *that*, and pushes
+intended as previews were published live. If you are ever unsure which branch
+is live, open any deploy log from a PR comment — the URL contains the
+environment it built into.
 
 ### Attach your domain
 
@@ -83,7 +91,7 @@ Run this any time to see what's still unfinished:
 In your scheduler's **post-booking redirect**, set:
 
 ```
-https://yourdomain.com/strategy-call/#thanks
+https://maxingconversion.com/sales/#thanks
 ```
 
 That `#thanks` is what swaps the page over to the thank-you view — the
@@ -110,7 +118,7 @@ vslEmbedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
 | Vimeo | `https://player.vimeo.com/video/VIDEO_ID` |
 | Loom | `https://www.loom.com/embed/VIDEO_ID` |
 
-Push, and it appears on both `/strategy-call/` and `/sales/`. Same for
+Push, and it appears at the top of `/sales/`. Same for
 `thankYouEmbedUrl`, which also un-hides the "click play" arrow above it.
 
 ---

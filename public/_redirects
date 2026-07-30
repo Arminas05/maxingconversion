@@ -1,13 +1,19 @@
 # Redirects for Cloudflare Workers static assets — https://developers.cloudflare.com/workers/static-assets/redirects/
-# The site's entry point. Change this line if you'd rather land cold traffic
-# on the long-form sales page: /  /sales/  302
-/                 /strategy-call/         302
-/index.html       /strategy-call/         302
+# The site's entry point. /sales/ is the single page that books calls.
+/                       /sales/                 302
+/index.html             /sales/                 302
+
+# /strategy-call/ was the original booking page. It and /sales/ ended up doing
+# the same job, so it now redirects rather than splitting traffic between two
+# near-identical pages. 301 so any existing links and search results follow.
+/strategy-call          /sales/                 301
+/strategy-call/         /sales/                 301
+/strategy-call/*        /sales/                 301
 
 # Friendly short links
-/call             /strategy-call/         301
-/book             /strategy-call/         301
-/privacy          /privacy-policy/        301
-/terms            /terms-of-service/      301
-/disclaimer       /earnings-disclaimer/   301
-/cookies          /cookie-policy/         301
+/call                   /sales/                 301
+/book                   /sales/                 301
+/privacy                /privacy-policy/        301
+/terms                  /terms-of-service/      301
+/disclaimer             /earnings-disclaimer/   301
+/cookies                /cookie-policy/         301

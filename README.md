@@ -10,10 +10,10 @@ step, no framework, no dependencies, no server code.
 
 | Path | What it is |
 |---|---|
-| `/` | Redirects to `/strategy-call/` (change in `public/_redirects`) |
+| `/` | Redirects to `/sales/` (change in `public/_redirects`) |
 | `/sales/` | Long-form sales page for cold traffic — problem, mechanism, offer, guarantee, FAQ |
-| `/strategy-call/` | The opt-in page: hero, qualifier modal, booking |
-| `/strategy-call/#thanks` | Thank-you / call-prep view (same file, hash-routed) |
+| `/sales/#thanks` | Thank-you / call-prep view (same file, hash-routed) |
+| `/strategy-call/` | Retired — 301s to `/sales/`. Both pages booked the same call, so they were merged rather than splitting traffic. |
 | `/privacy-policy/` | Privacy Policy |
 | `/terms-of-service/` | Terms of Service |
 | `/earnings-disclaimer/` | Earnings Disclaimer |
@@ -36,7 +36,7 @@ public/
 ```
 
 The qualifier modal and exit-intent popup are **injected by `funnel.js`**, not
-written into each page — so both the sales page and the strategy-call page get
+written into the page — so any page that loads it gets
 identical behaviour from one implementation. Add a new page by including
 `theme.css`, `config.js` and `funnel.js`, and calling `openModal()` from a
 button.
@@ -46,7 +46,7 @@ button.
 ```
 qualifier (5 steps) → POST to Formspree → redirect to your calendar
                                          (name/email/phone pre-filled)
-        calendar redirects back to /strategy-call/#thanks → prep page
+        calendar redirects back to /sales/#thanks → prep page
 ```
 
 If `formspreeUrl` is unset, the visitor still reaches the calendar but the

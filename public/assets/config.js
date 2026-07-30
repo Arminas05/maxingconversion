@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
 
   /* ── 2. Booking link (Calendly / Cal.com / SavvyCal) ───────────────
      In your scheduler, set the post-booking redirect to:
-        https://yourdomain.com/strategy-call/#thanks
+        https://maxingconversion.com/sales/#thanks
      That is what shows the thank-you page.                             */
   calendarUrl: 'https://calendly.com/hello-maxingconversion/30min',
 
@@ -37,7 +37,7 @@ window.SITE_CONFIG = {
         YouTube → https://www.youtube.com/embed/VIDEO_ID
         Vimeo   → https://player.vimeo.com/video/VIDEO_ID
         Loom    → https://www.loom.com/embed/VIDEO_ID                   */
-  vslEmbedUrl: '',          // hero video on /strategy-call/ and /sales/
+  vslEmbedUrl: '',          // hero video at the top of /sales/
   thankYouEmbedUrl: '',     // "watch before your call" video on #thanks
 
   /* ── 5. Socials (exit-intent popup). Delete any you're not on. ───── */
