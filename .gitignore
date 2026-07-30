@@ -3,3 +3,7 @@ node_modules/
 .wrangler/
 .dev.vars
 *.log
+
+# local-only: playwright install for scripts/smoke-test.mjs (npm i playwright)
+package.json
+package-lock.json
