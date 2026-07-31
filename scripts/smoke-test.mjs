@@ -116,30 +116,43 @@ const overflow = await p.evaluate(() => {
 if (overflow > 1) errors.push(`mobile: page overflows horizontally by ${overflow}px`);
 await p.close();
 
-// ── 2b. /toolkit/ — the paid page must not be able to take money until
-// BOTH config switches are set. This is the check that matters most on
-// that page: a live checkout for an undeliverable product is the failure
-// mode worth failing the build over.
+// ── 2b. /toolkit/ — the product is LIVE: both config switches are set,
+// the skill files exist, and paying triggers automated delivery. So the
+// checks invert — the page must actually be able to take money, and must
+// be indexable. (If productLive or stripePaymentUrl is ever unset again,
+// these assertions fail loudly, which is the point: the two states must
+// never disagree with what the page tells a visitor.)
 {
   const tp = await page('/toolkit/');
   await tp.waitForTimeout(400);
   const buys = await tp.locator('[data-buy]').count();
   if (buys === 0) errors.push('toolkit: no buy buttons found');
   const inert = await tp.locator('[data-buy].is-inert').count();
-  if (inert !== buys) errors.push(`toolkit: ${buys - inert} of ${buys} buy buttons are live while the product is not`);
+  if (inert !== 0) errors.push(`toolkit: ${inert} of ${buys} buy buttons are inert while the product is live`);
   const noteShown = await tp.locator('[data-inert-note]').first().isVisible();
-  if (!noteShown) errors.push('toolkit: buttons are inert but nothing explains why');
+  if (noteShown) errors.push('toolkit: a "not on sale yet" notice is showing on a live product');
   const robots = await tp.locator('meta[name="robots"]').count();
-  if (robots === 0) errors.push('toolkit: page is unsellable but not noindexed');
-  // forced click must not navigate anywhere
+  if (robots !== 0) errors.push('toolkit: page is sellable but still noindexed');
+  // a real click must head for the configured Stripe checkout
+  const stripeUrl = await tp.evaluate(() => (window.SITE_CONFIG || {}).stripePaymentUrl || '');
+  if (!/^https:\/\/buy\.stripe\.com\//.test(stripeUrl)) errors.push(`toolkit: stripePaymentUrl is not a Stripe Payment Link: ${stripeUrl}`);
+  // Stub Stripe so the assertion tests our navigation, not their uptime.
+  await tp.route('https://buy.stripe.com/**', r => r.fulfill({ status: 200, contentType: 'text/html', body: '<title>stub checkout</title>' }));
   const url0 = tp.url();
-  await tp.locator('[data-buy]').first().click({ force: true });
-  await tp.waitForTimeout(400);
-  if (tp.url() !== url0) errors.push('toolkit: an inert buy button still navigated');
-  // every displayed price must match config, not drift between blocks
-  const prices = new Set(await tp.locator('[data-price]').allInnerTexts());
-  if (prices.size > 1) errors.push(`toolkit: price differs between offer blocks: ${[...prices].join(' / ')}`);
+  await tp.locator('[data-buy]').first().click();
+  await tp.waitForTimeout(800);
+  const after = tp.url();
+  if (after === url0) errors.push('toolkit: clicking a live buy button did not navigate to checkout');
+  else if (!after.startsWith('https://buy.stripe.com/')) errors.push(`toolkit: buy button navigated somewhere other than Stripe: ${after}`);
   await tp.close();
+
+  // every displayed price must match config, not drift between blocks
+  const pp = await page('/toolkit/');
+  await pp.waitForTimeout(400);
+  const prices = new Set(await pp.locator('[data-price]').allInnerTexts());
+  if (prices.size > 1) errors.push(`toolkit: price differs between offer blocks: ${[...prices].join(' / ')}`);
+  if (![...prices].every(t => t.trim() === '$47')) errors.push(`toolkit: displayed price is not $47: ${[...prices].join(' / ')}`);
+  await pp.close();
 
   // and it must render with JS off, same guarantee as /sales/
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });

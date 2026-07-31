@@ -52,17 +52,18 @@ window.SITE_CONFIG = {
 
   /* ── 7. The $47 toolkit at /toolkit/ ───────────────────────────────
      TWO switches, and BOTH must be set before the page can take money.
-     This is deliberate: until the product actually exists as files you
-     can deliver, a working checkout would be selling something you
-     can't ship. While either is unset the page shows an inert button
-     and a "not open yet" note, and sets itself to noindex.            */
+     Both are now set and the product is genuinely live:
+       • the skill files exist and ship (deliverables/toolkit-v1/)
+       • Stripe payment fires a Zapier automation that emails the
+         buyer the toolkit zip, so "instant download" is accurate
+     If either is ever unset again, /toolkit/ makes its buy buttons
+     inert, explains why, and forces itself to noindex.               */
 
-  // false until the skill files are packaged and you could deliver them today.
-  productLive: false,
+  // true — the files exist and a buyer receives them automatically.
+  productLive: true,
 
   // Stripe Payment Link for the $47 toolkit (dashboard → Payment Links).
-  // Looks like: https://buy.stripe.com/xxxxxxxxxxxx
-  stripePaymentUrl: '',
+  stripePaymentUrl: 'https://buy.stripe.com/4gM6oAdRLeYK9rL1FI1ck00',
 
   productPrice: '$47',
 

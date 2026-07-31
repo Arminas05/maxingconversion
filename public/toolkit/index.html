@@ -15,14 +15,14 @@
 <!-- ═══════════════════════════════════════════════════════════════
      COLD-TRAFFIC LONG-FORM OFFER PAGE — $47 toolkit.
 
-     THIS PAGE CANNOT TAKE MONEY YET, BY DESIGN.
-     Both switches in /assets/config.js must be set first:
-       productLive: true         ← only when the files exist and you
-                                   could deliver them to a buyer today
-       stripePaymentUrl: '...'   ← your Stripe Payment Link
-     Until then the buttons are inert, a notice explains why, and
-     funnel.js forces this page to noindex so ads/search can't send
-     anyone to a checkout that doesn't work.
+     THIS PAGE IS LIVE. Both switches in /assets/config.js are set:
+       productLive: true         ← the skill files exist in
+                                   deliverables/toolkit-v1/ and ship
+       stripePaymentUrl: '...'   ← the real Stripe Payment Link
+     Delivery is automated: Stripe payment → Zapier → the toolkit zip
+     is emailed to the buyer, so "instant download" is literally true.
+     If either switch is ever unset again, funnel.js makes the buttons
+     inert, explains why, and forces this page to noindex.
 
      DELIBERATELY ABSENT: testimonials, case studies, buyer counts,
      income claims, and a struck-through "was $X" anchor. There is no
@@ -52,9 +52,8 @@
 
 <section class="cf-hero wb-glow">
   <div class="cf-page">
-    <span class="preheadline">For anyone with an offer and no sales page that works</span>
-    <h1>Turn what you sell into a finished sales page and a finished VSL script — <span class="hl">without writing either one yourself.</span></h1>
-    <p class="because">Two Claude skills. You answer questions about your offer; they write the page and the script, built on the same direct-response structure agencies charge four figures to apply.</p>
+    <h1>Why your offer isn't selling usually has nothing to do with how the page looks. It's one of three hidden problems — <span class="hl">and by the end of this page you'll know which one is yours.</span></h1>
+    <p class="because">Then two Claude skills fix the part you can fix: you answer questions about your offer, they write the sales page and the VSL script on the same direct-response structure agencies charge four figures to apply.</p>
 
     <!-- VSL SLOT — hidden until vslEmbedUrl is set in config.js -->
     <div class="vid-frame" id="vsl-frame" hidden>
@@ -86,10 +85,18 @@
 <!-- ══════════════ WHAT IT IS ══════════════ -->
 <section class="cf-sec band">
   <div class="cf-page reveal">
-    <h2 class="cf-h2">If you're on this page, I'm going to presume you're here because you have something to sell — and the page selling it isn't doing its job.</h2>
-    <p>Maybe you've written it yourself and it reads like a brochure. Maybe you've got a doc full of half-finished sections you keep meaning to fix. Maybe there's no page at all yet, because every time you open the document you don't know what's supposed to go first.</p>
-    <p>You're tired of staring at a blank page. You're tired of guessing whether the thing you just wrote is any good, with no way to tell until a launch flops. And you've probably looked at hiring a copywriter and quietly closed the tab — <strong>a direct-response sales page from a decent freelancer routinely runs into four figures</strong>, and that's before anyone writes a video script.</p>
-    <p>If that's the situation, here's what I can do about it.</p>
+    <h2 class="cf-h2">If you have something to sell and it isn't selling, it's one of three things — and almost nobody stops to work out which.</h2>
+    <p>Either <strong>the page is wrong</strong> — the words are there but they're in the wrong order, so nothing does any selling. Or <strong>the offer itself isn't sellable</strong> — no arrangement of words fixes that. Or <strong>nobody is seeing it</strong>, and the page was never the problem in the first place.</p>
+    <p>Guessing between those three is what costs people the most. It looks like this:</p>
+    <div class="cf-vs">
+      <ul class="bad">
+        <li>Wasting 40+ hours building something beautiful that produces zero sales.</li>
+        <li>Paying $2K–5K to a "copywriter" who delivers flowery words instead of conversions.</li>
+        <li>Launching confidently and hearing silence.</li>
+        <li>Realising too late your offer isn't actually sellable — with no way to know until it's too late.</li>
+      </ul>
+    </div>
+    <p>The point of what follows is to get that answer cheaply and early instead of expensively and late.</p>
   </div>
 </section>
 
@@ -177,25 +184,35 @@
   </div>
 </section>
 
+<!-- ══════════════ AFTER-STATE ══════════════ -->
+<section class="cf-sec">
+  <div class="cf-page reveal">
+    <h2 class="cf-h2">What's different once you have it</h2>
+    <p><strong>A page that works the first time</strong>, or close enough that you're tuning it rather than rewriting it from scratch on another lost Saturday.</p>
+    <p><strong>Proof your offer is actually buyable</strong> before you put money behind ads or bring anyone else in. You find out on a small test, not after a quarter and a budget.</p>
+    <p><strong>Control over your own funnel.</strong> The page is yours, the script is yours, and when the price changes or you launch something new you edit it yourself that afternoon. You are never waiting on an expert again.</p>
+    <p><strong>Speed.</strong> Idea to paying customer in days rather than months, because the blank page — the part that eats the weeks — stops existing.</p>
+    <p>And the quiet one, which matters more than people admit: you stop wondering whether it's any good. The page is built on a structure that has been proven to sell, not on a guess you made at 11pm.</p>
+  </div>
+</section>
+
 <!-- ══════════════ THE ENEMY ══════════════ -->
 <section class="cf-sec band">
   <div class="cf-page reveal">
-    <h2 class="cf-h2">What most "write your sales page" advice gets wrong</h2>
+    <h2 class="cf-h2">What you usually get sold instead</h2>
     <div class="cf-vs">
       <ul class="bad">
-        <li>Leading with your story, because you were told stories sell — before the reader has any reason to care who you are.</li>
-        <li>Listing features and modules, as if the reader is comparing spec sheets rather than deciding whether you understand their problem.</li>
-        <li>Opening with the price, or hiding it so thoroughly the page feels evasive.</li>
-        <li>Writing "unlock", "transform", "elevate" in place of saying the actual thing that happens.</li>
-        <li>Putting the only call to action at the very bottom, so the person who was already sold has to scroll past everything to buy.</li>
-        <li>Treating scepticism as something to avoid mentioning, which leaves the reader arguing with you in their head, alone, and winning.</li>
+        <li>Shiny tools that look impressive in the demo and produce garbage the moment you point them at your own offer.</li>
+        <li>Gurus selling you a "page builder" when what you actually wanted was conversions. Nobody has ever lost sleep over their drag-and-drop editor.</li>
+        <li>Being charged every month, forever, for something you should simply own.</li>
+        <li>Copywriters who deliver, disappear, and leave you unable to change a headline without booking them again.</li>
       </ul>
-      <h3 class="cf-h3">What the structure does instead</h3>
+      <h3 class="cf-h3">What this is instead</h3>
       <ul class="good">
-        <li>Names who should stop reading, in the first few lines — which makes everyone who keeps reading more likely to buy.</li>
-        <li>States the pain in the reader's own words before introducing the product at all.</li>
-        <li>Raises the obvious objection out loud, then answers it, so it stops running in the background.</li>
-        <li>Places a call to action the moment the case is made, and again for the people who needed longer.</li>
+        <li>Two files you own outright. One payment, no subscription, nothing to cancel.</li>
+        <li>Structure, not decoration — the output is the page and the script, in the order that sells.</li>
+        <li>Yours to edit at 11pm without asking anyone's permission or paying for a revision round.</li>
+        <li>In your inbox as soon as you pay, and reusable on every offer you launch after this one.</li>
       </ul>
     </div>
   </div>
@@ -272,9 +289,10 @@
 <section class="cf-sec">
   <div class="cf-page reveal">
     <div class="cf-guarantee">
-      <h3>Thirty days. No reason required.</h3>
-      <p>Buy it, install it, run it on your actual offer. If the page it writes isn't better than the one you have — or you just don't get on with it — <strong>email me within 30 days and I'll refund you.</strong></p>
-      <p>You don't have to justify it and I'm not going to ask you a list of questions first. It's $47; neither of us should spend an afternoon arguing about it.</p>
+      <h3>Thirty days. No fine print, no gotchas.</h3>
+      <p>You're eligible for a refund if you ask for one within 30 days of buying. <strong>That's the whole condition.</strong></p>
+      <p>One refund per customer, ever. No other clauses, no "but I thought…", no list of questions before you get your money back.</p>
+      <p>The fine print is missing on purpose. This is a $47 file you'll have on your computer thirty seconds after you pay — I can't take it back and I'm not going to pretend otherwise. What's on the line is my name, not a support desk's, so I'd rather refund you and keep it clean.</p>
     </div>
   </div>
 </section>
@@ -328,6 +346,14 @@
 
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
+        <span>What if my offer isn't actually sellable?</span>
+        <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Then this won't save it, and I'm not going to tell you otherwise. No structure turns an offer nobody wants into one people buy. What it does do is get you to the answer fast and cheaply — the skills ask you the questions a buyer would ask, and a page built properly gives you a clean test instead of a muddy one. If it still doesn't sell after that, you've learned something real about the offer for $47 and an afternoon, rather than after six months and a few thousand in ads. That's genuinely useful either way, but it is information, not a rescue.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
         <span>What if I'd rather you just did the whole thing for me?</span>
         <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
       </button>
@@ -339,7 +365,7 @@
         <span>Is there a guarantee?</span>
         <span class="icon"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><div class="faq-a-inner">30 days, no reason required. Email me and you get your money back.</div></div>
+      <div class="faq-a"><div class="faq-a-inner">30 days, no reason required — email me and you get your money back. One refund per customer, ever. That's the only condition there is.</div></div>
     </div>
   </div>
 </section>
