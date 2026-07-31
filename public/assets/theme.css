@@ -714,6 +714,36 @@
   .cf-guarantee p{font-size:17px;color:#0C7351;}
   .cf-guarantee p strong{color:#0A5C41;}
 
+  /* ---------- inline decorative visuals (toolkit page) ----------
+     Small CSS-built graphics, not raster images — they inherit the site's
+     real palette/dark-mode instead of needing a separate asset to keep in
+     sync, and they cost nothing to load. Decorative only: aria-hidden. */
+  .tk-visual{position:relative;margin:30px auto 6px;}
+  .tk-visual .panel,.tk-visual .card{position:absolute;box-shadow:0 16px 34px -16px rgba(20,22,26,0.18);}
+
+  .tk-stack{width:210px;height:216px;}
+  .tk-stack .p1{width:150px;height:190px;left:14px;top:26px;border-radius:16px;background:var(--paper);border:1px solid var(--line);transform:rotate(-7deg);}
+  .tk-stack .p2{width:150px;height:190px;left:30px;top:14px;border-radius:16px;background:var(--paper);border:1px solid var(--line);transform:rotate(3deg);}
+  .tk-stack .p3{width:150px;height:190px;left:22px;top:6px;border-radius:16px;background:var(--accent);transform:rotate(-2deg);}
+  .tk-stack .p3 .ln{position:absolute;left:16px;right:16px;height:6px;border-radius:3px;background:rgba(255,255,255,0.9);}
+  .tk-stack .p3 .ln2{top:38px;width:45%;background:rgba(255,255,255,0.55);}
+  .tk-stack .p3 .ln1{top:24px;width:70%;}
+
+  .tk-cards{width:230px;height:200px;}
+  .tk-cards .card{width:126px;height:164px;border-radius:14px;}
+  .tk-cards .a{left:16px;top:26px;background:var(--paper);border:1px solid var(--line);transform:rotate(-6deg);}
+  .tk-cards .a .doc{position:absolute;left:34px;top:56px;width:44px;height:56px;border:4px solid var(--ink);border-radius:5px;}
+  .tk-cards .a .doc::before,.tk-cards .a .doc::after{content:'';position:absolute;left:8px;height:4px;background:var(--ink);border-radius:2px;}
+  .tk-cards .a .doc::before{top:16px;width:26px;}
+  .tk-cards .a .doc::after{top:27px;width:18px;}
+  .tk-cards .b{left:82px;top:8px;background:var(--accent);transform:rotate(4deg);}
+  .tk-cards .b .play{position:absolute;left:48px;top:58px;width:0;height:0;border-style:solid;border-width:22px 0 22px 34px;border-color:transparent transparent transparent #fff;}
+
+  .tk-badge{width:150px;height:150px;}
+  .tk-badge .ring{position:absolute;inset:0;border-radius:50%;border:2px dashed var(--line);}
+  .tk-badge .circle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:var(--accent);box-shadow:0 14px 28px -12px rgba(45,91,255,0.45);}
+  .tk-badge .circle svg{position:absolute;inset:0;margin:auto;}
+
   /* ---------- P.S. ---------- */
   .cf-ps{
     max-width:600px;margin:34px auto 0;font-size:17px;color:var(--ink-soft);
