@@ -174,6 +174,38 @@ await p.close();
     els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
   if (hiddenNoJs > 0) errors.push(`toolkit/nojs: ${hiddenNoJs} .reveal elements invisible with JS disabled`);
   await ctx.close();
+
+  // ── the post-purchase view. This is what a PAYING customer sees, so a
+  // fault here is costlier than anywhere else on the site.
+  const ty = await page('/toolkit/#thanks');
+  await ty.waitForTimeout(400);
+  if (!(await ty.isVisible('#view-thanks'))) errors.push('toolkit: #thanks did not show the thank-you view');
+  if (await ty.isVisible('#view-offer')) errors.push('toolkit: the sales view is still showing on #thanks');
+
+  // The support address must actually render. It previously did not: the
+  // span is filled by legal.js, which this page never loads, so a buyer was
+  // told to "Email  — that's me" with the address missing.
+  const tyEmail = (await ty.locator('#view-thanks .contact-email').first().innerText()).trim();
+  if (!/@/.test(tyEmail)) errors.push(`toolkit/#thanks: contact email did not render (got "${tyEmail}")`);
+  if (/example\.com|YOUR-EMAIL/i.test(tyEmail)) errors.push(`toolkit/#thanks: contact email is still a placeholder (${tyEmail})`);
+  if ((await ty.locator('#view-thanks .contact-email a[href^="mailto:"]').count()) === 0) {
+    errors.push('toolkit/#thanks: contact email is not a mailto link');
+  }
+
+  // the refund is conditional — the page must never imply otherwise
+  const tyText = await ty.locator('#view-thanks').innerText();
+  if (/no questions asked|risk[- ]free|no reason (required|needed)/i.test(tyText)) {
+    errors.push('toolkit/#thanks: describes the refund as unconditional, but it requires showing a genuine attempt');
+  }
+  await ty.close();
+
+  // the thank-you content must survive JS being off too
+  const tctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });
+  const tnp = await tctx.newPage();
+  await tnp.goto(base + '/toolkit/#thanks', { waitUntil: 'load' });
+  const tyLen = (await tnp.locator('#view-thanks').innerText()).trim().length;
+  if (tyLen < 500) errors.push(`toolkit/#thanks/nojs: only ${tyLen} chars rendered without JS`);
+  await tctx.close();
 }
 
 // ── 2c. sitemap integrity ─────────────────────────────────────────────────

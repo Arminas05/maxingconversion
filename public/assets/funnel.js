@@ -149,6 +149,26 @@ function stampBrand(){
   });
 }
 
+/* .contact-email was previously only filled by legal.js, which the funnel
+   pages don't load — so the support/refund line on /toolkit/#thanks rendered
+   as "Email  — that's me", leaving a paying customer with no address to
+   write to. Mirrors legal.js: a real address becomes a mailto link, an
+   unset placeholder is left as visible text rather than a broken link. */
+function stampContact(){
+  var els = document.querySelectorAll('.contact-email');
+  if(!els.length) return;
+  var email = CFG.contactEmail || '[YOUR EMAIL]';
+  var real = email.indexOf('@') !== -1 && email.indexOf('example.com') === -1;
+  els.forEach(function(el){
+    if(!real){ el.textContent = email; return; }
+    var a = document.createElement('a');
+    a.href = 'mailto:' + email;
+    a.textContent = email;
+    el.textContent = '';
+    el.appendChild(a);
+  });
+}
+
 /* Video slots stay hidden until a real embed URL exists in config.js.
    An empty video box costs more conversions than no box at all. */
 /* Builds the embed URL. Every browser refuses to autoplay a video with
@@ -404,6 +424,7 @@ function init(){
   injectMarkup();
   stampYear();
   stampBrand();
+  stampContact();
   mountReschedule();
   mountSocials();
   mountVideo('vsl-frame', CFG.vslEmbedUrl);

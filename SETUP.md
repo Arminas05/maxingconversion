@@ -60,6 +60,44 @@ Using a different domain? Edit the two `pattern` values in `wrangler.toml`,
 then find-and-replace `maxingconversion.com` across the repo (canonical
 tags, `robots.txt`, `sitemap.xml`).
 
+### Submitting the sitemap to Google
+
+Search Console → **Indexing → Sitemaps → Add a new sitemap**. The field
+already shows your domain as a fixed prefix, so type **just the filename**:
+
+```
+sitemap.xml
+```
+
+Typing `maxingconversion.com/sitemap.xml` there produces
+`https://maxingconversion.com/maxingconversion.com/sitemap.xml` and fails
+with *"Invalid sitemap address"* — that error means the path was wrong, not
+that the sitemap is broken.
+
+*"Couldn't fetch"* is a different thing and usually means Google tried
+before the file was deployed. Confirm the file loads in a browser first,
+then resubmit; the status can take a day to settle even when it's fine.
+
+**What belongs in `sitemap.xml`:** only genuinely indexable pages —
+currently `/toolkit/` (priority 1.0, since `/` redirects there) and
+`/sales/` (0.8). Deliberately excluded:
+
+- the four legal pages — they carry `<meta name="robots" content="noindex">`,
+  so listing them would claim "index this" and "don't index this" at once
+  and earn a *"Submitted URL marked noindex"* error
+- `/404.html` — an error page
+- the `#thanks` views — hash routes of pages already listed, not separate URLs
+
+`robots.txt` deliberately does **not** `Disallow:` the legal pages. A
+disallowed page is never fetched, so its `noindex` is never read and the
+bare URL can still get listed. Allowing the crawl is what lets the
+`noindex` actually be obeyed.
+
+Update `<lastmod>` when a page's *content* meaningfully changes — bumping it
+on every deploy trains crawlers to ignore the field. `scripts/smoke-test.mjs`
+checks every listed URL returns 200, doesn't redirect, isn't noindexed, has a
+matching canonical, and isn't robots-blocked.
+
 ---
 
 ## Part 2 — Configure the funnel

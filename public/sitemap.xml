@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- ═══════════════════════════════════════════════════════════════════
-     SITEMAP — submit at https://search.google.com/search-console
-     (Indexing → Sitemaps → enter "sitemap.xml" → Submit)
-
-     ONLY indexable pages belong here. The four legal pages carry a
-     <meta name="robots" content="noindex, follow"> tag, so listing them
-     would tell Google "index this" and "don't index this" at the same
-     time — which earns a "Submitted URL marked noindex" error in Search
-     Console rather than helping anything.
-
-     Deliberately absent for the same reason: /404.html (an error page),
-     and the #thanks views on /sales/ and /toolkit/ (they are hash routes
-     of pages already listed, not separate URLs).
-
-     Update <lastmod> when a page's CONTENT meaningfully changes. Bumping
-     it on every deploy trains crawlers to ignore it.
-     ═══════════════════════════════════════════════════════════════════ -->
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- The $47 toolkit — the site's front door: / redirects here. -->
   <url>
     <loc>https://maxingconversion.com/toolkit/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- The done-for-you funnel service — books calls, no price shown.
-       Still a real, indexable page; simply no longer the entry point. -->
   <url>
     <loc>https://maxingconversion.com/sales/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
 </urlset>
