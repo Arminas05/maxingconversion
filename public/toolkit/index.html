@@ -55,14 +55,15 @@
     <h1>Why your offer isn't selling usually has nothing to do with how the page looks. It's one of three hidden problems — <span class="hl">and by the end of this page you'll know which one is yours.</span></h1>
     <p class="because">Then two Claude skills fix the part you can fix: you answer questions about your offer, they write the sales page and the VSL script on the same direct-response structure agencies charge four figures to apply.</p>
 
-    <div class="tk-visual tk-stack" aria-hidden="true">
-      <div class="panel p1"></div>
-      <div class="panel p2"></div>
-      <div class="panel p3"><span class="ln ln1"></span><span class="ln ln2"></span></div>
-    </div>
+    <!-- The abstract card-stack graphic that used to sit here was removed once
+         the real VSL landed: it pushed the video below the fold and the video
+         is a far better hero visual than a decoration standing in for one. -->
 
-    <!-- VSL SLOT — hidden until vslEmbedUrl is set in config.js -->
-    <div class="vid-frame" id="vsl-frame" hidden>
+    <!-- VSL SLOT — its OWN config key, deliberately not the same one /sales/ uses.
+         This video pitches the $47 product; /sales/ sells the high-ticket
+         done-for-you service. Sharing one key would put the cheap pitch on
+         the expensive page. -->
+    <div class="vid-frame" id="toolkit-vsl-frame" hidden>
       <div class="vid-inner">
         <div class="vid-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="rgba(255,255,255,0.9)"/></svg>
@@ -92,7 +93,26 @@
 <section class="cf-sec band">
   <div class="cf-page reveal">
     <h2 class="cf-h2">If you have something to sell and it isn't selling, it's one of three things — and almost nobody stops to work out which.</h2>
-    <p>Either <strong>the page is wrong</strong> — the words are there but they're in the wrong order, so nothing does any selling. Or <strong>the offer itself isn't sellable</strong> — no arrangement of words fixes that. Or <strong>nobody is seeing it</strong>, and the page was never the problem in the first place.</p>
+    <div class="tk-diag">
+      <div class="tk-diag-item is-fixable">
+        <span class="num">Problem 1</span>
+        <h4>The page is wrong</h4>
+        <p>The words are all there — just in an order that does no selling.</p>
+        <span class="verdict">This is the one I fix</span>
+      </div>
+      <div class="tk-diag-item">
+        <span class="num">Problem 2</span>
+        <h4>The offer isn't sellable</h4>
+        <p>No arrangement of words fixes an offer nobody wants.</p>
+        <span class="verdict">Needs a better offer</span>
+      </div>
+      <div class="tk-diag-item">
+        <span class="num">Problem 3</span>
+        <h4>Nobody is seeing it</h4>
+        <p>The page was never the problem. You have a traffic problem.</p>
+        <span class="verdict">A different job entirely</span>
+      </div>
+    </div>
     <p>Guessing between those three is what costs people the most. It looks like this:</p>
     <div class="cf-vs">
       <ul class="bad">
@@ -138,6 +158,16 @@
     <h2 class="cf-h2">How it works, and why it isn't just "ask Claude to write a sales page"</h2>
     <p>You can already ask any AI to write you a sales page. You'll get something that reads fine and sells nothing — a polite essay about your product, in the shape of a landing page.</p>
     <p>The reason is structure. A page that converts isn't good writing arranged nicely; it's a specific sequence, and each section has a job. Call out who should be reading. Name the pain before you name the product. Explain the mechanism enough to be credible but not enough to be a manual. Address the scepticism out loud instead of hoping it goes away. Put the first call to action after you've earned it, not before.</p>
+    <div class="tk-seq">
+      <div class="tk-seq-row"><span class="i">1</span><span class="lbl">The problem</span></div>
+      <div class="tk-seq-row"><span class="i">2</span><span class="lbl">How it works</span></div>
+      <div class="tk-seq-row is-skipped"><span class="i">3</span><span class="lbl">Proof</span><span class="tag">the one everyone skips</span></div>
+      <div class="tk-seq-row"><span class="i">4</span><span class="lbl">The offer</span></div>
+      <div class="tk-seq-row"><span class="i">5</span><span class="lbl">Price</span></div>
+      <div class="tk-seq-row"><span class="i">6</span><span class="lbl">Guarantee</span></div>
+      <div class="tk-seq-row"><span class="i">7</span><span class="lbl">Close</span></div>
+    </div>
+    <p>Step three is where most pages quietly die. It's the section where you're supposed to explain why anyone should believe you — and it's the one people replace with "Why choose us?" and three bullet points, because they don't know what belongs there.</p>
     <p><strong>The skills encode that sequence.</strong> They ask you the questions the sequence needs answers to, in the order it needs them, and they refuse to skip the sections people usually skip — which are, reliably, the ones doing the selling.</p>
     <p>That's the difference between a prompt and a skill. A prompt gives you one answer. A skill runs a process.</p>
   </div>

@@ -368,6 +368,7 @@ function init(){
   mountReschedule();
   mountSocials();
   mountVideo('vsl-frame', CFG.vslEmbedUrl);
+  mountVideo('toolkit-vsl-frame', CFG.toolkitVslEmbedUrl);
   mountVideo('ty-video-frame', CFG.thankYouEmbedUrl, 'ty-play-prompt');
 
   document.getElementById('modalOverlay').addEventListener('click', function(e){

@@ -84,6 +84,11 @@ if (await p.isVisible('#modalOverlay .step[data-step="5"]')) errors.push('sales:
 
 // video slot must stay hidden while config has no url
 if (await p.isVisible('#vsl-frame')) errors.push('sales: empty VSL frame is visible');
+// /sales/ sells the high-ticket service; the $47 toolkit video must never
+// appear here. The two pages deliberately read different config keys.
+if ((await p.locator('#toolkit-vsl-frame').count()) > 0) errors.push('sales: toolkit video frame present on the high-ticket page');
+const salesIframes = await p.locator('iframe').count();
+if (salesIframes > 0) errors.push(`sales: ${salesIframes} iframe(s) embedded while vslEmbedUrl is empty`);
 
 // qualification-block placeholders must be visibly labeled, never silently missing
 if ((await p.locator('.wb-qual').count()) < 1) errors.push('sales: no qualification blocks found');
@@ -133,6 +138,13 @@ await p.close();
   if (noteShown) errors.push('toolkit: a "not on sale yet" notice is showing on a live product');
   const robots = await tp.locator('meta[name="robots"]').count();
   if (robots !== 0) errors.push('toolkit: page is sellable but still noindexed');
+  // the VSL must actually mount, from the toolkit's OWN config key
+  if (!(await tp.isVisible('#toolkit-vsl-frame'))) errors.push('toolkit: VSL frame did not mount — toolkitVslEmbedUrl may be empty');
+  const tkSrc = await tp.locator('#toolkit-vsl-frame iframe').getAttribute('src');
+  if (!tkSrc || !/youtube\.com\/embed\//.test(tkSrc)) errors.push(`toolkit: VSL iframe src is not a YouTube embed URL: ${tkSrc}`);
+  // the diagnostic visuals carry real copy — they must not render empty
+  if ((await tp.locator('.tk-diag-item').count()) !== 3) errors.push('toolkit: expected 3 diagnosis blocks');
+  if ((await tp.locator('.tk-seq-row').count()) < 5) errors.push('toolkit: sequence visual is missing rows');
   // a real click must head for the configured Stripe checkout
   const stripeUrl = await tp.evaluate(() => (window.SITE_CONFIG || {}).stripePaymentUrl || '');
   if (!/^https:\/\/buy\.stripe\.com\//.test(stripeUrl)) errors.push(`toolkit: stripePaymentUrl is not a Stripe Payment Link: ${stripeUrl}`);

@@ -37,8 +37,13 @@ window.SITE_CONFIG = {
         YouTube → https://www.youtube.com/embed/VIDEO_ID
         Vimeo   → https://player.vimeo.com/video/VIDEO_ID
         Loom    → https://www.loom.com/embed/VIDEO_ID                   */
-  vslEmbedUrl: '',          // hero video at the top of /sales/
+  vslEmbedUrl: '',          // hero video at the top of /sales/ (high-ticket, books calls)
   thankYouEmbedUrl: '',     // "watch before your call" video on #thanks
+
+  /* Hero video on /toolkit/. SEPARATE from vslEmbedUrl on purpose — that
+     video sells the $47 product, and putting it on /sales/ would undercut
+     the high-ticket offer with a cheap one. Two pages, two videos. */
+  toolkitVslEmbedUrl: 'https://www.youtube.com/embed/NvM1tj2NAMw',
 
   /* ── 5. Socials (exit-intent popup). Delete any you're not on. ───── */
   socials: [
