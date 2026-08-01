@@ -1,8 +1,13 @@
+# The legal pages are kept out of search results by the
+#   <meta name="robots" content="noindex, follow">
+# tag in each one — NOT by a Disallow rule here. Those two look like they
+# do the same job but conflict: a Disallow stops crawlers fetching the
+# page at all, so they never read the noindex, and the bare URL can still
+# end up listed. Allowing the crawl is what lets the noindex be obeyed,
+# and "follow" still passes link equity back to the pages that matter.
+#
+# Crawl everything; the pages themselves say what may be indexed.
 User-agent: *
 Allow: /
-Disallow: /privacy-policy/
-Disallow: /terms-of-service/
-Disallow: /earnings-disclaimer/
-Disallow: /cookie-policy/
 
 Sitemap: https://maxingconversion.com/sitemap.xml

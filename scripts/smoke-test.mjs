@@ -176,6 +176,61 @@ await p.close();
   await ctx.close();
 }
 
+// ── 2c. sitemap integrity ─────────────────────────────────────────────────
+// A sitemap that lists a redirect, a 404, or a noindexed page is worse than
+// no sitemap: Search Console reports each one as an error and trusts the
+// rest less. So every URL it claims must genuinely be an indexable page.
+{
+  const sp = await browser.newPage();
+  const res = await sp.goto(base + '/sitemap.xml', { waitUntil: 'load' });
+  if (res.status() !== 200) errors.push(`sitemap: HTTP ${res.status()}`);
+  const xml = await sp.evaluate(() => document.documentElement.outerHTML);
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  if (locs.length === 0) errors.push('sitemap: no <loc> entries found');
+
+  for (const loc of locs) {
+    if (!loc.startsWith('https://maxingconversion.com/')) {
+      errors.push(`sitemap: ${loc} is not an absolute production URL`);
+      continue;
+    }
+    const path = loc.replace('https://maxingconversion.com', '');
+    const vp = await browser.newPage();
+    const r = await vp.goto(base + path, { waitUntil: 'networkidle' });
+    // must be the page itself, not a hop to another one
+    if (r.status() !== 200) errors.push(`sitemap: ${path} returned HTTP ${r.status()}`);
+    if (!vp.url().endsWith(path)) errors.push(`sitemap: ${path} redirected to ${vp.url()} — list the destination instead`);
+    // must not be excluded from indexing, by static tag or injected at runtime
+    const robots = await vp.locator('meta[name="robots"]').count();
+    if (robots > 0) {
+      const c = await vp.locator('meta[name="robots"]').first().getAttribute('content');
+      if (/noindex/i.test(c || '')) errors.push(`sitemap: ${path} is listed but noindexed ("${c}")`);
+    }
+    // canonical must agree with the sitemap, or they argue over the real URL
+    const canon = await vp.locator('link[rel="canonical"]').first().getAttribute('href').catch(() => null);
+    if (canon && canon !== loc) errors.push(`sitemap: ${path} canonical is ${canon} but sitemap says ${loc}`);
+    await vp.close();
+  }
+
+  // robots.txt must not block anything the sitemap advertises
+  const rp = await browser.newPage();
+  await rp.goto(base + '/robots.txt', { waitUntil: 'load' });
+  const txt = await rp.evaluate(() => document.body.innerText);
+  for (const loc of locs) {
+    const path = loc.replace('https://maxingconversion.com', '');
+    const blocked = txt.split('\n')
+      .filter(l => /^\s*Disallow:/i.test(l))
+      .map(l => l.split(':')[1].trim())
+      .filter(Boolean)
+      .some(rule => path.startsWith(rule));
+    if (blocked) errors.push(`robots.txt disallows ${path}, which the sitemap lists`);
+  }
+  if (!/^\s*Sitemap:\s*https:\/\/maxingconversion\.com\/sitemap\.xml/m.test(txt)) {
+    errors.push('robots.txt does not point at the sitemap');
+  }
+  await rp.close();
+  await sp.close();
+}
+
 // ── 3. legal pages fill their tokens ──────────────────────────────────────
 for (const path of ['/privacy-policy/', '/terms-of-service/', '/earnings-disclaimer/', '/cookie-policy/']) {
   const lp = await page(path);
