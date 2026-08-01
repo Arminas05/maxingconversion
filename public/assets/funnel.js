@@ -151,14 +151,53 @@ function stampBrand(){
 
 /* Video slots stay hidden until a real embed URL exists in config.js.
    An empty video box costs more conversions than no box at all. */
-function mountVideo(frameId, url, alsoShowId){
+/* Builds the embed URL. Every browser refuses to autoplay a video with
+   sound, so autoplay ALWAYS means muted — there is no way around that and
+   pretending otherwise just produces a video that silently doesn't start.
+   We therefore autoplay muted and hand the visitor an obvious way to turn
+   sound on, which restarts from the top so the opening hook isn't lost. */
+function videoSrc(url, opts){
+  opts = opts || {};
+  if(url.indexOf('youtube.com/embed/') === -1) return url;   // only YouTube is parameterised
+  var sep = url.indexOf('?') === -1 ? '?' : '&';
+  var p = ['playsinline=1', 'rel=0'];
+  if(opts.autoplay) p.push('autoplay=1', 'mute=' + (opts.sound ? '0' : '1'));
+  return url + sep + p.join('&');
+}
+
+function mountVideo(frameId, url, alsoShowId, autoplay){
   var frame = document.getElementById(frameId);
   if(!frame) return;
   if(!url){ frame.hidden = true; return; }
-  frame.innerHTML = '<iframe src="' + url + '" title="Video" loading="lazy" ' +
-    'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
-    'allowfullscreen></iframe>';
+
+  function render(sound){
+    // loading="lazy" would defer an autoplaying video until it scrolls into
+    // view, so it is only used when we are NOT autoplaying.
+    frame.innerHTML = '<iframe src="' + videoSrc(url, {autoplay: autoplay || sound, sound: sound}) + '"' +
+      ' title="Video"' + (autoplay ? '' : ' loading="lazy"') +
+      ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"' +
+      ' allowfullscreen></iframe>';
+  }
+
+  render(false);
   frame.hidden = false;
+
+  if(autoplay){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'vid-unmute';
+    btn.innerHTML = '<span class="ico">' +
+      '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/>' +
+      '<path d="M17 8.5a5 5 0 010 7M19.5 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '</svg></span>Tap for sound';
+    btn.addEventListener('click', function(){
+      render(true);          // reload unmuted, from the start
+      btn.remove();
+    });
+    frame.appendChild(btn);
+  }
+
   if(alsoShowId){
     var extra = document.getElementById(alsoShowId);
     if(extra) extra.hidden = false;
@@ -368,7 +407,7 @@ function init(){
   mountReschedule();
   mountSocials();
   mountVideo('vsl-frame', CFG.vslEmbedUrl);
-  mountVideo('toolkit-vsl-frame', CFG.toolkitVslEmbedUrl);
+  mountVideo('toolkit-vsl-frame', CFG.toolkitVslEmbedUrl, null, CFG.toolkitVslAutoplay !== false);
   mountVideo('ty-video-frame', CFG.thankYouEmbedUrl, 'ty-play-prompt');
 
   document.getElementById('modalOverlay').addEventListener('click', function(e){

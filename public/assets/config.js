@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
      worse than no policy.                                             */
   brandName:    'Maxing Conversion',
   contactEmail: 'maxingconversion@gmail.com',
-  jurisdiction: 'YOUR JURISDICTION',   // e.g. 'England and Wales', 'Lithuania'
+  jurisdiction: 'Lithuania',   // fills the "Governing law" clause in the Terms
   effectiveDate: '29 July 2026',       // date the current policies took effect
 
   /* ── 2. Booking link (Calendly / Cal.com / SavvyCal) ───────────────
@@ -44,6 +44,11 @@ window.SITE_CONFIG = {
      video sells the $47 product, and putting it on /sales/ would undercut
      the high-ticket offer with a cheap one. Two pages, two videos. */
   toolkitVslEmbedUrl: 'https://www.youtube.com/embed/NvM1tj2NAMw',
+
+  /* Autoplay that video. It starts MUTED, because no browser will autoplay
+     sound — a "Tap for sound" button appears over it and restarts the video
+     unmuted so the opening hook is heard. Set to false to require a click. */
+  toolkitVslAutoplay: true,
 
   /* ── 5. Socials (exit-intent popup). Delete any you're not on. ───── */
   socials: [

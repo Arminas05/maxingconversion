@@ -79,6 +79,28 @@
     display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
     border:1.5px solid rgba(255,255,255,0.28);
   }
+  /* Sits over an autoplaying (necessarily muted) video. Bottom-left keeps it
+     clear of YouTube's own controls and title bar. */
+  .vid-unmute{
+    position:absolute;left:14px;bottom:14px;z-index:3;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff;border:0;cursor:pointer;
+    font-family:inherit;font-size:14.5px;font-weight:700;
+    padding:10px 16px;border-radius:30px;
+    box-shadow:0 8px 22px -6px rgba(0,0,0,0.5);
+    /* Finite on purpose: a button that pulses forever is a permanently
+       moving target and harder to hit. Three pulses draw the eye, then it
+       settles and behaves like a normal button. */
+    animation:vidPulse 2.4s ease-in-out 3;
+  }
+  .vid-unmute:hover{background:var(--accent-dark);animation:none;}
+  .vid-unmute .ico{display:flex;}
+  @keyframes vidPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.045);}
+  }
+  @media(prefers-reduced-motion:reduce){.vid-unmute{animation:none;}}
+
   .vid-note{color:rgba(255,255,255,0.92);font-size:16px;font-weight:600;}
   .vid-sub{color:rgba(255,255,255,0.5);font-size:13.5px;margin-top:6px;}
 
