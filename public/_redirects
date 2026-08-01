@@ -11,7 +11,11 @@
 /strategy-call/         /sales/                 301
 /strategy-call/*        /sales/                 301
 
-# Friendly short links
+# Friendly short links.
+# /call and /book deliberately still go to /sales/ even though /toolkit/ is
+# the front door: someone typing "/call" is telling you they want to book a
+# call, and dropping them on a $47 product page instead would throw away the
+# higher-value lead. Explicit intent beats the default destination.
 /call                   /sales/                 301
 /book                   /sales/                 301
 /privacy                /privacy-policy/        301
