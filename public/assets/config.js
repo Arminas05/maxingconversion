@@ -10,7 +10,7 @@ window.SITE_CONFIG = {
      send any traffic — a policy with a missing contact address is
      worse than no policy.                                             */
   brandName:    'Maxing Conversion',
-  contactEmail: 'YOUR-EMAIL@example.com',
+  contactEmail: 'maxingconversion@gmail.com',
   jurisdiction: 'YOUR JURISDICTION',   // e.g. 'England and Wales', 'Lithuania'
   effectiveDate: '29 July 2026',       // date the current policies took effect
 
