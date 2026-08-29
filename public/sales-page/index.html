@@ -38,7 +38,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/theme.css">
+<!-- ?v= is bumped by hand every time theme.css changes for this page.
+     theme.css caches for an hour (see /public/_headers) and is shared by
+     every page on the site, so editing it in place means returning
+     visitors — and the owner checking his own changes — can sit on a
+     stale copy well past that hour if the browser or CDN edge cached it
+     before the edit. The query string is a new URL each bump, so it's a
+     guaranteed-fresh fetch regardless of any cache in front of it. -->
+<link rel="stylesheet" href="/assets/theme.css?v=20260829e">
 <script>
 (function(){
   var d = document.documentElement;
@@ -60,7 +67,7 @@
   <hr class="sp-rule">
 
   <h1 class="sp-h1">
-    For Entrepreneurs: Give Me <span class="sp-mark">5 Minutes</span> and I'll<br>
+    <strong>For Entrepreneurs:</strong> Give Me <span class="sp-mark">5 Minutes</span> and I'll<br>
     <span class="sp-blue-inline">Increase Your Sales</span><br>
     <span class="sp-blue-line">With A Click Of Button</span>
   </h1>
@@ -111,20 +118,20 @@
 
 <!-- ══════════════ THE POTENTIAL ══════════════ -->
 <section>
-  <div class="sp-potential-block">
+  <div class="sp-potential-block sp-centered">
     <p><strong class="sp-big">You Could Make <span class="sp-hi2">$10 000!</span></strong></p>
     <p><strong>Make that Much Every Month!</strong></p>
-    <p>You Will <em class="sp-hi2-u">Clear Six Figures Every Year</em>…</p>
+    <p>You Could <em class="sp-hi2-u">Clear Six Figures Every Year</em>…</p>
     <p><strong>Wouldn't You Be Talk of Your Town?</strong></p>
   </div>
-  <p><strong>Here You've Seen It ALL!</strong></p>
+  <p class="sp-heading-lg">Here You've Seen It ALL!</p>
   <p><a href="/earnings-disclaimer/" class="sp-blue-link">And The Potential is Limitless…</a></p>
   <!-- The reference makes this line a blue accent, so it reads as tappable
        — that's why it's a real link rather than styled text, and it goes
        straight to the one place that actually qualifies the claim it's
-       making. A page that names $10,000 and "limitless" has to put the
-       caveat within a tap of the words, not just in the footer. -->
-  <p class="sp-fineprint">These figures are illustrative of what is possible, not a prediction or a promise. Results depend entirely on your offer, your market, your traffic and your execution — see the Earnings Disclaimer linked above.</p>
+       making. The owner asked for the inline fineprint sentence removed;
+       the footer disclaimer and this link to the Earnings Disclaimer page
+       are what's left qualifying the $10,000/"limitless" claim above. -->
 
   <ul class="sp-check-list">
     <li><strong class="sp-hi">You've Seen</strong> The Purpose of the Sales Page…</li>
@@ -145,15 +152,17 @@
 <section>
   <h2>Here's How It Will Work…</h2>
 
-  <!-- The timeline text below is the real, indexable content (also what
-       screen readers and no-JS visitors get) — this image is a visual
-       supplement sitting above it, same pattern as the value-stack bundle
-       image further down: additive, not a replacement for the copy. -->
   <picture>
     <source srcset="/assets/sales-page-timeline.webp" type="image/webp">
     <img src="/assets/sales-page-timeline.png" alt="A four-week timeline: First Week — copy draft, done for you. Second Week — visual build and video script. Third Week — check-in and add your sales video. Final Week — performance check-in and feedback." class="sp-timeline-img" width="1280" height="639" loading="lazy">
   </picture>
 
+  <!-- The graphic above is the only VISIBLE version of this content — the
+       owner asked for the text version removed since it was repeating the
+       same four weeks. It stays in the DOM as visually-hidden (.sr-only)
+       rather than deleted outright, so search engines, screen readers and
+       no-JS visitors still get the same content the graphic conveys. -->
+  <div class="sr-only">
   <div class="sp-week">
     <p><span class="sp-week-label">First Week:</span> I'll create your very 1st version of Copy Based on Your Product or Service <em>Done For You</em>…</p>
     <p><em class="sp-hi2-u">BONUS!</em> You'll Be Able To Fully Customize Your Copy By Your Own Ideas.</p>
@@ -173,8 +182,9 @@
   <div class="sp-week">
     <p><span class="sp-week-label">Final Week:</span> Quick Check-In Of Performance and Feedback <em>Done With You</em>.</p>
   </div>
+  </div><!-- /sr-only -->
 
-  <p class="sp-beat">Yes It Is That Simple..</p>
+  <p>Yes It Is That Simple..</p>
 </section>
 
 <!-- ══════════════ CREDENTIALS ══════════════ -->

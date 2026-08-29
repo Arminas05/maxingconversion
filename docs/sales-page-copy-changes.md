@@ -219,6 +219,60 @@ reference screenshots yet:
   so they read as one grouped stat, rather than four loosely-spaced
   paragraphs — matching the reference's denser spacing there.
 
+## 12. Layout/design follow-ups — the graphic vs. text duplication, design polish
+
+Once the timeline graphic (see #11) was live, the text version below it
+was visibly repeating the same four weeks — the owner asked for that
+fixed. Rather than delete the text outright, it's now wrapped in a
+visually-hidden (`.sr-only`) container: nothing changed for search
+engines, screen readers or no-JS visitors, but sighted visitors with
+JS/images working now see the graphic once, not the graphic followed
+by the same content as plain text.
+
+**Content removed at the owner's explicit request:** the inline
+fineprint sentence under the $10,000/"limitless" claims — "These
+figures are illustrative of what is possible, not a prediction or a
+promise. Results depend entirely on your offer, your market, your
+traffic and your execution — see the Earnings Disclaimer linked
+above." — is gone. Flagging this one rather than just logging it
+quietly: this sentence existed specifically so an unqualified income
+claim wouldn't sit on the page with no caveat nearby. The footer's
+site-wide disclaimer and the "And The Potential is Limitless…" link
+(which goes straight to the Earnings Disclaimer page) still qualify
+the claim, just no longer in the same breath as the numbers. Worth
+knowing before this goes live at scale.
+
+**Wording:** "You Will Clear Six Figures Every Year…" → "You Could
+Clear Six Figures Every Year…" (owner's explicit correction — "Will"
+overstated it as a certainty next to "Could Make $10,000" just above,
+which is appropriately hedged).
+
+**Small design fixes, no content change:**
+- "Yes It Is That Simple.." — was styled as a centered blue accent
+  line (`.sp-beat`, shared with "You Can Access It All…" further down);
+  now plain left-aligned black text, per the owner's request. The other
+  `.sp-beat` usage is untouched.
+- "Here You've Seen It ALL!" — centered and enlarged.
+- The four short "potential" lines are now centered as a block (were
+  left-aligned).
+- The hero headline is larger at every breakpoint, and "For
+  Entrepreneurs:" is now bold — there's a `.sp-h1 strong` rule that
+  existed in the CSS from the original build but nothing in the markup
+  ever used a `<strong>` inside the headline to trigger it.
+- Desktop (≥900px) now gets a wider column (760px vs. 640px) and a
+  step up in base type size — at the original 640px max-width the page
+  read fine on a phone but felt small and letterboxed on a real
+  monitor. Mobile is untouched.
+
+**Cache-busting:** `theme.css` is shared by every page on the site and
+cached for an hour (`/public/_headers`); several rounds in this
+session where the owner reported not seeing a change that had
+genuinely shipped are consistent with a stale cached copy — his own or
+an edge cache — outliving that hour. `/sales-page/`'s stylesheet link
+now carries a `?v=` query string bumped by hand on every edit, so each
+change is a new URL and therefore a guaranteed-fresh fetch regardless
+of what's cached in front of it. Other pages' links are untouched.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:
