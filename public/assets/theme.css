@@ -904,11 +904,12 @@
     background:var(--accent);margin:34px auto;
   }
 
-  /* the "closing soon" flag at the very top */
+  /* the "closing soon" flag at the very top — italic serif per reference,
+     not the uppercase/letter-spaced treatment used earlier */
   .sp-flag{
-    display:block;text-align:center;font-size:12px;font-weight:700;
-    letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
-    margin-bottom:6px;
+    display:block;text-align:center;font-family:Georgia,'Times New Roman',Times,serif;
+    font-style:italic;font-size:14px;font-weight:400;color:var(--ink-mute);
+    margin-bottom:10px;
   }
 
   /* ---- hero headline ---- */
@@ -928,8 +929,11 @@
   }
   /* drawn underline beneath "Increase Your Sales" */
   .sp-under{text-decoration:underline;text-decoration-thickness:2.5px;text-underline-offset:4px;}
-  /* "No Efforts" — accent-blue, its own line */
+  /* "With A Click Of Button" — accent-blue, its own line */
   .sp-blue-line{display:block;color:var(--accent);font-weight:800;margin-top:2px;}
+  /* inline accent-blue emphasis used across the letter (word-level, not a
+     full line) — "Increase Your Sales", "Secret", "Absolutely", etc. */
+  .sp-blue-inline{color:var(--accent);font-weight:800;}
   /* "And The Potential is Limitless." — the reference styles this line as
      an accent-blue link; it's a real <a> to the Earnings Disclaimer so
      the one line making the biggest claim on the page also carries the
@@ -950,20 +954,15 @@
   .sp-quote{margin:28px 0;}
   .sp-quote blockquote{
     font-family:Georgia,'Times New Roman',Times,serif;font-style:italic;
-    font-size:17.5px;line-height:1.5;color:var(--ink);margin:0;
+    font-size:17.5px;line-height:1.5;color:var(--accent);margin:0;
   }
   .sp-quote-by{
     display:block;margin-top:9px;font-size:13.5px;font-style:normal;
     color:var(--ink-mute);letter-spacing:0.01em;
   }
-  /* Ogilvy's quote carries a small portrait beside the byline — the
-     photo is a real historical one, used for factual attribution. */
-  .sp-quote-portrait{display:flex;align-items:center;gap:12px;margin-top:12px;}
-  .sp-quote-portrait img{
-    width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;
-    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line);
-  }
-  .sp-quote-portrait .sp-quote-by{margin-top:0;}
+  /* credential line sitting above a quote, e.g. "(Direct-response
+     copywriter $523M+ in tracked results)" */
+  .sp-quote-meta{font-size:14.5px;color:var(--ink-mute);}
 
   /* ---- weekly timeline ---- */
   /* Flowing text, no card border — each week is introduced by a short
@@ -972,7 +971,7 @@
   .sp-week:last-child{margin-bottom:0;}
   .sp-week-label{
     font-family:Georgia,'Times New Roman',Times,serif;font-size:16.5px;
-    font-weight:800;color:var(--accent-2);margin-bottom:8px;display:block;
+    font-weight:800;color:var(--accent-2);
   }
   .sp-week p{font-size:15.5px;margin-bottom:8px;}
   .sp-week p:last-child{margin-bottom:0;}
@@ -1038,6 +1037,14 @@
   /* second-accent emphasis — prices, "BONUS!", week labels, credibility
      lead-ins — a deliberate second color used sparingly, not everywhere */
   .sp-hi2{color:var(--accent-2);font-weight:800;}
+  /* italic + underline variant of the second accent — "Clear Six Figures
+     Every Year", "BONUS!" */
+  .sp-hi2-u{
+    color:var(--accent-2);font-weight:800;font-style:italic;
+    text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px;
+  }
+  /* oversized standalone stat line — "You Could Make $10 000!" */
+  .sp-big{font-size:24px;font-weight:800;display:block;color:var(--ink);}
 
   /* ---- the free-coaching-call gift ---- */
   .sp-gift-box{

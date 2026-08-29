@@ -129,11 +129,57 @@ have been built from the same raw, uncorrected doc, and reintroducing
 any of those would put a false-endorsement claim or a factual error back
 on a page selling a real service.
 
-The David Ogilvy portrait is a real historical photo of him, used
-because it accurately illustrates the person being quoted — but it was
-sourced from Google Drive with a third-party filename ("OOH-Matters")
-and no license information came with it. Flagged to the owner; swap it
-for a licensed or owned photo if that can't be confirmed.
+**Update:** the David Ogilvy portrait was removed. It was a real
+historical photo of him, sourced from Google Drive with a third-party
+filename ("OOH-Matters") and no license information — flagged to the
+owner as unconfirmed, and the owner asked for it to come off the page
+rather than resolve the licensing question. The quote now carries only
+the text byline, matching the other two quotes on the page.
+
+## 9. Second Canva pass — the owner sent the actual full screenshot
+
+The owner's first message only gave a canva.link URL, which this
+environment cannot fetch (egress is allowlisted). Section 8 above was
+built from a rougher approximation reconstructed from a partial
+screenshot. The owner then sent the complete screenshot directly, so
+this pass corrects the approximation against the real reference:
+
+- Hero headline changed to match the reference's actual wording: "For
+  Entrepreneurs: Give Me 5 Minutes and I'll Increase Your Sales With A
+  Click Of Button" (previously ended "...I Will Increase Your Sales. No
+  Efforts", which was this session's earlier guess, not the doc or the
+  reference).
+- "Well look At This…" removed — not present in the reference.
+- Removed "Imagine You Making 10X or 50X of Current Income…" and "You
+  Could be Doing So Much Better And Easier Than That Friend You Are
+  Jealous Of…" — both absent from the reference screenshot.
+- The three "You Already Seen…" / "You've Seen…" lines were made
+  parallel ("You've Seen…" on all three, matching the reference) and
+  turned into a bulleted list to match its visual treatment.
+- Rob Palmer's line changed from "Rob Palmer Proves The Point on How It
+  Could Help You FAST…" to "Rob Palmer (Direct-response copywriter
+  $523M+ in tracked results)" — this credential is the owner's own text,
+  visible directly in the reference screenshot he sent, not invented.
+- The weekly timeline gained a fourth entry, "Third Week: Check-in and
+  Add Your Very Own Sales Video." — present in the reference between the
+  existing Second and Final weeks. This is new text not in the original
+  doc, added only because it's explicitly shown in the owner's own
+  reference material for this specific redesign.
+- "Yes It Is That Easy…" → "Yes It Is That Simple.." to match the
+  reference's wording exactly.
+- "Studied endless examples…" → "Studied endless copies…" — the earlier
+  screenshot was a low-confidence guess on this word; the full
+  screenshot reads "copies" clearly.
+- A second "Save My Spot →" button was added after "The Only Service
+  that Uses a Special Way of Structure…", matching a button visible at
+  that exact spot in the reference. Same target as the hero button, no
+  new copy.
+
+Not changed even now: Iman Gadzhi phrasing, "Report" vs "Rapport", and
+the $5,434 arithmetic — the reference screenshot still shows the
+uncorrected originals in those three spots, and reverting any of them
+would reintroduce a false-endorsement claim or a factual error. See #1,
+#2 and #4.
 
 ## Two things that must stay true
 
