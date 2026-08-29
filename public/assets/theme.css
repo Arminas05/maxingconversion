@@ -867,7 +867,18 @@
   .sp-letter strong{color:var(--ink);font-weight:700;}
   .sp-letter em{font-style:italic;}
 
-  /* small blue rule used as the only section divider on the page */
+  /* Each <section> is one topical beat, and — because p:last-child above
+     zeroes out its own trailing margin — sections butted directly against
+     each other with NO gap at all: 7 of the 9 boundaries on this page
+     measured literally 0px until this rule existed. Margin only on
+     non-first children, so the hero keeps its own top spacing untouched. */
+  .sp-letter > section{margin-top:32px;}
+  .sp-letter > section:first-child{margin-top:0;}
+  @media(min-width:600px){.sp-letter > section{margin-top:38px;}}
+
+  /* small blue rule used as the only section divider on the page. Its
+     own margin and the adjacent section's margin-top collapse per normal
+     block-margin rules, so this does not double up with the rule above. */
   .sp-rule{
     width:56px;height:3px;border:0;border-radius:2px;
     background:var(--accent);margin:34px auto;
@@ -942,7 +953,10 @@
   /* ---- value stack table ---- */
   .sp-stack{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:20px 0;}
   .sp-stack-row{
-    display:flex;gap:14px;padding:9px 0;
+    /* align-items:flex-start (not the flex default) — one row's item text
+       wraps to two lines, and without this the price sat vertically
+       centered against both lines instead of level with the first. */
+    display:flex;align-items:flex-start;gap:14px;padding:9px 0;
     border-bottom:1px solid var(--line-soft);font-size:15px;
   }
   .sp-stack-row .item{flex:1;color:#3D3A36;}
@@ -956,6 +970,31 @@
     border-radius:8px;
   }
   .sp-stack-total .val{color:var(--accent);font-size:19px;}
+
+  /* ---- the free-coaching-call gift ---- */
+  .sp-gift-box{
+    position:relative;text-align:center;margin:22px 0;
+    border:2px solid var(--accent);border-radius:14px;
+    padding:28px 24px 24px;
+    background:linear-gradient(180deg,var(--accent-tint),#fff 65%);
+  }
+  .sp-gift-tag{
+    display:inline-block;
+    font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;
+    color:var(--accent-dark);margin-bottom:12px;
+    padding:5px 12px;border-radius:20px;background:#fff;
+    box-shadow:0 0 0 1px var(--accent);
+  }
+  .sp-gift-headline{
+    font-family:Georgia,'Times New Roman',Times,serif;
+    font-size:22px;line-height:1.32;font-weight:700;color:var(--ink);
+    margin-bottom:8px !important;
+  }
+  @media(min-width:600px){.sp-gift-headline{font-size:25px;}}
+  .sp-gift-sub{
+    font-size:14px;font-weight:800;letter-spacing:0.04em;
+    color:var(--accent-dark);margin-bottom:0 !important;
+  }
 
   /* ---- price / CTA box ---- */
   .sp-cta-box{
