@@ -67,6 +67,35 @@ unchanged. Revert freely if the original was intended.
   are not affiliated with the service. Hopkins, Ogilvy and Palmer are quoted
   approvingly on a commercial page; this makes clear they aren't endorsers.
 
+## 7. Arminas's own grammar pass, applied — plus a second Claude pass
+
+Arminas edited the source doc directly. Every wording change he made there
+that touched this page's copy is now applied here:
+
+| Was | Now |
+|---|---|
+| "This Easily Will Make You More Money FAST!" | "This Will Easily Make You More Money FAST!" |
+| "…nice good looking text also…" | "…nice good looking text…" |
+| "And Absolutely Anybody Can Have This" | "Absolutely Anybody Can Have This" |
+| "Here You Seen ALL!" | "Here You've Seen It ALL!" |
+| "And The Potential is Limitless." | "And The Potential is Limitless…" |
+| "your very first 1st version" | "your very 1st version" |
+| "Chance For An Expansional Jump" | "Chance At An Expansional Jump" |
+
+He also removed the "Sneak Peak" line from the source doc — already off this
+page from an earlier request, so no change needed there.
+
+Two more objective fixes made in the same pass, not from his edit — both
+grammar, not voice, so no rhythm or capitalisation touched:
+
+- "also know as" → "also known as" (missing letter)
+- "You Won't Pay That" → "You Won't Pay That." (every other short line in
+  that run ends in `…`, `!`, or `.`; this one alone had nothing)
+
+His edited doc still has "David Ogilivy" and "Rapport" unfixed, and
+"$5,431" still appears twice — none of those changed here, since #2 and #4
+above already correct them and reverting would reintroduce the errors.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:

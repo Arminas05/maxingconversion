@@ -12,3 +12,12 @@
 # config.js must never be cached hard — it is the file you edit to go live.
 /assets/config.js
   Cache-Control: public, max-age=60, must-revalidate
+
+# Static images, unlike theme.css/config.js, get new filenames if they ever
+# change rather than being edited in place — safe to cache hard.
+/assets/*.webp
+  Cache-Control: public, max-age=604800, immutable
+/assets/*.jpg
+  Cache-Control: public, max-age=604800, immutable
+/assets/*.png
+  Cache-Control: public, max-age=604800, immutable
