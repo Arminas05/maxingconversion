@@ -40,9 +40,14 @@ disclaimers are the pattern regulators treat as inadequate.
 |---|---|---|
 | "Well look At Thisl…" | "Well look At This…" | stray letter |
 | "David Ogilivy" | "David Ogilvy" | real person's name |
-| "Rapport" (×4) | "Report" | *rapport* = a relationship; the copy means a document |
 | "All The Guru's Have These" | "All The Gurus Have These" | plural, not possessive |
 | "You Wont Even Pay Half" | "You Won't Even Pay Half" | missing apostrophe |
+
+"Rapport" (×3) was corrected to "Report" earlier in this doc's history,
+on the guess that it was a slip for "Report" (the copy describes a
+document, and *rapport* means a relationship). The owner has since
+confirmed "Rapport" is the word he intended — reverted, kept as
+written. Not reverting this again without the owner asking.
 
 Capitalisation, exclamation marks, ellipses and sentence rhythm are all left
 exactly as written — that's voice, not error.
@@ -92,9 +97,10 @@ grammar, not voice, so no rhythm or capitalisation touched:
 - "You Won't Pay That" → "You Won't Pay That." (every other short line in
   that run ends in `…`, `!`, or `.`; this one alone had nothing)
 
-His edited doc still has "David Ogilivy" and "Rapport" unfixed, and
-"$5,431" still appears twice — none of those changed here, since #2 and #4
-above already correct them and reverting would reintroduce the errors.
+His edited doc still has "David Ogilivy" unfixed and "$5,431" still
+appears twice — neither changed here, since #2 and #4 above already
+correct them and reverting would reintroduce the errors. "Rapport" is
+kept as written (see #4) — not a typo, the owner's intended word.
 
 ## 8. Canva-reference visual pass — text kept, structure/color changed
 
@@ -121,13 +127,13 @@ single grammar fix below:
   lower on the page (below "Just to RECAP", outside this pass's stated
   scope) was left as "Join Right Now".
 
-Not changed, deliberately: the Iman Gadzhi line stays "has a sales page"
-rather than reverting to "uses this" (see #1), "Report" stays as "Report"
-rather than reverting to "Rapport" (see #4), and the value-stack/price
-arithmetic stays corrected to $5,434 (see #2) — the reference appears to
-have been built from the same raw, uncorrected doc, and reintroducing
-any of those would put a false-endorsement claim or a factual error back
-on a page selling a real service.
+Not changed, deliberately, at the time of this pass: the Iman Gadzhi
+line stayed "has a sales page" rather than reverting to "uses this"
+(see #1), and the value-stack/price arithmetic stayed corrected to
+$5,434 (see #2) — reverting either would put a false-endorsement claim
+or a factual error back on a page selling a real service. ("Report" was
+also kept at the time of this pass; see #4 for the later reversal back
+to "Rapport" at the owner's explicit request.)
 
 **Update:** the David Ogilvy portrait was removed. It was a real
 historical photo of him, sourced from Google Drive with a third-party
@@ -175,11 +181,20 @@ this pass corrects the approximation against the real reference:
   that exact spot in the reference. Same target as the hero button, no
   new copy.
 
-Not changed even now: Iman Gadzhi phrasing, "Report" vs "Rapport", and
-the $5,434 arithmetic — the reference screenshot still shows the
-uncorrected originals in those three spots, and reverting any of them
-would reintroduce a false-endorsement claim or a factual error. See #1,
-#2 and #4.
+Not changed at the time of this pass: Iman Gadzhi phrasing and the
+$5,434 arithmetic — the reference screenshot still shows the
+uncorrected originals in both spots, and reverting either would
+reintroduce a false-endorsement claim or a factual error. See #1 and
+#2. ("Report" vs "Rapport" was also unchanged at the time of this pass;
+see #4 for the later reversal.)
+
+## 10. "Rapport" reverted to the owner's original word — owner's call
+
+The owner explicitly asked to keep "Rapport" as written, confirming
+it's the intended word rather than a slip for "Report". Reverted in all
+three spots on the page (the "Secret Ultimate Sales Page Rapport"
+line and its two follow-ons) and in the page's own top-of-file comment.
+See #4 above for the corrected history.
 
 ## Two things that must stay true
 
