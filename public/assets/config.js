@@ -24,6 +24,19 @@ window.SITE_CONFIG = {
      Leave blank to hide the button.                                    */
   rescheduleUrl: '',
 
+  /* ── 2b. The $997 sales-page service at /sales-page/ ───────────────
+     Where its "Join Right Now" buttons send people.
+
+     This MUST stay set. If it is ever emptied the page falls back to
+     calendarUrl above — the FREE 30-minute strategy call, whose
+     post-booking redirect goes to /sales/#thanks — so a $997 buyer would
+     land on the wrong page and be indistinguishable from a free lead.
+     If both are empty the buttons go inert, say so, and the page
+     sets itself to noindex.
+
+     Stripe Payment Link for the $997 done-for-you sales page service.  */
+  salesPageCtaUrl: 'https://buy.stripe.com/00wfZa2938Am47r8461ck01',
+
   /* ── 3. Form endpoint (formspree.io — free tier is fine) ───────────
      Looks like: https://formspree.io/f/xxxxxxxx
      If this is left as-is, qualifier answers are NOT saved anywhere —

@@ -208,6 +208,71 @@ await p.close();
   await tctx.close();
 }
 
+// ── 2d. /sales-page/ — the $997 service ───────────────────────────────────
+// The hero here is animation-hidden, and it holds the only above-fold CTA.
+// That is exactly the shape of the bug that once shipped a blank /sales/,
+// so it gets the same no-JS guard plus a check that the backstop fires.
+{
+  const sp = await page('/sales-page/');
+  await sp.waitForTimeout(3400);            // past the 3s sp-shown backstop
+  const faded = await sp.$$eval('.sp-rise', els =>
+    els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
+  if (faded > 0) errors.push(`sales-page: ${faded} .sp-rise blocks still invisible after the backstop`);
+
+  const joins = await sp.locator('[data-join]').count();
+  if (joins === 0) errors.push('sales-page: no CTA buttons found');
+  // with calendarUrl set, no CTA may be inert and the page must stay indexable
+  const inertJoins = await sp.locator('[data-join].is-inert').count();
+  if (inertJoins > 0) errors.push(`sales-page: ${inertJoins} CTA(s) inert while a calendar URL is configured`);
+  if ((await sp.locator('meta[name="robots"]').count()) > 0) {
+    errors.push('sales-page: noindex injected despite a working CTA');
+  }
+  // The CTA must reach the $997 checkout — NOT fall through to calendarUrl,
+  // which is the free strategy call and would send a paying customer to the
+  // wrong place entirely. (The click itself is done last, below, because
+  // navigating away invalidates every other locator on this page.)
+  const spCta = await sp.evaluate(() => (window.SITE_CONFIG || {}).salesPageCtaUrl || '');
+  if (!/^https:\/\/buy\.stripe\.com\//.test(spCta)) {
+    errors.push(`sales-page: salesPageCtaUrl is not a Stripe Payment Link (got "${spCta}") — the CTA would fall back to the free-call calendar`);
+  }
+  // the value stack must agree with itself — the source doc had it wrong
+  const stackVals = (await sp.locator('.sp-stack-row .val').allInnerTexts())
+    .map(t => Number(t.replace(/[^0-9.]/g, '')));
+  const stackTotal = Number((await sp.locator('.sp-stack-total .val').innerText()).replace(/[^0-9.]/g, ''));
+  const summed = stackVals.reduce((a, b) => a + b, 0);
+  if (summed !== stackTotal) errors.push(`sales-page: value stack sums to ${summed} but total says ${stackTotal}`);
+  const body = await sp.locator('body').innerText();
+  if (body.includes('5,431')) errors.push('sales-page: stale $5,431 figure is back — the stack totals $5,434');
+  // a named third party must never be presented as using or endorsing this
+  if (/Gadzhi[^.]{0,40}\bUses this\b/i.test(body)) {
+    errors.push('sales-page: copy implies a named third party uses this service');
+  }
+
+  // Done last: this navigates away, so nothing may read the page after it.
+  // Stripe is stubbed so the assertion tests our wiring, not their uptime.
+  await sp.route('https://buy.stripe.com/**', r =>
+    r.fulfill({ status: 200, contentType: 'text/html', body: '<title>stub checkout</title>' }));
+  const spBefore = sp.url();
+  await sp.locator('[data-join]').first().click();
+  await sp.waitForTimeout(800);
+  if (sp.url() === spBefore) errors.push('sales-page: CTA did not navigate anywhere');
+  else if (!sp.url().startsWith('https://buy.stripe.com/')) {
+    errors.push(`sales-page: CTA went somewhere other than Stripe: ${sp.url()}`);
+  }
+  await sp.close();
+
+  // and it must render with JS off
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });
+  const np = await ctx.newPage();
+  await np.goto(base + '/sales-page/', { waitUntil: 'load' });
+  const noJsFaded = await np.$$eval('.sp-rise', els =>
+    els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
+  if (noJsFaded > 0) errors.push(`sales-page/nojs: ${noJsFaded} .sp-rise blocks invisible with JS disabled`);
+  const h1 = (await np.locator('h1').innerText()).trim();
+  if (h1.length < 20) errors.push('sales-page/nojs: headline did not render');
+  await ctx.close();
+}
+
 // ── 2c. sitemap integrity ─────────────────────────────────────────────────
 // A sitemap that lists a redirect, a 404, or a noindexed page is worse than
 // no sitemap: Search Console reports each one as an error and trusts the

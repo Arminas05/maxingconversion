@@ -79,8 +79,9 @@ before the file was deployed. Confirm the file loads in a browser first,
 then resubmit; the status can take a day to settle even when it's fine.
 
 **What belongs in `sitemap.xml`:** only genuinely indexable pages —
-currently `/toolkit/` (priority 1.0, since `/` redirects there) and
-`/sales/` (0.8). Deliberately excluded:
+currently `/toolkit/` (priority 1.0, since `/` redirects there),
+`/sales-page/` (0.9, the $997 done-for-you service) and `/sales/` (0.8).
+Deliberately excluded:
 
 - the four legal pages — they carry `<meta name="robots" content="noindex">`,
   so listing them would claim "index this" and "don't index this" at once

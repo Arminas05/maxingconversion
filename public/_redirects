@@ -25,3 +25,8 @@
 
 # Short link for the $47 toolkit page
 /toolkit                /toolkit/               301
+
+# The $997 done-for-you sales page service. Distinct from /sales/, which is
+# the high-ticket funnel offer — different offer, different price, own page.
+/salespage              /sales-page/            301
+/sales-page             /sales-page/            301
