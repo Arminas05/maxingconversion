@@ -867,12 +867,26 @@
   .sp-letter strong{color:var(--ink);font-weight:700;}
   .sp-letter em{font-style:italic;}
 
-  /* Each <section> is one topical beat, and — because p:last-child above
-     zeroes out its own trailing margin — sections butted directly against
-     each other with NO gap at all: 7 of the 9 boundaries on this page
-     measured literally 0px until this rule existed. Margin only on
-     non-first children, so the hero keeps its own top spacing untouched. */
-  .sp-letter > section{margin-top:32px;}
+  /* Each <section> is one topical beat, spaced by margin alone — see
+     below for why padding is explicitly zeroed here.
+
+     Margin: p:last-child (above) zeroes a paragraph's own trailing
+     margin, and every section here ends in a <p>, so sections butted
+     directly against each other with NO gap at all until this rule
+     existed. Margin only on non-first children, so the hero keeps its
+     own top spacing untouched.
+
+     Padding: the base stylesheet has a much older, unscoped
+     `section{padding:74px 0}` (from this project's very first commit,
+     for a different page's layout) that silently applies to every bare
+     <section> on the site, this page included. Confirmed live: a
+     14-year-old... no, a same-day-old bug, but real — measured 74px of
+     padding actually rendering on this page's sections, compounding
+     with the margin above into a ~140px gap the moment a quote block
+     (a <div>, not a <p> — immune to the last-child override) landed as
+     a section's last child. Zeroed here rather than touched at the
+     source, since other pages may still depend on the global rule. */
+  .sp-letter > section{margin-top:32px;padding:0;}
   .sp-letter > section:first-child{margin-top:0;}
   @media(min-width:600px){.sp-letter > section{margin-top:38px;}}
 
@@ -924,7 +938,9 @@
   .sp-hero .btn{font-size:15.5px;padding:14px 30px;}
 
   /* ---- pull-quotes ---- */
-  .sp-quote{margin:20px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent);}
+  /* A touch more room than a plain paragraph gets — a quote is meant to
+     read as a pause in the letter, not just another line. */
+  .sp-quote{margin:26px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent);}
   .sp-quote blockquote{
     font-family:Georgia,'Times New Roman',Times,serif;font-style:italic;
     font-size:16.5px;line-height:1.55;color:#3D3A36;margin:0;
@@ -967,30 +983,54 @@
   }
   .sp-bundle-img{
     display:block;width:100%;height:auto;margin-top:18px;
-    border-radius:8px;
   }
   .sp-stack-total .val{color:var(--accent);font-size:19px;}
 
+  /* ---- credibility checklist ---- */
+  .sp-check-list{list-style:none;margin:20px 0;padding:0;}
+  .sp-check-list li{
+    position:relative;padding-left:30px;margin-bottom:13px;
+    font-size:16.5px;line-height:1.6;color:#3D3A36;
+  }
+  .sp-check-list li:last-child{margin-bottom:0;}
+  .sp-check-list li::before{
+    content:'';position:absolute;left:0;top:3px;width:19px;height:19px;
+    border-radius:50%;background:var(--accent);
+  }
+  .sp-check-list li::after{
+    content:'';position:absolute;left:5.5px;top:7.5px;width:9px;height:5px;
+    border-left:2.4px solid #fff;border-bottom:2.4px solid #fff;
+    transform:rotate(-45deg);
+  }
+  .sp-hi{color:var(--accent-dark);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2.5px;}
+
   /* ---- the free-coaching-call gift ---- */
   .sp-gift-box{
-    position:relative;text-align:center;margin:22px 0;
-    border:2px solid var(--accent);border-radius:14px;
-    padding:28px 24px 24px;
+    position:relative;text-align:center;margin:26px 0;
+    border:2px solid var(--accent);border-radius:16px;
+    padding:30px 24px 26px;
     background:linear-gradient(180deg,var(--accent-tint),#fff 65%);
   }
-  .sp-gift-tag{
-    display:inline-block;
-    font-size:12px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;
-    color:var(--accent-dark);margin-bottom:12px;
-    padding:5px 12px;border-radius:20px;background:#fff;
-    box-shadow:0 0 0 1px var(--accent);
-  }
+  .sp-gift-icon{display:block;margin:0 auto 10px;}
+  /* !important throughout: .sp-letter p (class+element, specificity 0,1,1)
+     otherwise beats this single-class selector (0,1,0) and silently wins —
+     that's exactly what happened here on the first pass, rendering this as
+     small dark body text instead of the big accent headline it's meant
+     to be. Confirmed by screenshot, not assumed. */
   .sp-gift-headline{
-    font-family:Georgia,'Times New Roman',Times,serif;
-    font-size:22px;line-height:1.32;font-weight:700;color:var(--ink);
-    margin-bottom:8px !important;
+    font-family:Georgia,'Times New Roman',Times,serif !important;
+    font-size:26px !important;line-height:1.28 !important;
+    font-weight:800 !important;color:var(--accent-dark) !important;
+    margin-bottom:18px !important;
   }
-  @media(min-width:600px){.sp-gift-headline{font-size:25px;}}
+  @media(min-width:600px){.sp-gift-headline{font-size:31px !important;}}
+  .sp-gift-banner{
+    background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+    color:#fff;font-size:16px;font-weight:700;line-height:1.4;
+    border-radius:10px;padding:14px 20px;margin-bottom:14px;
+    box-shadow:0 8px 18px -8px rgba(45,91,255,0.55);
+  }
+  @media(min-width:600px){.sp-gift-banner{font-size:18px;}}
   .sp-gift-sub{
     font-size:14px;font-weight:800;letter-spacing:0.04em;
     color:var(--accent-dark);margin-bottom:0 !important;
