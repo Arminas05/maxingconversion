@@ -96,6 +96,45 @@ His edited doc still has "David Ogilivy" and "Rapport" unfixed, and
 "$5,431" still appears twice — none of those changed here, since #2 and #4
 above already correct them and reverting would reintroduce the errors.
 
+## 8. Canva-reference visual pass — text kept, structure/color changed
+
+The owner supplied a Canva design as the visual reference for everything
+above the "Just to RECAP" section and asked for the page's spacing,
+highlighting and buttons to match it, explicitly asking that no copy be
+added. Applied as a design pass only — no wording changes beyond the
+single grammar fix below:
+
+- "I Been In This Game" → "I've Been In This Game" (missing "'ve" —
+  grammar, not voice, same category as the other fixes in #4/#7).
+- The three pull-quotes (Palmer, Hopkins, Ogilvy) are reordered to Palmer
+  → Hopkins → Ogilvy to match the reference, with a byline added under
+  each (using the same attribution already stated in the surrounding
+  paragraph, not new information) and a small portrait added beside the
+  Ogilvy quote.
+- The three week boxes lost their card borders in favor of flowing text
+  with a colored week label, and a second accent color (orange) was
+  added for a subset of emphasis text (prices, "BONUS!", week labels,
+  "Special Way of Structure") per the reference.
+- The hero button now reads "Save My Spot →" instead of "Join Right
+  Now" (design element the owner explicitly asked to match), matching
+  the button screenshotted from the reference. The final-CTA button
+  lower on the page (below "Just to RECAP", outside this pass's stated
+  scope) was left as "Join Right Now".
+
+Not changed, deliberately: the Iman Gadzhi line stays "has a sales page"
+rather than reverting to "uses this" (see #1), "Report" stays as "Report"
+rather than reverting to "Rapport" (see #4), and the value-stack/price
+arithmetic stays corrected to $5,434 (see #2) — the reference appears to
+have been built from the same raw, uncorrected doc, and reintroducing
+any of those would put a false-endorsement claim or a factual error back
+on a page selling a real service.
+
+The David Ogilvy portrait is a real historical photo of him, used
+because it accurately illustrates the person being quoted — but it was
+sourced from Google Drive with a third-party filename ("OOH-Matters")
+and no license information came with it. Flagged to the owner; swap it
+for a licensed or owned photo if that can't be confirmed.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:

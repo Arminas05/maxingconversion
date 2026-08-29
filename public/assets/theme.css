@@ -13,6 +13,12 @@
     --accent:#2D5BFF;
     --accent-dark:#1C40D4;
     --accent-tint:#EDF2FF;
+    /* second accent, used only on /sales-page/ for a subset of emphasis
+       text (prices, week labels, "BONUS!") per the owner's reference —
+       kept out of the shared palette above on purpose. */
+    --accent-2:#E8622C;
+    --accent-2-dark:#C94E1E;
+    --accent-2-tint:#FDECE3;
     --success:#12996B;
     --success-tint:#E9F7F1;
     --warn:#C8382F;
@@ -938,22 +944,35 @@
   .sp-hero .btn{font-size:15.5px;padding:14px 30px;}
 
   /* ---- pull-quotes ---- */
-  /* A touch more room than a plain paragraph gets — a quote is meant to
-     read as a pause in the letter, not just another line. */
-  .sp-quote{margin:26px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent);}
+  /* Lightened from the earlier boxed/border-left treatment to a plain,
+     airy quote with a byline — reads as part of the letter's flow
+     rather than a separate card, per the owner's reference. */
+  .sp-quote{margin:28px 0;}
   .sp-quote blockquote{
     font-family:Georgia,'Times New Roman',Times,serif;font-style:italic;
-    font-size:16.5px;line-height:1.55;color:#3D3A36;margin:0;
+    font-size:17.5px;line-height:1.5;color:var(--ink);margin:0;
   }
+  .sp-quote-by{
+    display:block;margin-top:9px;font-size:13.5px;font-style:normal;
+    color:var(--ink-mute);letter-spacing:0.01em;
+  }
+  /* Ogilvy's quote carries a small portrait beside the byline — the
+     photo is a real historical one, used for factual attribution. */
+  .sp-quote-portrait{display:flex;align-items:center;gap:12px;margin-top:12px;}
+  .sp-quote-portrait img{
+    width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;
+    box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line);
+  }
+  .sp-quote-portrait .sp-quote-by{margin-top:0;}
 
   /* ---- weekly timeline ---- */
-  .sp-week{
-    border:1px solid var(--line);border-radius:10px;
-    padding:18px 20px;margin-bottom:14px;
-  }
-  .sp-week h3{
+  /* Flowing text, no card border — each week is introduced by a short
+     accent-2 label instead of living in its own boxed section. */
+  .sp-week{margin-bottom:20px;}
+  .sp-week:last-child{margin-bottom:0;}
+  .sp-week-label{
     font-family:Georgia,'Times New Roman',Times,serif;font-size:16.5px;
-    font-weight:700;color:var(--accent);margin-bottom:8px;
+    font-weight:800;color:var(--accent-2);margin-bottom:8px;display:block;
   }
   .sp-week p{font-size:15.5px;margin-bottom:8px;}
   .sp-week p:last-child{margin-bottom:0;}
@@ -1016,6 +1035,9 @@
     transform:rotate(-45deg);
   }
   .sp-hi{color:var(--accent-dark);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2.5px;}
+  /* second-accent emphasis — prices, "BONUS!", week labels, credibility
+     lead-ins — a deliberate second color used sparingly, not everywhere */
+  .sp-hi2{color:var(--accent-2);font-weight:800;}
 
   /* ---- the free-coaching-call gift ---- */
   .sp-gift-box{
