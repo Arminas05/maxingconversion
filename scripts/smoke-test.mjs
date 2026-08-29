@@ -209,15 +209,16 @@ await p.close();
 }
 
 // ── 2d. /sales-page/ — the $997 service ───────────────────────────────────
-// The hero here is animation-hidden, and it holds the only above-fold CTA.
-// That is exactly the shape of the bug that once shipped a blank /sales/,
-// so it gets the same no-JS guard plus a check that the backstop fires.
+// Rebuilt as a plain-flow "letter" page (no scroll-reveal, no entrance
+// animation, nothing JS-gated) — so the guard here is simpler than the
+// card-based version this replaced: the hero and its CTA must simply be
+// opaque from first paint, with no script required to show them.
 {
   const sp = await page('/sales-page/');
-  await sp.waitForTimeout(3400);            // past the 3s sp-shown backstop
-  const faded = await sp.$$eval('.sp-rise', els =>
+  await sp.waitForTimeout(300);
+  const heroFaded = await sp.$$eval('.sp-hero, .sp-hero *', els =>
     els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
-  if (faded > 0) errors.push(`sales-page: ${faded} .sp-rise blocks still invisible after the backstop`);
+  if (heroFaded > 0) errors.push(`sales-page: ${heroFaded} hero elements are not fully opaque on load`);
 
   const joins = await sp.locator('[data-join]').count();
   if (joins === 0) errors.push('sales-page: no CTA buttons found');
@@ -265,9 +266,9 @@ await p.close();
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });
   const np = await ctx.newPage();
   await np.goto(base + '/sales-page/', { waitUntil: 'load' });
-  const noJsFaded = await np.$$eval('.sp-rise', els =>
+  const noJsFaded = await np.$$eval('.sp-hero, .sp-hero *', els =>
     els.filter(e => parseFloat(getComputedStyle(e).opacity) < 0.9).length);
-  if (noJsFaded > 0) errors.push(`sales-page/nojs: ${noJsFaded} .sp-rise blocks invisible with JS disabled`);
+  if (noJsFaded > 0) errors.push(`sales-page/nojs: ${noJsFaded} hero elements invisible with JS disabled`);
   const h1 = (await np.locator('h1').innerText()).trim();
   if (h1.length < 20) errors.push('sales-page/nojs: headline did not render');
   await ctx.close();

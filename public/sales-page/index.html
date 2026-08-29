@@ -15,10 +15,17 @@
 <!-- ═══════════════════════════════════════════════════════════════
      SALES PAGE SERVICE — $997 offer.
 
+     LAYOUT rebuilt to match a reference the owner supplied (a Framer
+     page): narrow single-column "sales letter" read, white throughout,
+     no alternating bands. See the .sp-letter block in theme.css.
+
      COPY IS THE OWNER'S, HAND-WRITTEN, AND KEPT VERBATIM except for
      the corrections listed in /docs/sales-page-copy-changes.md (kept
-     outside public/ so it is not served). Do not "improve" the voice:
-     the capitalisation and pacing are deliberate.
+     outside public/ so it is not served). The reference design was
+     apparently built from the raw original doc (it shows "$5,431" and
+     "Rapport" where this page corrects to "$5,434" and "Report") — the
+     brief was to match the DESIGN, not reintroduce arithmetic errors or
+     the Iman Gadzhi implied-endorsement line. Content corrections stand.
 
      Two things here are the owner's stated commitments, not marketing
      decoration, and the page is only honest while they stay true:
@@ -44,262 +51,178 @@
 <body>
 
 <div class="view active" id="view-offer">
+<div class="sp-letter">
 
 <!-- ══════════════ HERO ══════════════ -->
-<section class="cf-hero sp-hero">
-  <!-- Slow-drifting aurora behind the hero. Purely atmospheric, sits under
-       the content, and stops entirely for prefers-reduced-motion. -->
-  <div class="sp-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<section class="sp-hero">
+  <span class="sp-flag">This Might Be Closed Soon…</span>
+  <hr class="sp-rule">
 
-  <div class="cf-page">
-    <span class="preheadline sp-flag">This Might Be Closed Soon<span class="sp-dots"><i></i><i></i><i></i></span></span>
+  <h1 class="sp-h1">
+    For Entrepreneurs:<br>
+    Give Me <span class="sp-mark">5 Minutes</span> and<br>
+    I Will <span class="sp-under">Increase Your Sales</span>.
+    <span class="sp-blue-line">No Efforts</span>
+  </h1>
 
-    <h1 class="sp-h1">
-      <span class="sp-rise" style="--d:.05s">For Entrepreneurs:</span>
-      <span class="sp-rise" style="--d:.13s">Give Me <span class="sp-mark">5 Minutes</span> and</span>
-      <span class="sp-rise" style="--d:.21s">I Will <span class="sp-under">Increase Your Sales</span>,</span>
-      <span class="sp-rise" style="--d:.29s"><strong>No Efforts</strong></span>
-    </h1>
+  <p class="because">New Breakthrough personalized Service For <strong>YOUR BUSINESS</strong>! Which is Huge Discovery, because I will Build out a Fully Personalized Sales Page THAT SELLS FAST!!!</p>
 
-    <p class="because sp-rise" style="--d:.38s">New Breakthrough personalized Service For <strong>YOUR BUSINESS</strong>! Which is Huge Discovery, because I will Build out a Fully Personalized Sales Page <span class="sp-mark alt">THAT SELLS FAST!!!</span></p>
-
-    <div class="sp-rise" style="--d:.46s">
-      <button class="btn sp-btn" data-join>Join Right Now</button>
-    </div>
-  </div>
+  <button class="btn" data-join>Join Right Now</button>
 </section>
 
 <!-- ══════════════ THE OPENING ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <!-- The lead starts here. The "you've been selected / New Breakthrough
-         personalized Service" opener that preceded this now lives in the
-         hero subheading, so repeating it immediately below was the same
-         sentence twice on one screen. -->
-    <p>All The Gurus Have These…</p>
-    <!-- Referent made explicit: this says these creators HAVE sales pages —
-         a verifiable, generic statement — rather than implying any of them
-         is a client of, or endorses, this service. They have not agreed to
-         that and it is not ours to claim. -->
-    <p>Even Iman Gadzhi, or any creator you've seen, has a sales page — that's how they Easily Generate NEW Leads And Sales For Their Business…</p>
-    <p><strong>This Easily Will Make You More Money FAST!</strong></p>
-    <p>To tell you a Secret…</p>
-    <p>Between us, this is not some AI Page that was just prompted…</p>
-    <p>It won't be just some nice good looking text also…</p>
-    <p>And Absolutely Anybody Can Have This <em>(to make it real EASY, I'll make ALL Done For You …)</em></p>
-    <p>Luckily, I Will Show You IN JUST A SECOND…</p>
-  </div>
+<section>
+  <p>All The Gurus Have These…</p>
+  <!-- Referent made explicit: this says these creators HAVE sales pages —
+       a verifiable, generic statement — rather than implying any of them
+       is a client of, or endorses, this service. They have not agreed to
+       that and it is not ours to claim. -->
+  <p>Even Iman Gadzhi, or any creator you've seen, has a sales page — that's how they Easily Generate NEW Leads And Sales For Their Business…</p>
+  <p><strong>This Easily Will Make You More Money FAST!</strong></p>
+  <p>To tell you a Secret…</p>
+  <p>Between us, this is not some AI Page that was just prompted…</p>
+  <p>It won't be just some nice good looking text also…</p>
+  <p>And Absolutely Anybody Can Have This <em>(to make it real EASY, I'll make ALL Done For You …)</em></p>
+  <p>Luckily, I Will Show You IN JUST A SECOND…</p>
 </section>
 
 <!-- ══════════════ AUTHORITY QUOTES ══════════════ -->
-<section class="cf-sec">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2">I Bet You are Thinking, If It's Going To Work for You…</h2>
-    <p>Well look At This…</p>
+<section>
+  <p>I Bet You are Thinking, If It's Going To Work for You…</p>
+  <p>Well look At This…</p>
 
-    <figure class="sp-quote">
-      <blockquote>The only purpose of advertising is to make sales.</blockquote>
-      <figcaption><span class="who">Claude Hopkins</span><span class="role">Advertising executive and author</span></figcaption>
-    </figure>
-    <p>And The Purpose of Having your Own Sales Page is to Convert… Either Leads, Calls or Sales Itself.</p>
+  <p>As Greatest American advertising executive and author Claude Hopkins wrote:</p>
+  <div class="sp-quote"><blockquote>The only purpose of advertising is to make sales.</blockquote></div>
+  <p><strong>And The Purpose of Having your Own Sales Page is to Convert…</strong> Either Leads, Calls or Sales Itself.</p>
 
-    <figure class="sp-quote">
-      <blockquote>The most important word in the vocabulary of advertising is <em>TEST</em>.</blockquote>
-      <figcaption><span class="who">David Ogilvy</span><span class="role">The "Father of Advertising"</span></figcaption>
-    </figure>
-    <p>This Just Proves That You Should Move Fast… But hey, There is MORE..</p>
+  <p>Also David Ogilvy (also know as "Father of Advertising") said that:</p>
+  <div class="sp-quote"><blockquote>The most important word in the vocabulary of advertising is <em>TEST</em>.</blockquote></div>
+  <p>This Just Proves That You Should Move Fast… But hey, There is MORE..</p>
 
-    <figure class="sp-quote">
-      <blockquote>An effective sales letter… <em>removes risk through guarantees</em>, and it <em>creates genuine urgency</em> to <strong>act now</strong>.</blockquote>
-      <figcaption><span class="who">Rob Palmer</span><span class="role">On how it could help you fast</span></figcaption>
-    </figure>
-  </div>
+  <p>Rob Palmer Proves The Point on How It Could Help You FAST…</p>
+  <div class="sp-quote"><blockquote>An effective sales letter… <em>removes risk through guarantees</em>, and it <em>creates genuine urgency</em> to <strong>act now</strong>.</blockquote></div>
 </section>
 
 <!-- ══════════════ THE POTENTIAL ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2">You Could Make $10 000!</h2>
-    <p>Make that Much Every Month and You Clear Six Figures Every Year…</p>
-    <p>Wouldn't You Be Talk of Your Town?</p>
-    <p>Imagine You Making 10X or 50X of Current Income…</p>
-    <p>You Could be Doing So Much Better And Easier Than That Friend You Are Jealous Of…</p>
-    <p><strong>And The Potential is Limitless.</strong></p>
-    <!-- Figures above are illustrative. The disclaimer is deliberately
-         adjacent to them rather than buried in the footer — a page that
-         names a number has to name the caveat in the same breath. -->
-    <p class="sp-fineprint">These figures are illustrative of what is possible, not a prediction or a promise. Results depend entirely on your offer, your market, your traffic and your execution. Nothing here should be read as a guarantee of earnings — see the <a href="/earnings-disclaimer/">Earnings Disclaimer</a>.</p>
-  </div>
+<section>
+  <p><strong>You Could Make $10 000!</strong></p>
+  <p>Make that Much Every Month and You Clear Six Figures Every Year…</p>
+  <p>Wouldn't You Be Talk of Your Town?</p>
+  <p>Imagine You Making 10X or 50X of Current Income…</p>
+  <p>You Could be Doing So Much Better And Easier Than That Friend You Are Jealous Of…</p>
+  <p>Here You Seen ALL!</p>
+  <p><a href="/earnings-disclaimer/" class="sp-blue-link">And The Potential is Limitless.</a></p>
+  <!-- The reference makes this line a blue accent, so it reads as tappable
+       — that's why it's a real link rather than styled text, and it goes
+       straight to the one place that actually qualifies the claim it's
+       making. A page that names $10,000 and "limitless" has to put the
+       caveat within a tap of the words, not just in the footer. -->
+  <p class="sp-fineprint">These figures are illustrative of what is possible, not a prediction or a promise. Results depend entirely on your offer, your market, your traffic and your execution — see the Earnings Disclaimer linked above.</p>
+
+  <p>You Already Seen The Purpose of the Sales Page…</p>
+  <p>You've Seen That It's Important To Test IT…</p>
+  <p>You've Seen That Effective Sales Page (Letter) Creates Genuine Urgency to ACT…</p>
+  <p>And Now You Get Details in The Secret Ultimate Sales Page Report Soon.</p>
+  <p>Once You Have This Report, It Will Only Take Quick 5 Minutes in Just 3 Clicks of Your Mouse to Get Into Huge Life-changing Opportunity.</p>
+  <p>I Would Like to Rush this Report in The Next 5 Minutes, totally free…</p>
+  <p><strong>The Only Service that Uses a Special Way of Structure That Holds TONS of Highly Converting Words.</strong></p>
 </section>
 
-<!-- ══════════════ WHAT YOU'VE SEEN ══════════════ -->
-<section class="cf-sec">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2">Here You Seen ALL!</h2>
-    <ul class="sp-seen">
-      <li>You Already Seen The Purpose of the Sales Page…</li>
-      <li>You've Seen That It's Important To Test IT…</li>
-      <li>You've Seen That Effective Sales Page (Letter) Creates Genuine Urgency to ACT…</li>
-    </ul>
-    <p>And Now You Get Details in The Secret Ultimate Sales Page Report Soon.</p>
-    <p>Once You Have This Report, It Will Only Take Quick 5 Minutes in Just 3 Clicks of Your Mouse to Get Into Huge Life-changing Opportunity.</p>
-    <p>I Would Like to Rush this Report in The Next 5 Minutes, totally free…</p>
-    <p><strong>The Only Service that Uses a Special Way of Structure That Holds TONS of Highly Converting Words.</strong></p>
-  </div>
-</section>
+<hr class="sp-rule">
 
 <!-- ══════════════ HOW IT WORKS — 3 WEEK TIMELINE ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2 center">Here's How It Will Work…</h2>
+<section>
+  <h2>Here's How It Will Work…</h2>
 
-    <div class="sp-week">
-      <div class="sp-week-head">
-        <span class="n">1</span>
-        <div>
-          <h3>First Week</h3>
-          <span class="sp-dfy">Done For You</span>
-        </div>
-      </div>
-      <p>I'll create your very first 1st version of Copy Based on Your Product or Service.</p>
-      <div class="sp-bonus"><span class="lbl">BONUS!</span> You'll Be Able To Fully Customize Your Copy By Your Own Ideas.</div>
-      <p>And to Make It Extremely Easy… You'll Be Able to Give Feedback on Each Part of Copy Before I Make Full Visualization of Special Sales Page on Shared Doc File for YOU.</p>
-    </div>
-
-    <div class="sp-week">
-      <div class="sp-week-head">
-        <span class="n">2</span>
-        <div>
-          <h3>Second Week</h3>
-          <span class="sp-dfy">Done For You</span>
-        </div>
-      </div>
-      <p>Build Visual of Final Version.</p>
-      <div class="sp-bonus"><span class="lbl">BONUS!</span> I Will Create Personal Video Script for Video Inside Your Page to Further Increase the Value for Your Clients <em>(optional, but preferable to add Done With You)</em></div>
-      <p>Together We'll Add to The Page, When You Finish Film It…</p>
-    </div>
-
-    <div class="sp-week">
-      <div class="sp-week-head">
-        <span class="n">3</span>
-        <div>
-          <h3>Final Week</h3>
-          <span class="sp-dfy is-dwy">Done With You</span>
-        </div>
-      </div>
-      <p>Quick Check-In Of Performance and Feedback.</p>
-    </div>
-
-    <p class="sp-easy">Yes It Is That Easy…</p>
+  <div class="sp-week">
+    <h3>First Week</h3>
+    <p>I'll create your very first 1st version of Copy Based on Your Product or Service <em>Done For You</em>…</p>
+    <p><strong>BONUS!</strong> You'll Be Able To Fully Customize Your Copy By Your Own Ideas.</p>
+    <p>And to Make It Extremely Easy… You'll Be Able to Give Feedback on Each Part of Copy Before I Make Full Visualization of Special Sales Page on Shared Doc File for YOU.</p>
   </div>
-</section>
 
-<!-- The "Sneak Peak" section and its CSS deliverables mockup were removed
-     at Arminas's request. "You Can Access It All…" is his copy and was the
-     last line of that section, so it moves here rather than disappearing
-     with the visual. The .sp-mock* CSS came out with it — recover both
-     from git history if the mockup is ever wanted back. -->
+  <div class="sp-week">
+    <h3>Second Week</h3>
+    <p>Build Visual of Final Version <em>Done For You</em>.</p>
+    <p><strong>BONUS!</strong> I Will Create Personal Video Script for Video Inside Your Page to Further Increase the Value for Your Clients <em>(optional, but preferable to add Done With You)</em></p>
+    <p>Together We'll Add to The Page, When You Finish Film It…</p>
+  </div>
+
+  <div class="sp-week">
+    <h3>Final Week</h3>
+    <p>Quick Check-In Of Performance and Feedback <em>Done With You</em>.</p>
+  </div>
+
+  <p style="text-align:center;">Yes It Is That Easy…</p>
+</section>
 
 <!-- ══════════════ CREDENTIALS ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <p style="text-align:center;">You Can Access It All…</p>
-    <h2 class="cf-h2">I Been In This Game Long Time…</h2>
-    <ul class="sp-seen">
-      <li>I've studied books on this, taken more than 50 pages of notes…</li>
-      <li>Studied endless examples…</li>
-      <li>Invested 100's and 100's Of Endless Hours of My Time…</li>
-    </ul>
-  </div>
+<section>
+  <p style="text-align:center;">You Can Access It All…</p>
+  <p>I Been In This Game Long Time…</p>
+  <p>I've studied books on this, taken more than 50 pages of notes…</p>
+  <p>Studied endless examples…</p>
+  <p>Invested 100's and 100's Of Endless Hours of My Time…</p>
+  <p>Also This Is Not The End…</p>
+  <p>There is a Tremendous Value Waiting…</p>
+  <p><strong>Very Special Gift I'll Share With YOU…</strong></p>
+  <p><strong>Special Access to Free Coaching 1 On 1 For 30 Min Call!</strong></p>
+  <p><strong>ANY QUESTIONS ANSWERED!</strong></p>
+  <p>Just to RECAP, Here's Everything You Get…</p>
 </section>
 
-<!-- ══════════════ THE GIFT ══════════════ -->
-<section class="cf-sec">
-  <div class="cf-page reveal">
-    <div class="sp-gift">
-      <span class="sp-gift-tag">Very Special Gift</span>
-      <h3>Special Access to Free Coaching 1 On 1 For 30 Min Call!</h3>
-      <p>ANY QUESTIONS ANSWERED!</p>
-    </div>
-    <p style="text-align:center;margin-top:22px;">Also This Is Not The End… There is a Tremendous Value Waiting…</p>
-  </div>
-</section>
+<hr class="sp-rule">
 
 <!-- ══════════════ VALUE STACK ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2 center">Just to RECAP, Here's Everything You Get…</h2>
-    <div class="sp-stack">
-      <div class="sp-stack-row"><span class="item">Exclusive Personalized Sales Page Copy for Your Business</span><span class="val">$2,997</span></div>
-      <div class="sp-stack-row"><span class="item">Special Option To Customize Before Even Building the Visuals</span><span class="val">$499</span></div>
-      <div class="sp-stack-row"><span class="item">Smooth Design Visuals Built For You</span><span class="val">$194</span></div>
-      <div class="sp-stack-row"><span class="item">Personalized Video Sales Script for Your Sales Page Optimized to Be Built in</span><span class="val">$747</span></div>
-      <div class="sp-stack-row"><span class="item">Special Access to One-to-One Coaching Call</span><span class="val">$997</span></div>
-      <div class="sp-stack-total"><span class="item">Total value</span><span class="val">$5,434</span></div>
-    </div>
+<section>
+  <div class="sp-stack">
+    <div class="sp-stack-row"><span class="item">Exclusive Personalized Sales Page Copy for Your Business</span><span class="val">$2,997</span></div>
+    <div class="sp-stack-row"><span class="item">Special Option To Customize Before Even Building the Visuals</span><span class="val">$499</span></div>
+    <div class="sp-stack-row"><span class="item">Smooth Design Visuals Built For You</span><span class="val">$194</span></div>
+    <div class="sp-stack-row"><span class="item">Personalized Video Sales Script for Your Sales Page Optimized to Be Built in</span><span class="val">$747</span></div>
+    <div class="sp-stack-row"><span class="item">Special Access to One-to-One Coaching Call</span><span class="val">$997</span></div>
+    <div class="sp-stack-total"><span class="item">Total value of</span><span class="val">$5,434!</span></div>
   </div>
 </section>
 
 <!-- ══════════════ PRICE REVEAL ══════════════ -->
-<section class="cf-sec">
-  <div class="cf-page reveal">
-    <p style="text-align:center;">But You Won't Pay Anything Near That… In Fact, You Won't Even Pay Half of It.</p>
-    <div class="cf-offer" data-offer-block>
-      <div class="name">Done-For-You Sales Page Service</div>
-      <div class="sp-was">Forget the normal <s>$5,434</s> price tag</div>
-      <div class="cf-price">$997</div>
-      <p class="cf-price-note">That Is Just Small $2.7 a Day… Anyone Can Afford This.</p>
-      <div class="sp-off">That is Over 80% OFF The Total Value!</div>
-      <button class="btn" data-join>Join Right Now</button>
-      <p class="cf-guarantee-line">Higher conversions, or I work for free — see below.</p>
-    </div>
+<section>
+  <p>But You Won't Pay Anything Near That… In Fact, You Won't Even Pay Half of It.</p>
+  <p>You can have all this incredible value, <s>$5,434</s> worth, for just a tiny $997.</p>
+  <p><strong>That is Over 80% OFF The Total Value!</strong></p>
+  <p>Hurry…</p>
+  <p>Forget the normal <s>$5,434</s> price tag.</p>
+  <p>You Won't Pay That</p>
+  <p><strong>You Will Get Full Service for just a $997.</strong></p>
+  <p>That Is Just Small $2.7 a Day…</p>
+  <p>Anyone Can Afford This.</p>
+
+  <div class="sp-quote"><blockquote>I guarantee the chance to see higher conversions than previously, or I'll work for free.</blockquote></div>
+  <!-- This is an unconditional promise as written, unlike the toolkit's
+       refund policy — it stays this way only while it's true. -->
+
+  <!-- Scarcity must be a real limit, not a device: five is a capacity cap
+       on hands-on work, and this section comes off the page the moment
+       that isn't true. -->
+  <p><strong>The Opportunity is Hand Selected For Only The First 5 Candidates Who Joins Now…</strong></p>
+  <p><strong>This Offer Might Be Closed Fully Very Soon…</strong></p>
+
+  <p>There is only TWO choices…</p>
+  <p>The choice, as always, is yours.</p>
+  <p>But, now is the time..</p>
+</section>
+
+<!-- ══════════════ FINAL CTA ══════════════ -->
+<section>
+  <div class="sp-cta-box">
+    <p>If You Want to have a Chance For An Expansional Jump in Your Revenue, You Can Join Right Now…</p>
+    <button class="btn" data-join>Join Right Now</button>
+    <p class="cta-sub">Or you can click away and go back to the life you've had before reading this.</p>
+    <p class="cta-sub">The life you've always had.</p>
   </div>
 </section>
 
-<!-- ══════════════ GUARANTEE ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <div class="cf-guarantee">
-      <h3>I guarantee the chance to see higher conversions than previously, or I'll work for free.</h3>
-      <p>That is the deal, and it is mine to honour — not a support desk's.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ SCARCITY ══════════════
-     This cap must stay real. Five is a capacity limit on hands-on work,
-     not a marketing device — if more than five are taken on, this section
-     comes off the page. -->
-<section class="cf-sec">
-  <div class="cf-page reveal">
-    <div class="sp-scarce">
-      <h2 class="cf-h2">The Opportunity is Hand Selected For Only The First 5 Candidates Who Joins Now…</h2>
-      <p>This is a real limit, not a countdown. Each page is built by hand, one at a time, which is the whole reason the number is small.</p>
-      <p><strong>This Offer Might Be Closed Fully Very Soon…</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ THE CLOSE ══════════════ -->
-<section class="cf-sec band">
-  <div class="cf-page reveal">
-    <h2 class="cf-h2 center">There is only TWO choices…</h2>
-    <div class="sp-paths">
-      <div class="sp-path">
-        <span class="sp-path-n">One</span>
-        <p>If You Want to have a Chance For An Expansional Jump in Your Revenue, You Can Join Right Now…</p>
-      </div>
-      <div class="sp-path is-dim">
-        <span class="sp-path-n">Two</span>
-        <p>Or you can click away and go back to the life you've had before reading this. The life you've always had.</p>
-      </div>
-    </div>
-    <p class="sp-choice">The choice, as always, is yours. But, now is the time..</p>
-    <div style="text-align:center;">
-      <button class="btn" data-join>Join Right Now</button>
-    </div>
-  </div>
-</section>
+</div><!-- /sp-letter -->
 
 <footer>
   <div class="wrap">
@@ -329,13 +252,6 @@
   var CFG = window.SITE_CONFIG || {};
   var url = CFG.salesPageCtaUrl || CFG.calendarUrl || '';
   var btns = [].slice.call(document.querySelectorAll('[data-join]'));
-
-  /* Backstop for the hero entrance animation: whatever happens with the
-     CSS, the hero is visible a few seconds in. Runs before the CTA wiring
-     because a visible-but-unwired button beats an invisible one. */
-  setTimeout(function(){
-    document.documentElement.className += ' sp-shown';
-  }, 3000);
 
   if(!btns.length) return;
 

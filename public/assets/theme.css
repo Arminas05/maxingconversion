@@ -850,249 +850,117 @@
   .tk-next p{font-size:16.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:14px;}
   .tk-next .btn{margin-top:8px;}
 
-  /* ═══════════ SALES PAGE SERVICE (/sales-page/) ═══════════
-     A louder offer than the rest of the site, so the layout is kept
-     deliberately restrained — the copy carries the energy and the design
-     stays out of its way. Everything reuses the existing tokens. */
+  /* ═══════════ SALES PAGE — LETTER STYLE (/sales-page/) ═══════════
+     Rebuilt to match a reference design the owner supplied (a Framer
+     page): a narrow single-column "sales letter" read — white
+     throughout, no alternating band sections, minimal chrome. Boxes are
+     reserved for four things only: pull-quotes, the weekly timeline,
+     the value-stack table, and the final CTA. Everything else is plain
+     paragraph flow, which is deliberate — this is a letter, not a set
+     of feature cards. */
 
-  /* ---- hero atmosphere ----
-     A slow aurora drift instead of the site's usual static glow, so this
-     page has its own feel while staying inside the same palette. It is
-     decorative only: pointer-events off, sits behind content, and stops
-     completely when reduced motion is requested. */
-  .sp-hero{position:relative;overflow:hidden;padding-top:64px;}
-  .sp-hero > .cf-page{position:relative;z-index:1;}
-  .sp-aurora{position:absolute;inset:-25% -10% auto -10%;height:150%;pointer-events:none;z-index:0;filter:blur(58px);opacity:.5;}
-  .sp-aurora span{position:absolute;display:block;border-radius:50%;}
-  .sp-aurora span:nth-child(1){
-    width:46%;padding-bottom:46%;left:4%;top:2%;
-    background:radial-gradient(circle,rgba(45,91,255,.30),rgba(45,91,255,0) 70%);
-    animation:spDrift1 19s ease-in-out infinite;
+  .sp-letter{max-width:640px;margin:0 auto;padding:0 22px;}
+  .sp-letter p{
+    font-size:16.5px;line-height:1.72;color:#3D3A36;margin-bottom:15px;
   }
-  .sp-aurora span:nth-child(2){
-    width:40%;padding-bottom:40%;right:6%;top:12%;
-    background:radial-gradient(circle,rgba(120,90,255,.24),rgba(120,90,255,0) 70%);
-    animation:spDrift2 23s ease-in-out infinite;
-  }
-  .sp-aurora span:nth-child(3){
-    width:34%;padding-bottom:34%;left:36%;top:34%;
-    background:radial-gradient(circle,rgba(0,190,220,.18),rgba(0,190,220,0) 70%);
-    animation:spDrift3 27s ease-in-out infinite;
-  }
-  @keyframes spDrift1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(7%,5%,0)}}
-  @keyframes spDrift2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-6%,7%,0)}}
-  @keyframes spDrift3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(4%,-6%,0)}}
+  .sp-letter p:last-child{margin-bottom:0;}
+  .sp-letter strong{color:var(--ink);font-weight:700;}
+  .sp-letter em{font-style:italic;}
 
-  /* Staggered entrance. This hides the hero — including the only
-     above-fold CTA — so it needs the same belt-and-braces the .reveal
-     system has: the hidden state is gated behind js-reveal, AND a JS
-     timeout stamps html.sp-shown a few seconds in, which forces
-     everything visible regardless of whether the animation ever ran.
-     A CSS animation that silently fails to fire would otherwise leave
-     the whole hero blank forever. */
-  .sp-rise{display:block;}
-  html.js-reveal .sp-rise{
-    opacity:0;transform:translateY(14px);
-    animation:spRise .78s cubic-bezier(.16,1,.3,1) forwards;
-    animation-delay:var(--d,0s);
-  }
-  html.sp-shown .sp-rise{opacity:1 !important;transform:none !important;}
-  @keyframes spRise{to{opacity:1;transform:none}}
-
-  .sp-h1{line-height:1.16;}
-  .sp-h1 .sp-rise{margin-bottom:2px;}
-  .sp-h1 strong{font-weight:800;color:var(--accent-dark);}
-
-  /* highlighter sweep — the marker "draws" across the words */
-  .sp-mark{position:relative;display:inline-block;white-space:nowrap;}
-  .sp-mark::before{
-    content:'';position:absolute;left:-.14em;right:-.14em;top:.14em;bottom:.06em;
-    background:linear-gradient(103deg,rgba(255,214,102,.85),rgba(255,190,60,.62));
-    border-radius:3px;transform:scaleX(0);transform-origin:left center;z-index:-1;
-    animation:spSweep .82s cubic-bezier(.16,1,.3,1) forwards;
-    animation-delay:.85s;
-  }
-  .sp-mark.alt::before{
-    background:linear-gradient(103deg,rgba(45,91,255,.20),rgba(45,91,255,.10));
-    animation-delay:1.15s;
-  }
-  @keyframes spSweep{to{transform:scaleX(1)}}
-
-  /* hand-drawn underline that draws left to right */
-  .sp-under{position:relative;display:inline-block;}
-  .sp-under::after{
-    content:'';position:absolute;left:0;right:0;bottom:-.07em;height:.13em;
-    border-radius:3px;background:var(--accent);
-    transform:scaleX(0);transform-origin:left center;
-    animation:spSweep .7s cubic-bezier(.16,1,.3,1) forwards;
-    animation-delay:1.02s;
+  /* small blue rule used as the only section divider on the page */
+  .sp-rule{
+    width:56px;height:3px;border:0;border-radius:2px;
+    background:var(--accent);margin:34px auto;
   }
 
-  /* the "closing soon" flag, with a soft pulse on the dots */
-  .sp-flag{display:inline-flex;align-items:center;gap:2px;}
-  .sp-dots{display:inline-flex;gap:3px;margin-left:1px;}
-  .sp-dots i{
-    width:3px;height:3px;border-radius:50%;background:currentColor;opacity:.35;
-    animation:spDot 1.5s ease-in-out infinite;
-  }
-  .sp-dots i:nth-child(2){animation-delay:.2s;}
-  .sp-dots i:nth-child(3){animation-delay:.4s;}
-  @keyframes spDot{0%,100%{opacity:.25}50%{opacity:1}}
-
-  .sp-btn{position:relative;overflow:hidden;}
-  .sp-btn::after{
-    content:'';position:absolute;top:0;left:-70%;width:45%;height:100%;
-    background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);
-    transform:skewX(-18deg);animation:spShine 4.6s ease-in-out infinite;
-    animation-delay:1.8s;pointer-events:none;
-  }
-  @keyframes spShine{0%,72%{left:-70%}92%,100%{left:135%}}
-
-  @media(prefers-reduced-motion:reduce){
-    .sp-aurora span,.sp-dots i,.sp-btn::after{animation:none;}
-    html.js-reveal .sp-rise{opacity:1;transform:none;animation:none;}
-    .sp-mark::before,.sp-under::after{animation:none;transform:scaleX(1);}
+  /* the "closing soon" flag at the very top */
+  .sp-flag{
+    display:block;text-align:center;font-size:12px;font-weight:700;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:6px;
   }
 
-  /* pull-quotes from named advertising figures */
-  .sp-quote{
-    margin:26px 0;padding:22px 24px;background:var(--paper);
-    border:1px solid var(--line);border-left:3px solid var(--accent);
-    border-radius:0 12px 12px 0;
+  /* ---- hero headline ---- */
+  .sp-hero{padding:56px 0 8px;text-align:center;}
+  .sp-h1{
+    font-family:Georgia,'Times New Roman',Times,serif;
+    font-size:28px;line-height:1.32;font-weight:700;color:var(--ink);
+    margin-bottom:20px;
   }
+  @media(min-width:600px){.sp-h1{font-size:32px;}}
+  .sp-h1 strong{font-weight:800;}
+
+  /* highlighter marker behind "5 Minutes" */
+  .sp-mark{
+    background:linear-gradient(180deg,transparent 58%,#F7CE5B 58%,#F7CE5B 92%,transparent 92%);
+    padding:0 .12em;
+  }
+  /* drawn underline beneath "Increase Your Sales" */
+  .sp-under{text-decoration:underline;text-decoration-thickness:2.5px;text-underline-offset:4px;}
+  /* "No Efforts" — accent-blue, its own line */
+  .sp-blue-line{display:block;color:var(--accent);font-weight:800;margin-top:2px;}
+  /* "And The Potential is Limitless." — the reference styles this line as
+     an accent-blue link; it's a real <a> to the Earnings Disclaimer so
+     the one line making the biggest claim on the page also carries the
+     one link that qualifies it, not just underlined text. */
+  .sp-blue-link{color:var(--accent);font-weight:700;text-decoration:none;}
+  .sp-blue-link:hover{text-decoration:underline;}
+
+  .sp-hero .because{
+    font-size:15.5px;line-height:1.68;color:#3D3A36;max-width:520px;
+    margin:0 auto 26px;text-align:left;
+  }
+  .sp-hero .btn{font-size:15.5px;padding:14px 30px;}
+
+  /* ---- pull-quotes ---- */
+  .sp-quote{margin:20px 0;padding:2px 0 2px 18px;border-left:3px solid var(--accent);}
   .sp-quote blockquote{
-    font-family:'Fraunces',serif;font-size:20px;line-height:1.45;
-    color:var(--ink);margin:0 0 14px;font-weight:500;
-  }
-  .sp-quote blockquote em{font-style:normal;color:var(--accent-dark);font-weight:700;}
-  .sp-quote figcaption{display:flex;flex-direction:column;gap:2px;}
-  .sp-quote .who{font-size:14.5px;font-weight:800;color:var(--ink);}
-  .sp-quote .role{font-size:13px;color:var(--ink-mute);}
-
-  /* the income figures need their caveat visually attached, not buried */
-  /* --ink-mute would render this at roughly 3.7:1 on the tinted band —
-     below WCAG AA, which would defeat the point of moving the earnings
-     caveat out of the footer in the first place. */
-  .sp-fineprint{
-    font-size:14.5px;line-height:1.6;color:var(--ink-soft);
-    border-top:1px solid var(--line-soft);padding-top:16px;margin-top:22px;
-  }
-  .sp-fineprint a{color:var(--accent-dark);}
-
-  /* "you've seen" / credentials ticks */
-  .sp-seen{list-style:none;margin:0;padding:0;}
-  .sp-seen li{
-    position:relative;padding-left:32px;margin-bottom:14px;
-    font-size:17.5px;line-height:1.6;color:var(--ink-soft);
-  }
-  .sp-seen li::before{
-    content:'';position:absolute;left:0;top:4px;width:19px;height:19px;
-    border-radius:50%;background:var(--accent-tint);
-  }
-  .sp-seen li::after{
-    content:'';position:absolute;left:6px;top:9px;width:6px;height:10px;
-    border-right:2.5px solid var(--accent-dark);border-bottom:2.5px solid var(--accent-dark);
-    transform:rotate(42deg);
+    font-family:Georgia,'Times New Roman',Times,serif;font-style:italic;
+    font-size:16.5px;line-height:1.55;color:#3D3A36;margin:0;
   }
 
-  /* three-week timeline */
+  /* ---- weekly timeline ---- */
   .sp-week{
-    background:var(--paper);border:1px solid var(--line);border-radius:16px;
-    padding:26px 24px;margin-bottom:16px;
+    border:1px solid var(--line);border-radius:10px;
+    padding:18px 20px;margin-bottom:14px;
   }
-  .sp-week-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-  .sp-week-head .n{
-    flex:0 0 auto;width:38px;height:38px;border-radius:50%;background:var(--accent);
-    color:#fff;font-size:17px;font-weight:800;
-    display:flex;align-items:center;justify-content:center;
+  .sp-week h3{
+    font-family:Georgia,'Times New Roman',Times,serif;font-size:16.5px;
+    font-weight:700;color:var(--accent);margin-bottom:8px;
   }
-  .sp-week-head h3{
-    font-family:'Fraunces',serif;font-size:21px;font-weight:600;
-    margin:0 0 3px;color:var(--ink);
-  }
-  .sp-dfy{
-    display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.06em;
-    text-transform:uppercase;background:var(--accent-tint);color:var(--accent-dark);
-    padding:3px 9px;border-radius:20px;
-  }
-  .sp-dfy.is-dwy{background:var(--success-tint);color:#0C7351;}
-  .sp-week p{font-size:16.5px;margin-bottom:12px;}
+  .sp-week p{font-size:15.5px;margin-bottom:8px;}
   .sp-week p:last-child{margin-bottom:0;}
-  .sp-bonus{
-    background:#FFF7E6;border:1px solid #F0DFB8;border-radius:11px;
-    padding:14px 16px;margin:14px 0;font-size:16px;line-height:1.55;color:#6B5220;
-  }
-  .sp-bonus .lbl{font-weight:800;color:#A97400;margin-right:5px;}
-  .sp-easy{text-align:center;font-size:19px;font-weight:700;color:var(--ink);margin-top:24px;}
 
-  /* the free coaching call */
-  .sp-gift{
-    max-width:540px;margin:0 auto;text-align:center;
-    background:var(--accent-tint);border-radius:18px;padding:32px 28px;
+  /* the h2 that introduces the timeline is the one heading kept on the
+     page — everything else in the reference is plain paragraph flow */
+  .sp-letter h2{
+    font-family:Georgia,'Times New Roman',Times,serif;
+    font-size:21px;font-weight:700;color:var(--ink);
+    text-align:center;margin-bottom:22px;
   }
-  .sp-gift-tag{
-    display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.08em;
-    text-transform:uppercase;color:var(--accent-dark);margin-bottom:12px;
-  }
-  .sp-gift h3{
-    font-family:'Fraunces',serif;font-size:24px;font-weight:600;
-    line-height:1.32;color:var(--ink);margin-bottom:10px;
-  }
-  .sp-gift p{font-size:16px;font-weight:700;color:var(--accent-dark);margin:0;}
 
-  /* value stack ledger */
-  .sp-stack{
-    max-width:600px;margin:0 auto;background:var(--paper);
-    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  /* ---- value stack table ---- */
+  .sp-stack{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:20px 0;}
+  .sp-stack-row{
+    display:flex;gap:14px;padding:9px 0;
+    border-bottom:1px solid var(--line-soft);font-size:15px;
   }
-  .sp-stack-row,.sp-stack-total{
-    display:flex;align-items:baseline;gap:16px;
-    padding:16px 22px;border-bottom:1px solid var(--line-soft);
-  }
-  .sp-stack-row .item{flex:1;font-size:16px;line-height:1.5;color:var(--ink-soft);}
-  .sp-stack-row .val{
-    font-size:16px;font-weight:700;color:var(--ink);white-space:nowrap;
-  }
+  .sp-stack-row .item{flex:1;color:#3D3A36;}
+  .sp-stack-row .val{color:var(--ink);font-weight:600;white-space:nowrap;}
   .sp-stack-total{
-    border-bottom:none;background:var(--paper-tint);padding:20px 22px;
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-top:14px;font-weight:800;
   }
-  .sp-stack-total .item{
-    flex:1;font-size:15px;font-weight:800;letter-spacing:0.05em;
-    text-transform:uppercase;color:var(--ink-mute);
-  }
-  .sp-stack-total .val{
-    font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--ink);
-  }
+  .sp-stack-total .val{color:var(--accent);font-size:19px;}
 
-  .sp-was{font-size:16px;color:var(--ink-mute);margin-bottom:6px;}
-  .sp-was s{color:var(--ink-mute);}
-  .sp-off{
-    display:inline-block;background:var(--accent-tint);color:var(--accent-dark);
-    font-size:14px;font-weight:800;padding:7px 14px;border-radius:20px;margin-bottom:18px;
+  /* ---- price / CTA box ---- */
+  .sp-cta-box{
+    border:1px solid var(--line);border-radius:10px;
+    padding:26px 24px;text-align:center;margin:24px 0;
   }
-
-  .sp-scarce{
-    max-width:600px;margin:0 auto;text-align:center;
-    border:2px solid var(--accent);border-radius:18px;padding:32px 28px;
-  }
-  .sp-scarce .cf-h2{font-size:24px;margin-bottom:14px;}
-
-  /* the two-paths close */
-  .sp-paths{display:grid;gap:14px;margin:26px 0 20px;}
-  @media(min-width:640px){.sp-paths{grid-template-columns:1fr 1fr;}}
-  .sp-path{
-    background:var(--paper);border:1px solid var(--line);
-    border-radius:14px;padding:24px 22px;
-  }
-  .sp-path .sp-path-n{
-    display:block;font-size:11.5px;font-weight:800;letter-spacing:0.09em;
-    text-transform:uppercase;color:var(--accent);margin-bottom:10px;
-  }
-  .sp-path p{font-size:16.5px;line-height:1.6;margin:0;}
-  .sp-path.is-dim{background:var(--paper-tint);border-style:dashed;}
-  .sp-path.is-dim .sp-path-n{color:var(--ink-mute);}
-  .sp-path.is-dim p{color:var(--ink-mute);}
-  .sp-choice{text-align:center;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:24px;}
+  .sp-cta-box p{font-weight:700;color:var(--ink);margin-bottom:16px;}
+  .sp-cta-box .btn{margin-bottom:12px;}
+  .sp-cta-box .cta-sub{font-size:13.5px;color:var(--ink-mute);font-style:italic;margin-bottom:2px;}
 
   /* ---------- P.S. ---------- */
   .cf-ps{
