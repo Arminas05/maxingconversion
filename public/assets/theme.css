@@ -16,9 +16,9 @@
     /* second accent, used only on /sales-page/ for a subset of emphasis
        text (prices, week labels, "BONUS!") per the owner's reference —
        kept out of the shared palette above on purpose. */
-    --accent-2:#E8622C;
-    --accent-2-dark:#C94E1E;
-    --accent-2-tint:#FDECE3;
+    --accent-2:#E0342B;
+    --accent-2-dark:#B8241C;
+    --accent-2-tint:#FCE7E6;
     --success:#12996B;
     --success-tint:#E9F7F1;
     --warn:#C8382F;
@@ -876,10 +876,32 @@
   /* Desktop gets a wider column and a step up in type size — at 640px
      max-width the page reads fine on a phone but feels small and
      letterboxed on a real monitor. Mobile layout/sizing above is
-     untouched; this only kicks in once there's room to spare. */
+     untouched; this only kicks in once there's room to spare. Two tiers
+     so it keeps scaling up on genuinely large monitors instead of
+     capping out at the first bump. */
   @media(min-width:900px){
-    .sp-letter{max-width:760px;}
-    .sp-letter p{font-size:18px;}
+    .sp-letter{max-width:900px;padding:0 32px;}
+    .sp-letter p{font-size:20px;}
+    .sp-quote blockquote{font-size:20px;}
+    .sp-letter h2{font-size:26px;}
+    .btn, .sp-hero .btn{font-size:19px;padding:19px 34px;}
+    .sp-check-list li{font-size:19px;}
+    .sp-stack-row{font-size:17px;}
+    .sp-big{font-size:44px;}
+    .sp-potential-block p{font-size:27px !important;}
+    .sp-heading-lg{font-size:36px !important;}
+  }
+  @media(min-width:1280px){
+    .sp-letter{max-width:1080px;}
+    .sp-letter p{font-size:22px;}
+    .sp-quote blockquote{font-size:22.5px;}
+    .sp-letter h2{font-size:30px;}
+    .btn, .sp-hero .btn{font-size:20px;padding:21px 38px;}
+    .sp-check-list li{font-size:21px;}
+    .sp-stack-row{font-size:18.5px;}
+    .sp-big{font-size:50px;}
+    .sp-potential-block p{font-size:30px !important;}
+    .sp-heading-lg{font-size:40px !important;}
   }
 
   /* Each <section> is one topical beat, spaced by margin alone — see
@@ -929,7 +951,8 @@
     margin-bottom:20px;
   }
   @media(min-width:600px){.sp-h1{font-size:35px;}}
-  @media(min-width:900px){.sp-h1{font-size:42px;}}
+  @media(min-width:900px){.sp-h1{font-size:52px;}}
+  @media(min-width:1280px){.sp-h1{font-size:62px;}}
   .sp-h1 strong{font-weight:800;}
 
   /* highlighter marker behind "5 Minutes" */
@@ -956,6 +979,8 @@
     margin:0 auto 26px;text-align:left;
   }
   .sp-hero .btn{font-size:15.5px;padding:14px 30px;}
+  @media(min-width:900px){.sp-hero .because{font-size:19px;max-width:640px;}}
+  @media(min-width:1280px){.sp-hero .because{font-size:21px;max-width:720px;}}
 
   /* ---- pull-quotes ---- */
   /* Lightened from the earlier boxed/border-left treatment to a plain,
@@ -966,6 +991,11 @@
     font-family:Georgia,'Times New Roman',Times,serif;font-style:italic;
     font-size:17.5px;line-height:1.5;color:var(--accent);margin:0;
   }
+  /* .sp-letter strong sets every <strong> to --ink (black), which was
+     silently winning over this blockquote's blue on the "act now" bit —
+     same specificity, .sp-letter strong just happened to be declared
+     first. Force it back to the quote's own color here. */
+  .sp-quote blockquote strong{color:inherit;}
   .sp-quote-by{
     display:block;margin-top:9px;font-size:13.5px;font-style:normal;
     color:var(--ink-mute);letter-spacing:0.01em;
@@ -1058,18 +1088,25 @@
     text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px;
   }
   /* oversized standalone stat line — "You Could Make $10 000!" */
-  .sp-big{font-size:24px;font-weight:800;display:block;color:var(--ink);}
+  .sp-big{font-size:32px;font-weight:800;display:block;color:var(--ink);line-height:1.25;}
+  @media(min-width:600px){.sp-big{font-size:38px;}}
   /* tight-set group of short stat/punch lines, read as one block rather
-     than as separate loosely-spaced paragraphs */
-  .sp-potential-block{margin-bottom:22px;}
-  .sp-potential-block p{margin-bottom:8px !important;}
+     than as separate loosely-spaced paragraphs — sized up well past body
+     text so the whole block reads as a hero stat, not regular copy */
+  .sp-potential-block{margin-bottom:26px;}
+  .sp-potential-block p{
+    font-size:21px !important;font-weight:700;line-height:1.4;
+    margin-bottom:10px !important;
+  }
+  @media(min-width:600px){.sp-potential-block p{font-size:24px !important;}}
   .sp-potential-block p:last-child{margin-bottom:0 !important;}
   .sp-centered{text-align:center;}
   /* larger centered stand-alone line — "Here You've Seen It ALL!" */
   .sp-heading-lg{
-    font-size:24px !important;font-weight:700;color:var(--ink);
+    font-size:28px !important;font-weight:700;color:var(--ink);
     text-align:center;
   }
+  @media(min-width:600px){.sp-heading-lg{font-size:32px !important;}}
 
   /* visually hidden but still present for screen readers, search engines
      and no-JS visitors — used where a graphic now carries the visible

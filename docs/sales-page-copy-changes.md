@@ -273,6 +273,40 @@ now carries a `?v=` query string bumped by hand on every edit, so each
 change is a new URL and therefore a guaranteed-fresh fetch regardless
 of what's cached in front of it. Other pages' links are untouched.
 
+## 13. Color/size/layout follow-up round — desktop still felt small
+
+Further owner feedback after #12 shipped:
+
+- The Rob Palmer quote's "act now" rendered black instead of blue like
+  the rest of the quote — `.sp-letter strong` (sets every `<strong>` to
+  ink/black) was winning over the quote's own blue by declaration
+  order at equal specificity. Fixed by forcing `<strong>` inside a
+  quote to inherit the quote's color instead.
+- The second accent color moved from orange (`#E8622C`) to a more
+  saturated red (`#E0342B`) — one CSS variable, so every use across the
+  page (week labels, "BONUS!", "Special Way of Structure", the timeline
+  graphic) updated together.
+- The four "potential" lines are far larger now (21–30px depending on
+  breakpoint, vs. 16.5px body text) to read as a hero stat block, not
+  regular copy — matching the size the owner's reference showed.
+- "The Only Service that Uses a Special Way of Structure That Holds
+  TONS of Highly Converting Words." plus the two "Rapport" lines above
+  it are now centered as a group, matching the reference; "TONS of
+  Highly Converting Words" is now italic + underlined to match too.
+- The timeline graphic (see #11) had two problems the owner caught:
+  each week's two sentences were run together in one paragraph inside
+  the image (regenerated with real spacing between them), and the week
+  labels alternated blue/red (now all red, matching the single-color
+  labels the live text version already used — the graphic was
+  inconsistent with the page, not the other way around).
+- Desktop still read as too small after #12's first pass. Pushed it
+  further: two breakpoints now (900px and 1280px) instead of one, the
+  container tops out at 1080px instead of 760px, and font sizes across
+  the page — body copy, the hero headline (up to 62px), buttons, quote
+  text, the h2, checklist items, the value-stack rows, and the "because"
+  paragraph under the hero — all scale up at each tier. Mobile sizing
+  is untouched throughout.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:
