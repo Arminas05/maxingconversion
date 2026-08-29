@@ -196,6 +196,29 @@ three spots on the page (the "Secret Ultimate Sales Page Rapport"
 line and its two follow-ons) and in the page's own top-of-file comment.
 See #4 above for the corrected history.
 
+## 11. Timeline visual + missed color accents from the reference
+
+The owner pointed out two more spots where the page didn't match his
+reference screenshots yet:
+
+- The weekly timeline section got a designed visual (a numbered
+  vertical timeline graphic, `/assets/sales-page-timeline.png` /
+  `.webp`) sitting above the existing text version of the same four
+  weeks — the text stays in the page for search engines, screen
+  readers and no-JS visitors; the image is a visual supplement, same
+  pattern as the value-stack bundle image further down the page. No
+  new copy — the image uses the same four week descriptions already on
+  the page.
+- Several phrases the reference colors blue were still plain black:
+  "Feedback on Each Part of Copy Before I Make Full Visualization of
+  Special Sales Page on Shared Doc File for YOU." (First Week), "the
+  Value for Your Clients" and "preferable" (Second Week). All three
+  now use the existing blue accent styling.
+- The four short "potential" lines ("You Could Make $10 000!" through
+  "Wouldn't You Be Talk of Your Town?") were wrapped in a tighter block
+  so they read as one grouped stat, rather than four loosely-spaced
+  paragraphs — matching the reference's denser spacing there.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:

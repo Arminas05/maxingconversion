@@ -976,6 +976,10 @@
   .sp-week p{font-size:15.5px;margin-bottom:8px;}
   .sp-week p:last-child{margin-bottom:0;}
 
+  /* four-week timeline graphic, sits above the text version of the same
+     content — see the HTML comment beside it for why both exist */
+  .sp-timeline-img{display:block;width:100%;height:auto;border-radius:10px;margin-bottom:28px;}
+
   /* the h2 that introduces the timeline is the one heading kept on the
      page — everything else in the reference is plain paragraph flow */
   .sp-letter h2{
@@ -1045,6 +1049,11 @@
   }
   /* oversized standalone stat line — "You Could Make $10 000!" */
   .sp-big{font-size:24px;font-weight:800;display:block;color:var(--ink);}
+  /* tight-set group of short stat/punch lines, read as one block rather
+     than as separate loosely-spaced paragraphs */
+  .sp-potential-block{margin-bottom:22px;}
+  .sp-potential-block p{margin-bottom:8px !important;}
+  .sp-potential-block p:last-child{margin-bottom:0 !important;}
 
   /* ---- the free-coaching-call gift ---- */
   .sp-gift-box{
