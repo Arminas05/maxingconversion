@@ -943,8 +943,6 @@
   .sp-blue-line{display:block;color:var(--accent);}
   .sp-blue-inline{color:var(--accent);font-weight:800;}
   .sp-under{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;}
-  .sp-blue-link{color:var(--accent);font-weight:700;text-decoration:none;}
-  .sp-blue-link:hover{text-decoration:underline;}
 
   .sp-hero .because{
     font-size:13.5px;font-weight:700;line-height:1.65;color:var(--ink);

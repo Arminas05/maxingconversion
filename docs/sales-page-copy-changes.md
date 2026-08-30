@@ -372,3 +372,30 @@ Both are claims on the page, not decoration:
    promise as written — no qualifying conditions, unlike the toolkit's
    refund policy. Honour it as stated, or narrow the wording before anyone
    buys.
+
+## 15. Five lines the reference removed — matched, not re-added
+
+Diffed the page's actual text against the reference template character-
+for-character (not eyeballed) after the owner said he'd trimmed
+sentences in the file he sent and the live page should build off that.
+Found five real differences and matched the reference in each case:
+
+- Removed "Either Leads, Calls or Sales Itself." (after "...is to
+  Convert…") — the reference ends the line there.
+- Removed "But hey, There is MORE.." (after "This Just Proves That You
+  Should Move Fast…") — same, reference stops at "…".
+- Removed "Together We'll Add to The Page, When You Finish Film It…"
+  from the Second Week entry — not in the reference's Second Week at
+  all.
+- "And to Make It Extremely Easy…" → "And to Make It Extremely
+  Simple…" — the reference's actual word.
+- Removed "And The Potential is Limitless…" entirely. This was the
+  page's last inline qualifier near the $10,000 claim (the fineprint
+  sentence next to it was already removed per the owner's request
+  earlier — see #12). With this gone too, nothing inline qualifies
+  that claim anymore — only the site-wide footer disclaimer does.
+  Matching the reference as asked; flagging it because it's a real
+  reduction in how qualified that number is, not a cosmetic edit.
+
+`.sp-blue-link` (only used by the removed "Limitless…" line) dropped
+from theme.css as dead CSS.
