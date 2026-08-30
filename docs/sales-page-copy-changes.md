@@ -307,6 +307,61 @@ Further owner feedback after #12 shipped:
   paragraph under the hero — all scale up at each tier. Mobile sizing
   is untouched throughout.
 
+## 14. Full rebuild against a complete reference design
+
+The owner uploaded a complete reference design this time — a Claude
+Design canvas export (a "Bundled Page" HTML file containing a full
+visual spec: colors, spacing, layout, and a scroll-reveal/animation
+script), not a screenshot or partial description like the earlier
+passes. This replaced most of the page's HTML and CSS to match it
+structurally, while keeping every content decision already made in
+this document:
+
+- **Colors**: the page's blue shifted from `#2D5BFF` to `#3457D5` and
+  the red from `#E0342B` to `#E22D2D` (with a darker `#930000` for the
+  "closing soon" flag), scoped as local CSS-variable overrides on
+  `.sp-letter` — the shared site-wide `--accent` used by every other
+  page is untouched.
+- **New structure per the reference**: staircase-indented paragraphs
+  in the opening section; quote cards with circular initials avatars
+  (RP / CH / DO — not real photos, avoiding the same licensing question
+  the Ogilvy photo raised earlier) and a credential badge; a graduated
+  big-to-small stat block for "You Could Make $10,000!"; a numbered
+  vertical timeline with card-style week entries (replacing the earlier
+  PNG timeline graphic — a live HTML/CSS timeline can't go stale or
+  duplicate itself the way an exported image could); a pop-in
+  $5,434→$997 price reveal; a "Our Guarantee" badge card; a "Closing
+  Soon" corner tag on the final CTA.
+- **Scroll-reveal animation**, added per the reference and the owner's
+  earlier ask for "transitions effects": sections fade up as they
+  enter the viewport, the timeline's connecting line grows, the final
+  price pops in. Deliberately NOT applied to `.sp-hero` — the smoke
+  test (and good practice) requires hero content fully opaque at first
+  paint, with or without JS, and an entrance transition on
+  already-visible content would either flash or fail that. Gated
+  behind `html[data-motion="on"]`, set only after confirming
+  `IntersectionObserver` exists and `prefers-reduced-motion` isn't
+  set — no JS, or motion refused, means everything just renders at
+  full opacity with no fallback needed.
+- **Bug caught by the smoke test, not eyeballing**: the "closing soon"
+  flag's pulsing dot originally animated `opacity` (1 → 0.35 → 1) on a
+  loop, and that dot lives inside `.sp-hero` — which must stay fully
+  opaque at every instant. Switched to a `transform: scale()`-only
+  pulse so it never dips under the threshold, same visual effect.
+- Tried making `www.maxingconversion.com` the canonical form (the
+  reference's own footer links used `www.`) and hit a real regression:
+  the sitemap and every other page's canonical tag use the apex domain,
+  so this page briefly disagreed with the rest of the site — caught by
+  the smoke test's sitemap-consistency check. Reverted to apex to match
+  everything else; the "which domain should be canonical sitewide"
+  question from earlier in this session is still open and unrelated to
+  this page specifically.
+- The bundle-mockup image is the one already on the page — not
+  replaced, since the reference only shows a placeholder for it.
+
+Nothing here changes any copy decision recorded in sections 1–13
+above; this section is layout/visual only.
+
 ## Two things that must stay true
 
 Both are claims on the page, not decoration:
