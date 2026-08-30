@@ -864,10 +864,31 @@
      property overrides rather than touching the shared --accent tokens
      above, which every other page also uses. */
 
+  /* subtle graph-paper background, scoped to this page's <body> only via
+     .sp-bg (not the shared body{} rule above, which every page inherits) —
+     a warm off-white with a faint grid, per a reference the owner linked. */
+  body.sp-bg{
+    background-color:#FBF7F1;
+    background-image:
+      linear-gradient(#F0E7DA 1px,transparent 1px),
+      linear-gradient(90deg,#F0E7DA 1px,transparent 1px);
+    background-size:56px 56px;
+  }
+
   .sp-letter{
     --accent:#3457D5;--accent-dark:#24399E;--accent-tint:#EEF2FF;
     --accent-2:#E22D2D;--accent-2-dark:#930000;--accent-2-tint:#FFF4F4;
     max-width:640px;margin:0 auto;padding:0 22px;
+  }
+  /* the letter itself sits as a solid "card" above the grid backdrop —
+     keeps body text crisp instead of reading over gridlines, while the
+     grid still shows in the margins around it and behind the footer. */
+  @media(min-width:760px){
+    body.sp-bg .sp-letter{
+      background:var(--paper);padding:48px 56px 64px;
+      border-radius:18px;box-shadow:0 1px 3px rgba(20,22,26,0.05),0 20px 50px -20px rgba(20,22,26,0.12);
+      margin-top:40px;margin-bottom:40px;
+    }
   }
   .sp-letter p{
     font-size:15px;line-height:1.72;color:#3D3A36;margin-bottom:14px;
