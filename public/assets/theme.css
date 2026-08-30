@@ -1007,45 +1007,52 @@
   @media(min-width:900px){.sp-quote-card blockquote{font-size:17px;}}
 
   /* ---- the potential — graduated big stat lines ---- */
-  .sp-stat-block{text-align:center;}
+  /* This is the page's biggest single claim ($10,000, six figures) and
+     it read too small relative to its own importance — sized up another
+     notch past the reference's own numbers, plus more breathing room
+     around it, so it actually takes up the share of the page a headline
+     claim like this should. */
+  .sp-stat-block{text-align:center;margin:10px 0 30px;}
   .sp-stat-block p{
     font-family:Georgia,'Times New Roman',Times,serif;font-weight:700;
-    color:var(--ink);margin-bottom:10px;line-height:1.2;
+    color:var(--ink);margin-bottom:14px;line-height:1.22;
   }
   .sp-stat-block p:last-child{margin-bottom:0;color:var(--accent);}
-  .sp-stat-1{font-size:28px;}
-  .sp-stat-2{font-size:22px;}
-  .sp-stat-3{font-size:19px;}
-  .sp-stat-4{font-size:18px;}
-  .sp-stat-5{font-size:20px;}
+  .sp-stat-1{font-size:32px;}
+  .sp-stat-2{font-size:25px;}
+  .sp-stat-3{font-size:21px;}
+  .sp-stat-4{font-size:20px;}
+  .sp-stat-5{font-size:23px;}
   @media(min-width:600px){
-    .sp-stat-1{font-size:36px;}.sp-stat-2{font-size:28px;}.sp-stat-3{font-size:23px;}
-    .sp-stat-4{font-size:21px;}.sp-stat-5{font-size:24px;}
+    .sp-stat-1{font-size:42px;}.sp-stat-2{font-size:32px;}.sp-stat-3{font-size:26px;}
+    .sp-stat-4{font-size:24px;}.sp-stat-5{font-size:28px;}
   }
   @media(min-width:900px){
-    .sp-stat-1{font-size:46px;}.sp-stat-2{font-size:35px;}.sp-stat-3{font-size:28px;}
-    .sp-stat-4{font-size:26px;}.sp-stat-5{font-size:30px;}
+    .sp-stat-1{font-size:54px;}.sp-stat-2{font-size:40px;}.sp-stat-3{font-size:32px;}
+    .sp-stat-4{font-size:30px;}.sp-stat-5{font-size:35px;}
   }
   @media(min-width:1280px){
-    .sp-stat-1{font-size:52px;}.sp-stat-2{font-size:40px;}.sp-stat-3{font-size:32px;}
-    .sp-stat-4{font-size:30px;}.sp-stat-5{font-size:34px;}
+    .sp-stat-1{font-size:62px;}.sp-stat-2{font-size:46px;}.sp-stat-3{font-size:37px;}
+    .sp-stat-4{font-size:35px;}.sp-stat-5{font-size:40px;}
   }
   .sp-hi2{color:var(--accent-2);}
   .sp-hi2-u{color:var(--accent-2);font-style:italic;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px;}
 
   /* ---- zebra-striped checklist, reused for both "You've Seen" and
      "You Can Access It All" ---- */
-  .sp-checklist{display:grid;gap:4px;margin:20px 0;}
+  .sp-checklist{display:grid;gap:6px;margin:28px 0;}
   .sp-checklist.is-boxed{
     background:var(--accent-tint);border:1px solid #e4eaff;
     border-radius:14px;padding:12px;
   }
   .sp-check-row{
-    display:flex;gap:10px;align-items:flex-start;font-size:14.5px;
-    line-height:1.55;padding:7px 8px;border-radius:8px;
+    display:flex;gap:10px;align-items:flex-start;font-size:15.5px;
+    line-height:1.55;padding:9px 10px;border-radius:8px;
   }
   .sp-checklist:not(.is-boxed) .sp-check-row:nth-child(odd){background:#f7f9ff;}
-  @media(min-width:900px){.sp-check-row{font-size:17px;}}
+  @media(min-width:600px){.sp-check-row{font-size:17px;padding:10px 12px;}}
+  @media(min-width:900px){.sp-check-row{font-size:19px;}}
+  @media(min-width:1280px){.sp-check-row{font-size:21px;}}
   .sp-check-icon{
     flex:none;width:20px;height:20px;border-radius:5px;margin-top:2px;
     background:var(--accent);color:#fff;font-size:11px;font-weight:700;
