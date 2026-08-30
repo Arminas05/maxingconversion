@@ -41,10 +41,23 @@ environment it built into.
 
 ### Attach your domain
 
-The site is wired for **`maxingconversion.com`** already — `wrangler.toml`
-declares it as a Custom Domain (plus `www`), and every canonical tag,
-`robots.txt` and `sitemap.xml` point at it. There is one manual step first,
-at your domain registrar, that can't be done from this repo:
+The site is wired for **`www.maxingconversion.com`** — that's the canonical
+form: every canonical tag, `robots.txt` and `sitemap.xml` point at it.
+`wrangler.toml` declares both `www.maxingconversion.com` and the bare apex
+domain as Custom Domains on the same Worker, so **both currently serve the
+identical site** — a visitor or a link to either one works. What's missing
+is an actual redirect enforcing one over the other (apex visitors don't get
+bounced to `www`, they just silently get served the same content a second
+time), because that needs either a Cloudflare **Redirect Rule** (zone-level,
+dashboard-only, not something this repo can declare) or turning this from
+an assets-only Worker into one with real request-handling code. Add a
+Redirect Rule (Cloudflare dashboard → your zone → **Rules → Redirect
+Rules** → match hostname = `maxingconversion.com` → redirect to
+`https://www.maxingconversion.com/$1`) if you want that enforced; until
+then, treat `www` as the one to link, share and use in ads.
+
+There is one manual step first, at your domain registrar, that can't be
+done from this repo:
 
 1. **Add `maxingconversion.com` as a zone on this Cloudflare account** (or
    confirm it already is one) — Cloudflare dashboard → **Add a Site** — and
@@ -79,13 +92,17 @@ before the file was deployed. Confirm the file loads in a browser first,
 then resubmit; the status can take a day to settle even when it's fine.
 
 **What belongs in `sitemap.xml`:** only genuinely indexable pages —
-currently `/toolkit/` (priority 1.0, since `/` redirects there),
-`/sales-page/` (0.9, the $997 done-for-you service) and `/sales/` (0.8).
-Deliberately excluded:
+currently `/toolkit/` (priority 1.0, since `/` redirects there) and
+`/sales-page/` (0.9, the $997 done-for-you service). Deliberately excluded:
 
 - the four legal pages — they carry `<meta name="robots" content="noindex">`,
   so listing them would claim "index this" and "don't index this" at once
   and earn a *"Submitted URL marked noindex"* error
+- `/sales/` — same reason, noindexed at the owner's request while
+  `/sales-page/` is the page he wants found for the brand's own name;
+  the page itself still works for anyone with a direct link, it's just
+  not being pushed for search. Re-add both the sitemap entry and drop
+  its `noindex` tag to bring it back.
 - `/404.html` — an error page
 - the `#thanks` views — hash routes of pages already listed, not separate URLs
 

@@ -10,4 +10,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maxingconversion.com/sitemap.xml
+Sitemap: https://www.maxingconversion.com/sitemap.xml

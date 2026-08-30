@@ -287,11 +287,11 @@ await p.close();
   if (locs.length === 0) errors.push('sitemap: no <loc> entries found');
 
   for (const loc of locs) {
-    if (!loc.startsWith('https://maxingconversion.com/')) {
+    if (!loc.startsWith('https://www.maxingconversion.com/')) {
       errors.push(`sitemap: ${loc} is not an absolute production URL`);
       continue;
     }
-    const path = loc.replace('https://maxingconversion.com', '');
+    const path = loc.replace('https://www.maxingconversion.com', '');
     const vp = await browser.newPage();
     const r = await vp.goto(base + path, { waitUntil: 'networkidle' });
     // must be the page itself, not a hop to another one
@@ -314,7 +314,7 @@ await p.close();
   await rp.goto(base + '/robots.txt', { waitUntil: 'load' });
   const txt = await rp.evaluate(() => document.body.innerText);
   for (const loc of locs) {
-    const path = loc.replace('https://maxingconversion.com', '');
+    const path = loc.replace('https://www.maxingconversion.com', '');
     const blocked = txt.split('\n')
       .filter(l => /^\s*Disallow:/i.test(l))
       .map(l => l.split(':')[1].trim())
@@ -322,7 +322,7 @@ await p.close();
       .some(rule => path.startsWith(rule));
     if (blocked) errors.push(`robots.txt disallows ${path}, which the sitemap lists`);
   }
-  if (!/^\s*Sitemap:\s*https:\/\/maxingconversion\.com\/sitemap\.xml/m.test(txt)) {
+  if (!/^\s*Sitemap:\s*https:\/\/www\.maxingconversion\.com\/sitemap\.xml/m.test(txt)) {
     errors.push('robots.txt does not point at the sitemap');
   }
   await rp.close();
