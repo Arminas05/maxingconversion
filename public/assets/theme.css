@@ -880,14 +880,23 @@
     --accent-2:#E22D2D;--accent-2-dark:#930000;--accent-2-tint:#FFF4F4;
     max-width:640px;margin:0 auto;padding:0 22px;
   }
-  /* the letter itself sits as a solid "card" above the grid backdrop —
-     keeps body text crisp instead of reading over gridlines, while the
-     grid still shows in the margins around it and behind the footer. */
+  /* Each section is its own card floating on the grid, with the grid
+     showing through the gaps between them — not one single card for the
+     whole letter, which only showed the grid in the side margins. Flat,
+     no shadow/radius, on mobile (no room for gaps to read anyway); the
+     elevated look kicks in once there's space for it. */
+  body.sp-bg .sp-letter > section{background:var(--paper);}
   @media(min-width:760px){
-    body.sp-bg .sp-letter{
-      background:var(--paper);padding:48px 56px 64px;
-      border-radius:18px;box-shadow:0 1px 3px rgba(20,22,26,0.05),0 20px 50px -20px rgba(20,22,26,0.12);
-      margin-top:40px;margin-bottom:40px;
+    body.sp-bg{padding:40px 0;}
+    body.sp-bg .sp-letter > section{
+      padding:36px 40px;border-radius:16px;
+      box-shadow:0 1px 3px rgba(20,22,26,0.05),0 16px 40px -18px rgba(20,22,26,0.14);
+    }
+    /* the hero reads as the page's open headline, not a boxed panel —
+       left transparent so it sits directly on the grid like the
+       reference, while every section below it is a distinct card */
+    body.sp-bg .sp-letter > .sp-hero{
+      background:none;box-shadow:none;padding:36px 40px 8px;
     }
   }
   .sp-letter p{
